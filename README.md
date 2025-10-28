@@ -32,7 +32,8 @@ Upon launching the application, the user will see a “Menu” interface with th
         <img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/012934c7-72d7-41cd-ac90-a00b61449934" />
         
       - Task 5: User must place their chosen flower somewhere within the 3x4 flower grid; click and press enter
-        <img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/9aa27582-89ed-4f38-99e4-d809bcaffe6d" />
+<img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/e0f1d3ed-2ecc-4588-8c84-2a4e1241ba17" />
+
    - Upon finishing a task, user must press ENTER to move to the next task
    - If no answer is inputted and user pressed ENTER, then an error message will pop up underneath the task title notifying that no input was given and question must be answered before next task is given
    - If all given tasks are not completed and the user presses ESCAPE, all progress is lost; pressing “Start” from the menu will navigate the user back to the first task (ie. user’s daily progress is logged into entries if and only if all five tasks are completed)
