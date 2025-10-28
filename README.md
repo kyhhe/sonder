@@ -2,6 +2,8 @@
 ## Team Sonder
 <img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/0efa74cf-35c7-4acc-a0f1-1f3276fd1736" />
 
+*Mission Statement: Cultivating daily mindfulness.*
+
 ## Problem
 
 Student mental health is often overlooked. According to the ACHC 2016 student health survey, 41.5% of students reported "[feeling] that things were hopeless", 55.3% feeling "overwhelming anxiety", 33.5% feeling "so depressed that it was difficult to function", and 5.9% who seriously considered suicide in the last 12 months (American College Health Association, 2017, p.13). These feelings can be linked to high academic pressure, financial stressors and future uncertainties during an age range with the highest risk of mental disorders. 
@@ -24,41 +26,41 @@ Upon launching the application, the user will see a “Menu” interface with th
    - Leads the user into completing the daily wellness tasks:
       - Task 1: “How are you feeling today?” → choose between 5 hand-drawn faces of different emotions
      <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/0d972606-d2b5-44b7-9c3b-3f786848833a" />
+     
       - Task 2: “What is one thing you’re grateful for?” → written response
-        <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/aa156e3c-4469-4c9d-83e9-c81c046f0f56" />
       - Task 3: “What is one thing you learned today? What is one goal you have for tomorrow?” → written response
-      - <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/aa156e3c-4469-4c9d-83e9-c81c046f0f56" />
+        <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/aa156e3c-4469-4c9d-83e9-c81c046f0f56" />
       - Task 4: “Choose a flower:” → user chooses one flower out of three options (randomly generated from a set of 9 total flowers)
         <img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/012934c7-72d7-41cd-ac90-a00b61449934" />
         
       - Task 5: User must place their chosen flower somewhere within the 3x4 flower grid; click and press enter
         <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/e0f1d3ed-2ecc-4588-8c84-2a4e1241ba17" />
 
-   - Upon finishing a task, user must press ENTER to move to the next task
-   - If no answer is inputted and user pressed ENTER, then an error message will pop up underneath the task title notifying that no input was given and question must be answered before next task is given
-   - If all given tasks are not completed and the user presses ESCAPE, all progress is lost; pressing “Start” from the menu will navigate the user back to the first task (ie. user’s daily progress is logged into entries if and only if all five tasks are completed)
-   - User’s responses to daily tasks is logged and saved into “Entries” 
+   - Upon finishing a task, the user must press ENTER to move to the next task
+   - If no answer is inputted and the user presses ENTER, then an error message will pop up underneath the task title notifying that no input was given and the question must be answered before the next task is given
+   - If all given tasks are not completed and the user presses ESCAPE, all progress is lost; pressing “Start” from the menu will navigate the user back to the first task (ie, user’s daily progress is logged into entries if and only if all five tasks are completed)
+   - User’s responses to daily tasks are logged and saved into “Entries” 
    - If tasks are completed for the day and the user clicks “Start,” a different screen will pop up, stating “Thanks for checking in today, see you tomorrow!”
-No other buttons are present on this page; user may navigate back to menu with ESC
+No other buttons are present on this page; the user may navigate back to the menu with ESC
 
 
 2. Garden:
    - Loads the user’s garden (view-only page when navigated from the menu) from the JSON file
    - Able to view all the flowers you’ve planted in previous entries
    - The user will not be given a feature to reposition the flowers after setting them in the garden
-   - Once the garden is filled (ie. all 12 grids have a flower), the user’s new flower will replace an existing flower within their garden
+   - Once the garden is filled (ie, all 12 grids have a flower), the user’s new flower will replace an existing flower within their garden
    - This is a continuous process for all succeeding entries
 
 3. Entries:
    - Directs the user to a page to check all of their past task entries
    - Progress is logged and saved into “Entries” if all questions are answered and their chosen flower is planted
-   - For every entry that is logged, 5 things are stored into a JSON file:
+   - For every entry that is logged, 5 things are stored in a JSON file:
        1. Date
        2. User’s Response to Task 1
        3. User’s Response to Task 2
        4. User’s Response to Task 3
        5. Flower of their choosing for the day
 
-The “Garden” and “Entries” data are saved and will carry over into the following days. The date is automatically inputted and displayed on the first task with the help of an internal clock. The daily tasks are meant to reset every 24 hours, but for simulation purposes, pressing F12 advances the internal clock to the next day and subsequently resets the daily tasks.
+The “Garden” and “Entries” data are saved and will carry over into the following days. The date is automatically inputted and displayed on the first task based on the system clock. The daily tasks are meant to reset every 24 hours, but for simulation purposes, pressing F12 advances the clock to the next day and subsequently resets the daily tasks.
 
 In terms of the visual interfaces of the app, we will be using different shades of green for all user interface pages. Flower colours will be varied. The app will have a 4:3 aspect ratio with 1024 × 768 px. All prompts will be center-aligned. User inputted responses will be left-aligned. The writing font should be consistent across all interfaces.
