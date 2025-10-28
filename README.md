@@ -32,7 +32,7 @@ Upon launching the application, the user will see a “Menu” interface with th
         <img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/012934c7-72d7-41cd-ac90-a00b61449934" />
         
       - Task 5: User must place their chosen flower somewhere within the 3x4 flower grid; click and press enter
-         <img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/9aa27582-89ed-4f38-99e4-d809bcaffe6d" />
+        <img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/9aa27582-89ed-4f38-99e4-d809bcaffe6d" />
    - Upon finishing a task, user must press ENTER to move to the next task
    - If no answer is inputted and user pressed ENTER, then an error message will pop up underneath the task title notifying that no input was given and question must be answered before next task is given
    - If all given tasks are not completed and the user presses ESCAPE, all progress is lost; pressing “Start” from the menu will navigate the user back to the first task (ie. user’s daily progress is logged into entries if and only if all five tasks are completed)
@@ -47,7 +47,6 @@ No other buttons are present on this page; user may navigate back to menu with E
    - The user will not be given a feature to reposition the flowers after setting them in the garden
    - Once the garden is filled (ie. all 12 grids have a flower), the user’s new flower will replace an existing flower within their garden
    - This is a continuous process for all succeeding entries
- <img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/9aa27582-89ed-4f38-99e4-d809bcaffe6d" />
 
 3. Entries:
    - Directs the user to a page to check all of their past task entries
@@ -62,12 +61,3 @@ No other buttons are present on this page; user may navigate back to menu with E
 The “Garden” and “Entries” data are saved and will carry over into the following days. The date is automatically inputted and displayed on the first task with the help of an internal clock. The daily tasks are meant to reset every 24 hours, but for simulation purposes, pressing F12 advances the internal clock to the next day and subsequently resets the daily tasks.
 
 In terms of the visual interfaces of the app, we will be using different shades of green for all user interface pages. Flower colours will be varied. The app will have a 4:3 aspect ratio with 1024 × 768 px. All prompts will be center-aligned. User inputted responses will be left-aligned. The writing font should be consistent across all interfaces.
-
-
-<img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/9aa27582-89ed-4f38-99e4-d809bcaffe6d" />
-<img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/94c19134-09ec-4c27-8c1a-cc49b290b3e0" />
-<img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/bb20b25c-ae63-4439-bac3-9a0ede1f4721" />
-<img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/012934c7-72d7-41cd-ac90-a00b61449934" />
-<img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/0d972606-d2b5-44b7-9c3b-3f786848833a" />
-<img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/46e346ad-da72-4a65-8dd2-a17c0ce29f51" />
-<img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/aa156e3c-4469-4c9d-83e9-c81c046f0f56" />
