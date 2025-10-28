@@ -1,5 +1,5 @@
 # Project Description
-## Team Sonder<img width="641" height="610" alt="image" src="https://github.com/user-attachments/assets/0efa74cf-35c7-4acc-a0f1-1f3276fd1736" />
+## Team Sonder<img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/0efa74cf-35c7-4acc-a0f1-1f3276fd1736" />
 
 ## Problem
 
