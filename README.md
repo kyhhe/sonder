@@ -30,6 +30,7 @@ Upon launching the application, the user will see a “Menu” interface with th
       - <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/aa156e3c-4469-4c9d-83e9-c81c046f0f56" />
       - Task 4: “Choose a flower:” → user chooses one flower out of three options (randomly generated from a set of 9 total flowers)
         <img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/012934c7-72d7-41cd-ac90-a00b61449934" />
+        
       - Task 5: User must place their chosen flower somewhere within the 3x4 flower grid; click and press enter
          <img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/9aa27582-89ed-4f38-99e4-d809bcaffe6d" />
    - Upon finishing a task, user must press ENTER to move to the next task
@@ -46,6 +47,8 @@ No other buttons are present on this page; user may navigate back to menu with E
    - The user will not be given a feature to reposition the flowers after setting them in the garden
    - Once the garden is filled (ie. all 12 grids have a flower), the user’s new flower will replace an existing flower within their garden
    - This is a continuous process for all succeeding entries
+ <img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/9aa27582-89ed-4f38-99e4-d809bcaffe6d" />
+
 3. Entries:
    - Directs the user to a page to check all of their past task entries
    - Progress is logged and saved into “Entries” if all questions are answered and their chosen flower is planted
