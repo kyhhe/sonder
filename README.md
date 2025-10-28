@@ -1,4 +1,5 @@
 # Project Description
+## Team Sonder
 ## Problem
 
 Student mental health is often overlooked. According to the ACHC 2016 student health survey, 41.5% of students reported "[feeling] that things were hopeless", 55.3% feeling "overwhelming anxiety", 33.5% feeling "so depressed that it was difficult to function", and 5.9% who seriously considered suicide in the last 12 months (American College Health Association, 2017, p.13). These feelings can be linked to high academic pressure, financial stressors and future uncertainties during an age range with the highest risk of mental disorders. 
