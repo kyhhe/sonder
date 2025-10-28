@@ -51,6 +51,10 @@ No other buttons are present on this page; user may navigate back to menu with E
        5. Flower of their choosing for the day
 
 The “Garden” and “Entries” data are saved and will carry over into the following days. The date is automatically inputted and displayed on the first task with the help of an internal clock. The daily tasks are meant to reset every 24 hours, but for simulation purposes, pressing F12 advances the internal clock to the next day and subsequently resets the daily tasks.
+<img width="1059" height="699" alt="image" src="https://github.com/user-attachments/assets/9aa27582-89ed-4f38-99e4-d809bcaffe6d" />
+<img width="1010" height="697" alt="image" src="https://github.com/user-attachments/assets/94c19134-09ec-4c27-8c1a-cc49b290b3e0" />
+<img width="470" height="698" alt="image" src="https://github.com/user-attachments/assets/bb20b25c-ae63-4439-bac3-9a0ede1f4721" />
+
 
 In terms of the visual interfaces of the app, we will be using different shades of green for all user interface pages. Flower colours will be varied. The app will have a 4:3 aspect ratio with 1024 × 768 px. All prompts will be center-aligned. User inputted responses will be left-aligned. The writing font should be consistent across all interfaces.
 
