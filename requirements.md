@@ -22,7 +22,8 @@
 - Task 3: 
   
 ## 4. Garden Requirements
-- The garden displays a 3*5 grid for planting flowers
+- Always display the background of a garden image
+- The garden take a 3*5 grid for planting flowers (maybe invisible?)
 - Each cell of the grid holds one and only one flower
 - New flowers can only added to empty cell
 - After finishing task of the 15th day, a special flower will be planted on the last cell
