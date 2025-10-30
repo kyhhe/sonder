@@ -1,6 +1,7 @@
 package cpen221A.sonder;
 
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -10,32 +11,32 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class EntriesScreen {
-    private final Scene scene;
+public class EntriesScreen extends AbstractScreen{
 
     public EntriesScreen(MainApplication main){
+        super(main);
+    }
+
+    protected Parent createRoot() {
         // Initialize Screen elements
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(8);
         StackPane pane = new StackPane();
-        scene = new Scene(pane, 1024, 768);
 
         // Screen elements
         Text title = new Text("entries");
         title.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 24));
         Button backButton = new Button("back");
 
+        // Button actions
+        backButton.setOnAction(e -> main.showMainMenu());
+
         // Add elements to screen
         vbox.getChildren().addAll(title, backButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 
-        // Button actions
-        backButton.setOnAction(e -> main.showMainMenu());
-    }
-
-    public Scene getScene() {
-        return scene;
+        return pane;
     }
 }
