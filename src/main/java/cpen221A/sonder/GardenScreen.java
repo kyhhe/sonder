@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -26,9 +27,8 @@ public class GardenScreen extends AbstractScreen{
         StackPane pane = new StackPane();
 
         // Screen elements
-        Text title = new Text("garden");
-        title.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 24));
-        Button backButton = new Button("back");
+        Label title = createTitle("garden");
+        Button backButton = createButton("back");
 
         // Button actions
         backButton.setOnAction(e -> main.showMainMenu());

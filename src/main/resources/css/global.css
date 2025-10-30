@@ -1,16 +1,37 @@
+.caveat-brush-regular {
+  font-family: "Caveat Brush", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .root {
     -fx-background-color: #d8f3dc;
-    -fx-font-family: 'Segoe UI';
+    -fx-font-family: "Caveat Brush";
     -fx-font-size: 16px;
 }
 
 .button {
     -fx-background-color: #95d5b2;
     -fx-text-fill: #1b4332;
-    -fx-font-weight: bold;
     -fx-background-radius: 10;
 }
 
 .button:hover {
     -fx-background-color: #74c69d;
+}
+
+/* Style for the title */
+.title-label {
+    -fx-font-family: "Caveat Brush";
+    -fx-font-size: 40px;
+}
+
+.button-text {
+    -fx-font-family: "verdana";
+    -fx-font-size: 16px;
+}
+
+.main-text {
+    -fx-font-family: "verdana";
+    -fx-font-size: 16px;
 }

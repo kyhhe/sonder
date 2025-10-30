@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -26,12 +27,11 @@ public class MainMenu extends AbstractScreen{
         StackPane pane = new StackPane();
 
         // Screen elements
-        Button startButton = new Button("start");
-        Button gardenButton = new Button("garden");
-        Button entriesButton = new Button("entries");
+        Button startButton = createButton("start");
+        Button gardenButton = createButton("garden");
+        Button entriesButton = createButton("entries");
 
-        Text title = new Text("sonder");
-        title.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 30));
+        Label title = createTitle("sonder");
 
         // Button actions
         startButton.setOnAction(e -> main.showStartScreen());
