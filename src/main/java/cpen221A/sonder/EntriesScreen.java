@@ -36,16 +36,6 @@ public class EntriesScreen extends AbstractScreen{
     }
 
     /**
-     * Save a completed entry to the entries log
-     * @param date the date of the entry
-     * @param task1 response to task 1 (mood selection)
-     * @param task2 response to task 2 (gratitude)
-     * @param task3 response to task 3 (learning/goal)
-     * @param flower chosen flower for the day
-     */
-    public void saveEntry(String date, String task1, String task2, String task3, String flower) {}
-
-    /**
      * Loads all past entries from saved data in JSON file
      */
     public void loadEntries(){}

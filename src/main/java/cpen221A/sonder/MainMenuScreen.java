@@ -48,4 +48,11 @@ public class MainMenuScreen extends AbstractScreen{
 
         return pane;
     }
+
+    /**
+     * Randomly selects a welcome message to display on the main menu screen.
+     */
+    public String welcomeMessage() {
+        return String.valueOf("");
+    }
 }

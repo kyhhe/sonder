@@ -2,32 +2,42 @@ package cpen221A.sonder;
 
 import cpen221A.sonder.TaskScreens.Task4Screen;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class GardenLogics {
     private static final int ROW = 3;
     private static final int COL = 5;
-    private final String[][] fPosition;
+    private final List<List<Flower>> garden = new ArrayList<>(); // 2D array to represent the flower garden
 
-    public GardenLogics(){
-        fPosition = new String[ROW][COL];
-    }
     /**
-     * Get the flower selected by user of the day.
+     * Creates a new empty 3x5 garden to manage and place flowers.
+     */
+    public GardenLogics(){
+        for (int row = 0; row < ROW; row++) {
+            garden.add(new ArrayList<Flower>(Collections.nCopies(COL, null)));
+        }
+    }
+
+    /**
+     * Get the flower from the latest entry from the entries file.
      * @return the flower sequence
      */
-    public String getFlower(){
-        return Task4Screen.getTask4Input(); //get from Task4Screen
+    public Flower getFlower(){
+        return null; //get from entries
     }
 
     /**
      * Add a flower to the garden.
      *
-     * @param flowerName the name/type of the flower
+     * @param flowerName the flower to add
      * @param row the row of the position selected(0-2), position should not have flower previously
      * @param col the column of the position selected(0-4), position should not have flower previously
      * @return true if added flower to the garden, false otherwise
      * @throws IllegalArgumentException if position is invalid
      */
-    public boolean addFlower(String flowerName, int row, int col){
+    public boolean addFlower(Flower flowerName, int row, int col){
         if(row < 0 || row >= ROW || col < 0 || col >= COL){
             throw new IllegalArgumentException("Invalid input positions");
         }
@@ -66,5 +76,16 @@ public class GardenLogics {
      */
     public void loadGarden(){
 
+    }
+
+    /**
+     * Determines if the given flower if already planted in the garden. Returns true if the flower
+     * is already present, falser otherwise.
+     *
+     * @param flower the flower to check
+     * @return true if the flower has already been planted, false otherwise.
+     */
+    public boolean flowerInGarden(Flower flower) {
+        return true;
     }
 }
