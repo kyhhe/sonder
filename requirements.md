@@ -30,5 +30,10 @@
 - Flower type and position must be saved after user planted each flower
 
 ## 5. Entries Requirements
+- Entries must be organized in a vertical list
+- Entries must be organized chronologically with the most recent at the top
+- Must contain a scroll bar to scroll up and down the list
+- Entries must contain the date, response to all three tasks, and the flower of their choosing for the day
+- Progress must be saved after the chosen flower is planted for the day
 
 
