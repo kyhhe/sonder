@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1222a888-99ee-4b13-b27d-cad031f112e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cpen221A/sonder/GeneralTasks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cpen221A/sonder/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cpen221A/sonder/StartScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cpen221A/sonder/TaskScreens/Task1Screen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cpen221A/sonder/TaskScreens/Task2Screen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cpen221A/sonder/TaskScreens/Task3Screen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cpen221A/sonder/TaskScreens/Task4Screen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cpen221A/sonder/TaskScreens/Task5Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +47,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -53,6 +59,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="34lnnb4085C7AFzQcY4peSIh8r8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
