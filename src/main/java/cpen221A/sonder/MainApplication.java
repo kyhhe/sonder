@@ -38,11 +38,11 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Shows the start screen
+     * Shows the garden screen
      */
-    public void showStartScreen() {
-        StartScreen startScreen = new StartScreen(this);
-        stage.setScene(startScreen.getScene());
+    public void showGardenScreen() {
+        GardenScreen gardenScreen = new GardenScreen(this);
+        stage.setScene(gardenScreen.getScene());
     }
 
     /**

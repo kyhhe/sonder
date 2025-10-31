@@ -33,7 +33,7 @@ public class MainMenuScreen extends AbstractScreen{
 
         // Button actions
         if(taskManager.allComplete()) {
-            startButton.setOnAction(e -> main.showStartScreen());
+            startButton.setOnAction(e -> main.showAllCompleteScreen());
         }
         else {
             startButton.setOnAction(e -> main.showTask1Screen());
