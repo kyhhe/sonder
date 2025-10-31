@@ -1,5 +1,6 @@
 package cpen221A.sonder;
 
+import cpen221A.sonder.TaskScreens.Task4Screen;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -23,7 +24,7 @@ public class GardenScreen extends AbstractScreen{
 
         // Screen elements
         Label title = createTitle("garden");
-        Button backButton = createButton("back");
+        Button backButton = createButton("menu");
 
         // Button actions
         backButton.setOnAction(e -> main.showMainMenu());
@@ -40,8 +41,8 @@ public class GardenScreen extends AbstractScreen{
      * Get the flower selected by user of the day.
      * @return the flower sequence
      */
-    public String getFlower (){
-        return StartScreen.getFlower(); //get from the Start Screen!!!
+    public String getFlower(){
+        return Task4Screen.getFlower(); //get from Task4Screen
     }
 
     /**
@@ -53,7 +54,7 @@ public class GardenScreen extends AbstractScreen{
      * @return true if added flower to the garden, false otherwise
      * @throws IllegalArgumentException if position is invalid
      */
-    public boolean addFlower (String flowerName, int positionX, int positionY){
+    public boolean addFlower(String flowerName, int positionX, int positionY){
         return false;
     }
 

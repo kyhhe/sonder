@@ -5,29 +5,21 @@ public interface GeneralTasks {
     /**
      * Returns current task completion status
      *
-     * @return true iif user has completed the current task (ie. valid input), false otherwise
+     * @return true iif user has completed the current task (i.e. valid input), false otherwise
      */
-    public boolean currentComplete();
+    boolean currentComplete();
 
     /**
      * Determines if user has pressed ENTER to move onto next task
      *
      * @return true if the user has pressed ENTER, false otherwise
      */
-    public boolean inputEnter();
+    boolean inputEnter();
 
     /**
      * Displays a warning message on the task screen if no valid user input and user pressed ENTER
      *
      * @param inputEnter if user has pressed ENTER
      */
-    public void warningMessage(boolean isComplete, boolean inputEnter);
-
-
-    /**
-     * Returns total task completion status
-     *
-     * @return true if all tasks are complete, false otherwise
-     */
-    public boolean allComplete();
+    void warningMessage(boolean isComplete, boolean inputEnter);
 }

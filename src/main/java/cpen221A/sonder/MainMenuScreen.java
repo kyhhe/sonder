@@ -7,9 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class MainMenu extends AbstractScreen{
+public class MainMenuScreen extends AbstractScreen{
 
-    public MainMenu(MainApplication main) {
+    public MainMenuScreen(MainApplication main) {
         super(main);
     }
 

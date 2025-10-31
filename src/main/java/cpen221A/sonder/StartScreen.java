@@ -9,9 +9,7 @@ import javafx.scene.layout.VBox;
 
 public class StartScreen extends AbstractScreen{
 
-    public StartScreen(MainApplication main){
-        super(main);
-    }
+    public StartScreen(MainApplication main){ super(main); }
 
     @Override
     protected Parent createRoot() {
@@ -23,7 +21,7 @@ public class StartScreen extends AbstractScreen{
 
         // Screen elements
         Label title = createTitle("start");
-        Button backButton = createButton("back");
+        Button backButton = createButton("menu");
 
         // Button actions
         backButton.setOnAction(e -> main.showMainMenu());
@@ -34,6 +32,14 @@ public class StartScreen extends AbstractScreen{
         pane.getChildren().add(vbox);
 
         return pane;
+    }
+
+    TaskManager taskManager = main.getTaskManager();
+
+    public void taskScreen() {
+        if (taskManager.allComplete()) {
+            main.showAllCompleteScreen();
+        }
     }
 
 

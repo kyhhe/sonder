@@ -22,7 +22,7 @@ public class EntriesScreen extends AbstractScreen{
 
         // Screen elements
         Label title = createTitle("entries");
-        Button backButton = createButton("back");
+        Button backButton = createButton("menu");
 
         // Button actions
         backButton.setOnAction(e -> main.showMainMenu());

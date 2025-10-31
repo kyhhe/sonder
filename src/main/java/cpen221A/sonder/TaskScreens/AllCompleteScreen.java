@@ -11,9 +11,7 @@ import javafx.scene.layout.VBox;
 
 public class AllCompleteScreen extends AbstractScreen {
 
-    public AllCompleteScreen(MainApplication main){
-        super(main);
-    }
+    public AllCompleteScreen(MainApplication main){ super(main); }
 
     @Override
     protected Parent createRoot() {
@@ -24,14 +22,15 @@ public class AllCompleteScreen extends AbstractScreen {
         StackPane pane = new StackPane();
 
         // Screen elements
-        Label title = createTitle("thank you for logging today's entry. check back in tomorrow!");
+        Label title = createTitle("thank you for logging today's entry");
+        Label subtitle = createText("check back in tomorrow!");
         Button backButton = createButton("menu");
 
         // Button actions
         backButton.setOnAction(e -> main.showMainMenu());
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, backButton);
+        vbox.getChildren().addAll(title, subtitle, backButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 
