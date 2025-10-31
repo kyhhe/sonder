@@ -30,10 +30,10 @@ Upon launching the application, the user will see a “Menu” interface with th
       - Task 2: “What is one thing you’re grateful for?” → written response
       - Task 3: “What is one thing you learned today? What is one goal you have for tomorrow?” → written response
         <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/aa156e3c-4469-4c9d-83e9-c81c046f0f56" />
-      - Task 4: “Choose a flower:” → user chooses one flower out of three options (randomly generated from a set of 9 total flowers)
+      - Task 4: “Choose a flower for your garden:” → user chooses one flower out of three options (randomly generated from a set of 9 total flowers)
         <img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/012934c7-72d7-41cd-ac90-a00b61449934" />
         
-      - Task 5: User must place their chosen flower somewhere within the 3x4 flower grid; click and press enter
+      - Task 5: "Plant your flower in the garden." User must place their chosen flower somewhere within the 3x4 flower grid; click and press enter
         <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/e0f1d3ed-2ecc-4588-8c84-2a4e1241ba17" />
 
    - Upon finishing a task, the user must press ENTER to move to the next task
