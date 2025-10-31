@@ -34,4 +34,38 @@ public class EntriesScreen extends AbstractScreen{
 
         return pane;
     }
+
+    /**
+     * Save a completed entry to the entries log
+     * @param date the date of the entry
+     * @param task1 response to task 1 (mood selection)
+     * @param task2 response to task 2 (gratitude)
+     * @param task3 response to task 3 (learning/goal)
+     * @param flower chosen flower for the day
+     */
+    public void saveEntry(String date, String task1, String task2, String task3, String flower) {}
+
+    /**
+     * Loads all past entries from saved data in JSON file
+     */
+    public void loadEntries(){}
+
+    /**
+     * Displays all entries on the screen
+     */
+    public void displayEntries(){}
+
+    /**
+     * Clears all stored entries if needed
+     */
+    public void clearEntries(){}
+
+    /**
+     * Checks if any entries are currently saved
+     * @return true if at least one entry exists, false otherwise.
+     */
+    public boolean hasEntries(){
+        return false;
+    }
+
 }
