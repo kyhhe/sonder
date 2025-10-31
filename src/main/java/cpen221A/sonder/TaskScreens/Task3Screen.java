@@ -16,6 +16,7 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
         super(main);
     }
 
+    private String answer;
     private Label warning;
 
     @Override
@@ -52,7 +53,7 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
      * @return String representing user's short answer response to task 3
      */
     public String getTask3Input() {
-        return null;
+        return this.answer;
     }
 
     /**

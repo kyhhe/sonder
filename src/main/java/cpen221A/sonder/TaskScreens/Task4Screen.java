@@ -1,8 +1,6 @@
 package cpen221A.sonder.TaskScreens;
 
-import cpen221A.sonder.AbstractScreen;
-import cpen221A.sonder.GeneralTasks;
-import cpen221A.sonder.MainApplication;
+import cpen221A.sonder.*;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -16,6 +14,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         super(main);
     }
 
+    private Flower answer;
     private Label warning;
 
     @Override
@@ -48,11 +47,11 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
     /**
      * Gets input from user
      * (if user does not input a valid answer and presses enter, calls on warningMessage)
-     * (otherwise, returns String input)
-     * @return String representing user's short answer response to task 4
+     * (otherwise, returns user input)
+     * @return Flower object selected by the user's response to task 4
      */
-    public String getTask4Input() {
-        return null;
+    public Flower getTask4Input() {
+        return this.answer;
     }
 
     /**

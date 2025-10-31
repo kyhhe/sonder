@@ -10,12 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.awt.Point;
+
 //Task 5: Plant your flower in the garden.
 public class Task5Screen extends AbstractScreen implements GeneralTasks {
     public Task5Screen(MainApplication main){
         super(main);
     }
 
+    private Point answer;
     private Label warning;
 
     @Override
@@ -51,8 +54,8 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
      * (otherwise, returns String input)
      * @return String representing user's short answer response to task 5
      */
-    public String getTask5Input() {
-        return null;
+    public Point getTask5Input() {
+        return this.answer;
     }
 
     /**
