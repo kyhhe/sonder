@@ -42,7 +42,7 @@ public class GardenScreen extends AbstractScreen{
      * @return the flower sequence
      */
     public String getFlower(){
-        return Task4Screen.getFlower(); //get from Task4Screen
+        return Task4Screen.getTask4Input(); //get from Task4Screen
     }
 
     /**
