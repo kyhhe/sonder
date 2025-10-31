@@ -8,10 +8,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class StartScreen {
-
     public void taskScreen() {
-        if (taskManager.allComplete()) {
-            main.showAllCompleteScreen();
-        }
+
     }
 }
