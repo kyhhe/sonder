@@ -36,11 +36,20 @@ public class StartScreen extends AbstractScreen{
 
     TaskManager taskManager = main.getTaskManager();
 
+    private void taskTransition() {
+        if(!taskManager.allComplete() && ) {
+
+        }
+        else if (taskManager.allComplete()) {
+            main.showAllCompleteScreen();
+        }
+
+    }
+
+
     public void taskScreen() {
         if (taskManager.allComplete()) {
             main.showAllCompleteScreen();
         }
     }
-
-
 }

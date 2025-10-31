@@ -21,6 +21,9 @@ public class MainMenuScreen extends AbstractScreen{
         vbox.setSpacing(8);
         StackPane pane = new StackPane();
 
+        // Gets task manager
+        TaskManager taskManager = main.getTaskManager();
+
         // Screen elements
         Button startButton = createButton("start");
         Button gardenButton = createButton("garden");
@@ -29,7 +32,12 @@ public class MainMenuScreen extends AbstractScreen{
         Label title = createTitle("sonder");
 
         // Button actions
-        startButton.setOnAction(e -> main.showStartScreen());
+        if(taskManager.allComplete()) {
+            startButton.setOnAction(e -> main.showStartScreen());
+        }
+        else {
+            startButton.setOnAction(e -> main.showTask1Screen());
+        }
         gardenButton.setOnAction(e -> main.showGardenScreen());
         entriesButton.setOnAction(e -> main.showEntriesScreen());
 

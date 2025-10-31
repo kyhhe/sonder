@@ -5,7 +5,6 @@ import cpen221A.sonder.TaskScreens.Task2Screen;
 import cpen221A.sonder.TaskScreens.Task3Screen;
 import cpen221A.sonder.TaskScreens.Task4Screen;
 import cpen221A.sonder.TaskScreens.Task5Screen;
-import cpen221A.sonder.TaskScreens.AllCompleteScreen;
 
 public class TaskManager {
     private final Task1Screen task1;
@@ -28,7 +27,10 @@ public class TaskManager {
      * @return true if all five tasks are complete, false otherwise
      */
     public boolean allComplete() {
-        return task1.currentComplete() && task2.currentComplete() && task3.currentComplete()
-               && task4.currentComplete() && task5.currentComplete();
+        return task1.currentComplete()
+            && task2.currentComplete()
+            && task3.currentComplete()
+            && task4.currentComplete()
+            && task5.currentComplete();
     }
 }

@@ -46,14 +46,6 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Shows the garden screen
-     */
-    public void showGardenScreen() {
-        GardenScreen gardenScreen = new GardenScreen(this);
-        stage.setScene(gardenScreen.getScene());
-    }
-
-    /**
      * Shows the entries screen
      */
     public void showEntriesScreen() {

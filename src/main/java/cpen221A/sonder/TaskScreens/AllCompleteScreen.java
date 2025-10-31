@@ -22,8 +22,8 @@ public class AllCompleteScreen extends AbstractScreen {
         StackPane pane = new StackPane();
 
         // Screen elements
-        Label title = createTitle("thank you for logging today's entry");
-        Label subtitle = createText("check back in tomorrow!");
+        Label title = createTitle("thank you for logging today's entry.");
+        Label subtitle = createText("check back in tomorrow :)");
         Button backButton = createButton("menu");
 
         // Button actions
