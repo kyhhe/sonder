@@ -27,7 +27,6 @@ public class StartLogic {
         task3Screen.nextTask(this::showTask4Screen);
         task4Screen.nextTask(this::showTask5Screen);
         task5Screen.nextTask(this::showAllCompleteScreen);
-
     }
 
     /**
@@ -37,7 +36,13 @@ public class StartLogic {
         showTask1Screen();
     }
 
-    // G
+    /**
+     * Updates the JSON file to save the user's entry once all tasks have been completed. Returns
+     * true when all tasks have been completed and the entries have been saved to file. Returns false
+     * otherwise.
+     *
+     * @return true if the user's entry has been saved to the file. False otherwise.
+     */
     public boolean saveEntries() {
         LocalDateTime date = LocalDateTime.now();
         String answer1 = task1Screen.getTask1Input();
@@ -54,26 +59,44 @@ public class StartLogic {
         return false;
     }
 
+    /**
+     * Shows the completed tasks screen
+     */
     public void showAllCompleteScreen() {
         main.setStage(allCompleteScreen.getScene());
     }
 
+    /**
+     * Shows the task 1 screen
+     */
     public void showTask1Screen() {
         main.setStage(task1Screen.getScene());
     }
 
+    /**
+     * Shows the task 2 screen
+     */
     public void showTask2Screen() {
         main.setStage(task2Screen.getScene());
     }
 
+    /**
+     * Shows the task 3 screen
+     */
     public void showTask3Screen() {
         main.setStage(task3Screen.getScene());
     }
 
+    /**
+     * Shows the task 4 screen
+     */
     public void showTask4Screen() {
         main.setStage(task4Screen.getScene());
     }
 
+    /**
+     * Shows the task 5 screen
+     */
     public void showTask5Screen() {
         main.setStage(task5Screen.getScene());
     }

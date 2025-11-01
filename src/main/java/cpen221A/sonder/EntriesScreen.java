@@ -9,6 +9,11 @@ import javafx.scene.layout.VBox;
 
 public class EntriesScreen extends AbstractScreen{
 
+    /**
+     * Creates the screen which displays the user's past entries
+     *
+     * @param main the main application where the screen is displayed
+     */
     public EntriesScreen(MainApplication main){
         super(main);
     }

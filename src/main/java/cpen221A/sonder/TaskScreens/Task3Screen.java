@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-//Task 3: What is one thing you learned today? What is one goal you have for tomorrow?
+/**
+ * Creates the screen which provides the user interface for Task 3: What is one thing you learned today? What is one goal you have for tomorrow?
+ */
 public class Task3Screen extends AbstractScreen implements GeneralTasks {
     public Task3Screen(MainApplication main){
         super(main);

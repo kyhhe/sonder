@@ -8,7 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-//Task 4: Choose a flower for your garden.
+/**
+ * Creates the screen which provides the user interface for Task 4: Choose a flower for your garden.
+ */
 public class Task4Screen extends AbstractScreen implements GeneralTasks {
     public Task4Screen(MainApplication main){
         super(main);

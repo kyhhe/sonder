@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class which handles the logic for retrieving and writing garden data.
+ */
 public class GardenLogics {
     private static final int ROW = 3;
     private static final int COL = 5;

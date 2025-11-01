@@ -8,7 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-//Task 2: What is one thing you’re grateful for?
+
+/**
+ * Creates the screen which provides the user interface for Task 2: What is one thing you’re grateful for?.
+ */
 public class Task2Screen extends AbstractScreen implements GeneralTasks {
     public Task2Screen(MainApplication main){
         super(main);

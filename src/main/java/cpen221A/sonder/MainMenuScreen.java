@@ -9,6 +9,11 @@ import javafx.scene.layout.VBox;
 
 public class MainMenuScreen extends AbstractScreen{
 
+    /**
+     * Initializes the main menu screen
+     *
+     * @param main the main application
+     */
     public MainMenuScreen(MainApplication main) {
         super(main);
     }

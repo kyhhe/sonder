@@ -11,6 +11,11 @@ import javafx.scene.layout.VBox;
 
 public class AllCompleteScreen extends AbstractScreen {
 
+    /**
+     * Creates the screen displayed when the user has already completed all tasks
+     *
+     * @param main the main application where the screen is displayed
+     */
     public AllCompleteScreen(MainApplication main){ super(main); }
 
     @Override

@@ -55,10 +55,20 @@ public class MainApplication extends Application {
         startLogic.start();
     }
 
+    /**
+     * Gets the task manager for managing the completion of tasks
+     *
+     * @return a new task manager object;
+     */
     public TaskManager getTaskManager() {
         return taskManager;
     }
 
+    /**
+     * Method to change the scene which is currently being displayed to the user.
+     *
+     * @param scene the scene to display.
+     */
     public void setStage(Scene scene) {
         stage.setScene(scene);
         stage.show();

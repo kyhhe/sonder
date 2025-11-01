@@ -12,7 +12,9 @@ import javafx.scene.layout.VBox;
 
 import java.awt.Point;
 
-//Task 5: Plant your flower in the garden.
+/**
+ * Creates the screen which provides the user interface for Task 5: Plant your flower in the garden.
+ */
 public class Task5Screen extends AbstractScreen implements GeneralTasks {
     public Task5Screen(MainApplication main){
         super(main);

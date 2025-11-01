@@ -10,6 +10,11 @@ import javafx.scene.layout.VBox;
 
 public class GardenScreen extends AbstractScreen{
 
+    /**
+     * Creates the screen for displaying the garden.
+     *
+     * @param main the main application which displays the screen
+     */
     public GardenScreen(MainApplication main) {
         super(main);
     }

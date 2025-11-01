@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-//Task 1: How are you feeling today?
+/**
+ * Creates the screen which provides the user interface for Task 1: How are you feeling today?
+ */
 public class Task1Screen extends AbstractScreen implements GeneralTasks {
     private String answer;
     private Label warning;
