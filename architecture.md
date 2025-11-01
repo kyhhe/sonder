@@ -1,11 +1,8 @@
 # Architecture
 
-## Entries Screen: to both client and server
-   - Model which loads all past entries from the saved data in the JSON file to the clients
-   - Displays all entries on the screen
-   - Clears all stored entries if needed
-   - Checks if any entries are currently saved
-   - Does not communicate with other models directly, but does read the JSON file written by other models
+## MainMenuScreen: to client
+   - View which provides the interface for the user to proceed with the game. Shows the “task”, “garden”, and “entries” to navigate to other screens. Randomly selects a welcome message to display on the main menu screen along with the menu background image and begins playing the game’s background music. 
+   - Navigates to *TaskScreens*, *GardenScreen* and *EntriesScreen* when the corresponding button is selected.
 
 ## StartLogic: to server
    - Controller for the logic for displaying the user’s daily tasks.
@@ -24,12 +21,15 @@
    - When the garden is full, display a congratulatory sentence
    - Communicates with *GardenLogic* to determine the flower placement to display on the screen. 
 
-##GardenLogic: to server
+## GardenLogic: to server
    - Model which stores the user’s garden, including the number, type and placement of flowers
    - Writes and retrieves garden data from a JSON file, so garden data persists
    - Obtains garden data through entries written into the JSON file by other components
-   - Communicates with *GardenScreen* to provide garden data to display 
+   - Communicates with *GardenScreen* to provide garden data to display
 
-## MainMenuScreen: to client
-   - View which provides the interface for the user to proceed with the game. Shows the “task”, “garden”, and “entries” to navigate to other screens. Randomly selects a welcome message to display on the main menu screen along with the menu background image and begins playing the game’s background music. 
-   - Navigates to *TaskScreens*, *GardenScreen* and *EntriesScreen* when the corresponding button is selected.
+## Entries Screen: to both client and server
+   - Model which loads all past entries from the saved data in the JSON file to the clients
+   - Displays all entries on the screen
+   - Clears all stored entries if needed
+   - Checks if any entries are currently saved
+   - Does not communicate with other models directly, but does read the JSON file written by other models
