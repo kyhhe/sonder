@@ -12,12 +12,14 @@ import javafx.scene.layout.VBox;
 
 //Task 1: How are you feeling today?
 public class Task1Screen extends AbstractScreen implements GeneralTasks {
+    private String answer;
+    private Label warning;
+    private Runnable onComplete;
 
     public Task1Screen(MainApplication main){
         super(main);
     }
-    private String answer;
-    private Label warning;
+
 
     @Override
     protected Parent createRoot() {
@@ -31,15 +33,19 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
         Label title = createTitle("reflect:");
         Label question = createText("how are you feeling today?");
         Button backButton = createButton("menu");
+        Button nextButton = createButton("next");
 
         warning = createText("please select one of the faces.");
         warning.setVisible(false);
 
         // Button actions
         backButton.setOnAction(e -> main.showMainMenu());
+        nextButton.setOnAction(e ->  {if (onComplete != null) {
+            onComplete.run();};
+        });
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, question, warning, backButton);
+        vbox.getChildren().addAll(title, question, warning, backButton, nextButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 
@@ -75,6 +81,8 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
     /**
      * Transitions to next task screen if current task is completed
      */
-    public void nextTask() {
+    public void nextTask(Runnable r) {
+        this.onComplete = r;
     }
+
 }

@@ -1,5 +1,6 @@
 package cpen221A.sonder;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -21,7 +22,7 @@ public class UserEntry {
      * @param task3 response to task 3 (learning/goal)
      * @param flower chosen flower for the day
      */
-    public UserEntry(Date date, String task1, String task2, String task3, Flower flower) {}
+    public UserEntry(LocalDateTime date, String task1, String task2, String task3, Flower flower) {}
 
     /**
      * Gets the date of entry creation
@@ -71,7 +72,15 @@ public class UserEntry {
     /**
      * Saves the entry to a JSON file
      */
-    void saveEntry(){
+    public void saveEntry(){
+    }
 
+    /**
+     * Checks if the entry is valid (no null fields)
+     *
+     * @return true if the entry is valid, false if at least one field is empty.
+     */
+    public boolean checkValidEntry(){
+        return false;
     }
 }

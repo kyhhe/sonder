@@ -28,16 +28,10 @@ public class MainMenuScreen extends AbstractScreen{
         Button startButton = createButton("start");
         Button gardenButton = createButton("garden");
         Button entriesButton = createButton("entries");
-
         Label title = createTitle("sonder");
 
         // Button actions
-        if(taskManager.allComplete()) {
-            startButton.setOnAction(e -> main.showAllCompleteScreen());
-        }
-        else {
-            startButton.setOnAction(e -> main.showTask1Screen());
-        }
+        startButton.setOnAction(e -> main.startTasks());
         gardenButton.setOnAction(e -> main.showGardenScreen());
         entriesButton.setOnAction(e -> main.showEntriesScreen());
 

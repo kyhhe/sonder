@@ -1,14 +1,8 @@
 package cpen221A.sonder;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import cpen221A.sonder.TaskScreens.Task1Screen;
-import cpen221A.sonder.TaskScreens.Task2Screen;
-import cpen221A.sonder.TaskScreens.Task3Screen;
-import cpen221A.sonder.TaskScreens.Task4Screen;
-import cpen221A.sonder.TaskScreens.Task5Screen;
-import cpen221A.sonder.TaskScreens.AllCompleteScreen;
 
 import java.io.IOException;
 
@@ -53,38 +47,21 @@ public class MainApplication extends Application {
         stage.setScene(entriesScreen.getScene());
     }
 
-    public void showAllCompleteScreen() {
-        AllCompleteScreen allCompleteScreen = new AllCompleteScreen(this);
-        stage.setScene(allCompleteScreen.getScene());
-    }
-
-    public void showTask1Screen() {
-        Task1Screen task1Screen = new Task1Screen(this);
-        stage.setScene(task1Screen.getScene());
-    }
-
-    public void showTask2Screen() {
-        Task2Screen task2Screen = new Task2Screen(this);
-        stage.setScene(task2Screen.getScene());
-    }
-
-    public void showTask3Screen() {
-        Task3Screen task3Screen = new Task3Screen(this);
-        stage.setScene(task3Screen.getScene());
-    }
-
-    public void showTask4Screen() {
-        Task4Screen task4Screen = new Task4Screen(this);
-        stage.setScene(task4Screen.getScene());
-    }
-
-    public void showTask5Screen() {
-        Task5Screen task5Screen = new Task5Screen(this);
-        stage.setScene(task5Screen.getScene());
+    /**
+     * Loads the sequence of tasks and the logic w
+     */
+    public void startTasks() {
+        StartLogic startLogic = new StartLogic(this);
+        startLogic.start();
     }
 
     public TaskManager getTaskManager() {
         return taskManager;
+    }
+
+    public void setStage(Scene scene) {
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**

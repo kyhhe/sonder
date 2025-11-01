@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public abstract class AbstractScreen {
     protected final MainApplication main;
-    protected final Scene scene;
+    protected Scene scene;
 
     /**
      * Creates a new screen with the specified dimensions for the app.

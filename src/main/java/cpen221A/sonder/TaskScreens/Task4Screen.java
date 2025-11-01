@@ -16,6 +16,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
 
     private Flower answer;
     private Label warning;
+    private Runnable onComplete;
 
     @Override
     protected Parent createRoot() {
@@ -29,15 +30,19 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         Label title = createTitle("reward:");
         Label question = createText("choose a flower for your garden.");
         Button backButton = createButton("menu");
+        Button nextButton = createButton("next");
 
         warning = createText("please select your flower of choice.");
         warning.setVisible(false);
 
         // Button actions
         backButton.setOnAction(e -> main.showMainMenu());
+        nextButton.setOnAction(e ->  {if (onComplete != null) {
+            onComplete.run();}
+        });
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, question, warning, backButton);
+        vbox.getChildren().addAll(title, question, warning, backButton, nextButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 
@@ -73,6 +78,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
     /**
      * Transitions to next task screen if current task is completed
      */
-    public void nextTask() {
+    public void nextTask(Runnable r) {
+        this.onComplete = r;
     }
 }

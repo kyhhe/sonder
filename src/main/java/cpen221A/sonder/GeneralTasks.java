@@ -15,5 +15,6 @@ public interface GeneralTasks {
     /**
      * Transitions to next task screen if current task is completed
      */
-    void nextTask();
+    void nextTask(Runnable r);
 }
+
