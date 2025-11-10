@@ -6,7 +6,8 @@ module cpen221A.sonder {
     requires org.kordamp.bootstrapfx.core;
     requires javafx.graphics;
     requires java.desktop;
+    requires com.google.gson;
 
-    opens cpen221A.sonder to javafx.fxml;
+    opens cpen221A.sonder to javafx.fxml, com.google.gson;
     exports cpen221A.sonder;
 }

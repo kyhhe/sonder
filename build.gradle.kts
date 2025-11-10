@@ -38,6 +38,7 @@ javafx {
 dependencies {
     implementation("org.controlsfx:controlsfx:11.2.1")
     implementation("org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0")
+    implementation("com.google.code.gson:gson:2.10.1")  //<--save and load garden JSON
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation ("org.openjfx:javafx-controls:22")
