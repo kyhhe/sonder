@@ -2,9 +2,11 @@ package cpen221A.sonder;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Main application for sonder
@@ -17,6 +19,11 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         this.stage = stage;
         this.taskManager = new TaskManager(this);
+
+        AudioClip bgMusic = new AudioClip (
+            Objects.requireNonNull(getClass().getResource("/audio/The Mercy of the Wind.mp3")).toString());
+        bgMusic.setCycleCount(AudioClip.INDEFINITE);
+        bgMusic.play();
 
         stage.setTitle("sonder");
         showMainMenu();

@@ -6,8 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import java.util.List;
+import java.util.Random;
 
 public class MainMenuScreen extends AbstractScreen{
+
+    private static final List<String> messages = List.of("welcome, let's recharge and refocus",
+        "cultivate your daily mindfulness", "let's plant something positive today",
+        "welcome back gardener of your own mind", "what will you grow today?");
 
     /**
      * Initializes the main menu screen
@@ -34,6 +40,7 @@ public class MainMenuScreen extends AbstractScreen{
         Button gardenButton = createButton("garden");
         Button entriesButton = createButton("entries");
         Label title = createTitle("sonder");
+        Label welcomeMessage = createText(welcomeMessage());
 
         // Button actions
         startButton.setOnAction(e -> main.startTasks());
@@ -41,7 +48,7 @@ public class MainMenuScreen extends AbstractScreen{
         entriesButton.setOnAction(e -> main.showEntriesScreen());
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, startButton, gardenButton, entriesButton);
+        vbox.getChildren().addAll(title, welcomeMessage, startButton, gardenButton, entriesButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 
@@ -49,9 +56,14 @@ public class MainMenuScreen extends AbstractScreen{
     }
 
     /**
-     * Randomly selects a welcome message to display on the main menu screen.
+     * Randomly selects a welcome message out of the pool of welcome messages
+     * to display on the main menu screen.
+     *
+     * @return a random message selected from the pool of messages
      */
     public String welcomeMessage() {
-        return String.valueOf("");
+        Random rand = new Random();
+        int randomNum = rand.nextInt(messages.size() + 1);
+        return messages.get(randomNum);
     }
 }

@@ -32,7 +32,7 @@ application {
 
 javafx {
     version = "17.0.6"
-    modules = listOf("javafx.controls", "javafx.fxml")
+    modules = listOf("javafx.controls", "javafx.media", "javafx.fxml")
 }
 
 dependencies {
@@ -41,9 +41,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")  //<--save and load garden JSON
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    implementation ("org.openjfx:javafx-controls:22")
-    implementation ("org.openjfx:javafx-fxml:22")
-
 }
 
 tasks.withType<Test> {
