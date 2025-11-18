@@ -160,8 +160,8 @@ public class GardenLogics {
     public static void main(String[] args) {
         GardenLogics g = new GardenLogics();
         g.loadGarden();
-        Flower f = new Flower(5);
-        g.addFlower(f, 1, 3);
+        Flower f = new Flower(9);
+        g.addFlower(f, 1, 1);
         //g.clearGarden();
         g.saveGarden();
     }

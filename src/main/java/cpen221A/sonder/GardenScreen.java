@@ -68,9 +68,9 @@ public class GardenScreen extends AbstractScreen{
 
         // garden spacing
         GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20));
+        grid.setHgap(30);
+        grid.setVgap(15);
+        grid.setPadding(new Insets(250,0,0,75));
 
         // load flowers
         List<List<Flower>> garden = gardenLogic.getGarden();
@@ -86,6 +86,10 @@ public class GardenScreen extends AbstractScreen{
                     fImage.setFitHeight(150);
                     fImage.setFitWidth(150);
                     grid.add(fImage, c, r);
+                }else{
+                    Pane emptyFlower = new Pane();
+                    emptyFlower.setPrefSize(150,150);
+                    grid.add(emptyFlower,c,r);
                 }
             }
         }
