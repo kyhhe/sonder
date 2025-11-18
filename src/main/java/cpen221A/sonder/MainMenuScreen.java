@@ -4,14 +4,17 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
-public class MainMenuScreen extends AbstractScreen{
 
-    private static final List<String> messages = List.of("welcome, let's recharge and refocus",
+public class MainMenuScreen extends AbstractScreen {
+
+    private static final List<String> MESSAGES = List.of("welcome, let's recharge and refocus",
         "cultivate your daily mindfulness", "let's plant something positive today",
         "welcome back gardener of your own mind", "what will you grow today?");
 
@@ -41,6 +44,7 @@ public class MainMenuScreen extends AbstractScreen{
         Button entriesButton = createButton("entries");
         Label title = createTitle("sonder");
         Label welcomeMessage = createText(welcomeMessage());
+        Label currentDate = createText(DateTimeFormatter.ISO_LOCAL_DATE.format(main.getDate()));
 
         // Button actions
         startButton.setOnAction(e -> main.startTasks());
@@ -48,10 +52,11 @@ public class MainMenuScreen extends AbstractScreen{
         entriesButton.setOnAction(e -> main.showEntriesScreen());
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, welcomeMessage, startButton, gardenButton, entriesButton);
+        vbox.getChildren().
+            addAll(title, welcomeMessage, startButton, gardenButton, entriesButton, currentDate);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
-
+        root = pane;
         return pane;
     }
 
@@ -63,7 +68,22 @@ public class MainMenuScreen extends AbstractScreen{
      */
     public String welcomeMessage() {
         Random rand = new Random();
-        int randomNum = rand.nextInt(messages.size() + 1);
-        return messages.get(randomNum);
+        int randomNum = rand.nextInt(MESSAGES.size());
+        return MESSAGES.get(randomNum);
+    }
+
+    /**
+     * Overrides parent class to implement functionality for keyboard presses. When "F1" is pressed,
+     * while on the main menu screen, the system clock advances by one day.
+     *
+     * @param keyEvent keypress from the user
+     */
+    @Override
+    protected void onKeyPressed(javafx.scene.input.KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.F1)) {
+            System.out.println("NEXT DAY");
+            main.setDate(main.getDate().plusDays(1));
+            main.showMainMenu();
+        }
     }
 }

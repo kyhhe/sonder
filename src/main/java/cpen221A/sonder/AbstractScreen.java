@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
-
 import java.util.Objects;
 
 /**
@@ -14,6 +13,7 @@ import java.util.Objects;
 public abstract class AbstractScreen {
     protected final MainApplication main;
     protected Scene scene;
+    protected Parent root;
 
     /**
      * Creates a new screen with the specified dimensions for the app.
@@ -22,6 +22,11 @@ public abstract class AbstractScreen {
     public AbstractScreen(MainApplication app) {
         this.main = app;
         this.scene = new Scene(createRoot(), 1024, 768);
+        this.root = createRoot();
+
+        // Allows keyboard inputs
+        root.setFocusTraversable(true);
+        scene.setOnKeyPressed(this::onKeyPressed);
 
         // loads custom fonts front the CSS folder
         Font.loadFont(Objects.requireNonNull(
@@ -84,4 +89,15 @@ public abstract class AbstractScreen {
         return scene;
     }
 
+    /**
+     * Returns the root of the scene
+     *
+     * @return the root containing the elements of the scene.
+     */
+    public Parent getRoot() {
+        return root;
+    }
+
+    protected void onKeyPressed(javafx.scene.input.KeyEvent keyEvent) {
+    }
 }

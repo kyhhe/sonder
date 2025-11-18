@@ -4,8 +4,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -14,13 +14,15 @@ import java.util.Objects;
 public class MainApplication extends Application {
     private Stage stage;
     private TaskManager taskManager;
+    private LocalDateTime date = LocalDateTime.now();
+    private AbstractScreen currentScreen;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        this.stage = stage;
+    public void start(Stage newStage) throws IOException {
+        this.stage = newStage;
         this.taskManager = new TaskManager(this);
 
-        AudioClip bgMusic = new AudioClip (
+        AudioClip bgMusic = new AudioClip(
             Objects.requireNonNull(getClass().getResource("/audio/The Mercy of the Wind.mp3")).toString());
         bgMusic.setCycleCount(AudioClip.INDEFINITE);
         bgMusic.play();
@@ -28,6 +30,8 @@ public class MainApplication extends Application {
         stage.setTitle("sonder");
         showMainMenu();
         stage.show();
+
+        currentScreen.getRoot().requestFocus();   // <-- FINALLY WORKS
     }
 
     /**
@@ -36,6 +40,7 @@ public class MainApplication extends Application {
     public void showMainMenu() {
         MainMenuScreen menu = new MainMenuScreen(this);
         stage.setScene(menu.getScene());
+        currentScreen = menu;
     }
 
     /**
@@ -55,7 +60,7 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Loads the sequence of tasks and the logic w
+     * Loads the sequence of tasks and the logic which controls it
      */
     public void startTasks() {
         StartLogic startLogic = new StartLogic(this);
@@ -79,6 +84,25 @@ public class MainApplication extends Application {
     public void setStage(Scene scene) {
         stage.setScene(scene);
         stage.show();
+    }
+
+    /**
+     * Obtains the current date and time in the game's clock.
+     *
+     * @return the game's current date and time
+     */
+    public LocalDateTime getDate() {
+        return this.date;
+    }
+
+    /**
+     * Updates the game's clock to a new date.
+     *
+     * @param newDate the game's new date .
+     */
+    public void setDate(LocalDateTime newDate) {
+
+        this.date = newDate;
     }
 
     /**
