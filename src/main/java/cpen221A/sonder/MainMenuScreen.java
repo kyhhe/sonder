@@ -56,7 +56,6 @@ public class MainMenuScreen extends AbstractScreen {
             addAll(title, welcomeMessage, startButton, gardenButton, entriesButton, currentDate);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
-        root = pane;
         return pane;
     }
 

@@ -24,8 +24,7 @@ public abstract class AbstractScreen {
         this.scene = new Scene(createRoot(), 1024, 768);
         this.root = createRoot();
 
-        // Allows keyboard inputs
-        root.setFocusTraversable(true);
+        // Sets keyboard inputs
         scene.setOnKeyPressed(this::onKeyPressed);
 
         // loads custom fonts front the CSS folder
@@ -77,6 +76,7 @@ public abstract class AbstractScreen {
     public Button createButton(String text) {
         Button button = new Button(text);
         button.getStyleClass().add("button-text");
+        button.setFocusTraversable(false);
         return button;
     }
 
@@ -98,6 +98,12 @@ public abstract class AbstractScreen {
         return root;
     }
 
+    /**
+     * Method to set keyboard actions. Does nothing by default. Must be overwritten by child class to
+     * implement functionality.
+     *
+     * @param keyEvent keypress from the user
+     */
     protected void onKeyPressed(javafx.scene.input.KeyEvent keyEvent) {
     }
 }

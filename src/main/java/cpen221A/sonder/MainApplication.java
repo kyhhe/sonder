@@ -15,7 +15,6 @@ public class MainApplication extends Application {
     private Stage stage;
     private TaskManager taskManager;
     private LocalDateTime date = LocalDateTime.now();
-    private AbstractScreen currentScreen;
 
     @Override
     public void start(Stage newStage) throws IOException {
@@ -30,8 +29,6 @@ public class MainApplication extends Application {
         stage.setTitle("sonder");
         showMainMenu();
         stage.show();
-
-        currentScreen.getRoot().requestFocus();   // <-- FINALLY WORKS
     }
 
     /**
@@ -40,7 +37,6 @@ public class MainApplication extends Application {
     public void showMainMenu() {
         MainMenuScreen menu = new MainMenuScreen(this);
         stage.setScene(menu.getScene());
-        currentScreen = menu;
     }
 
     /**
