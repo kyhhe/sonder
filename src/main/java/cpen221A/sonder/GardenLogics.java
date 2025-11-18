@@ -1,6 +1,5 @@
 package cpen221A.sonder;
 
-import cpen221A.sonder.TaskScreens.Task4Screen;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -68,17 +67,17 @@ public class GardenLogics {
     }
 
     /**
-     * Checks if the position already has a flower
+     * Checks if the position is empty (no flower)
      *
      * @param row row index
      * @param col column index
      * @return true if the position is empty, false otherwise
      */
-    public boolean hasFlower(int row, int col) {
+    public boolean isEmpty(int row, int col) {
         if(row<0 || row>=ROW || col<0 || col >= COL){
             throw new IllegalArgumentException("Invalid input position");
         }
-        return garden.get(row).get(col) != null;
+        return garden.get(row).get(col) == null;
     }
 
     /**
@@ -160,9 +159,9 @@ public class GardenLogics {
     public static void main(String[] args) {
         GardenLogics g = new GardenLogics();
         g.loadGarden();
-        Flower f = new Flower(11);
+        Flower f = new Flower(7);
         g.addFlower(f, 0, 1);
-        //g.clearGarden();
+//        g.clearGarden();
         g.saveGarden();
     }
 

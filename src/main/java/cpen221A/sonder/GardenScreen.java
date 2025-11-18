@@ -1,20 +1,15 @@
 package cpen221A.sonder;
 
-import cpen221A.sonder.TaskScreens.Task4Screen;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.control.Label;
-import org.controlsfx.control.spreadsheet.Grid;
 
-import java.io.File;
 import java.net.URL;
 import java.util.*;
 
@@ -44,15 +39,11 @@ public class GardenScreen extends AbstractScreen{
         vbox.setSpacing(8);
         StackPane pane = new StackPane();
 
-        // Screen elements
-        //Label title = createTitle("garden");
-        //title.setStyle("-fx-text-fill: #FFFFFF");
         Button backButton = createButton("menu");
 
-        // Layout
+        // Button Layout
         BorderPane pos = new BorderPane();
         pos.setLeft(backButton);
-        //pos.setCenter(title);
         pos.setPadding(new Insets(10));
 
         // Button actions
@@ -69,8 +60,8 @@ public class GardenScreen extends AbstractScreen{
         // garden spacing
         GridPane grid = new GridPane();
         grid.setHgap(30);
-        grid.setVgap(15);
-        grid.setPadding(new Insets(250,0,0,75));
+        grid.setVgap(12);
+        grid.setPadding(new Insets(270,0,0,75));
 
         // load flowers
         List<List<Flower>> garden = gardenLogic.getGarden();
@@ -94,9 +85,6 @@ public class GardenScreen extends AbstractScreen{
             }
         }
         VBox g = new VBox(grid);
-        grid.setPrefWidth(1024);
-        grid.setPrefHeight(220);
-        g.setAlignment(Pos.CENTER);
 
         // Add elements to screen
         StackPane.setAlignment(g, Pos.BOTTOM_CENTER);
