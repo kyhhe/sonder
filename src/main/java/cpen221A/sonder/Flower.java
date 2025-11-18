@@ -68,37 +68,7 @@ public class Flower {
      * @return the path of each flower in string
      */
     public String getImagePath() {
-        if(flowerId==1){
-            return "/FlowerImages/Flower1.PNG";
-        }else if(flowerId==2){
-            return "/FlowerImages/Flower2.PNG";
-        }else if(flowerId==3){
-            return "/FlowerImages/Flower3.PNG";
-        }else if(flowerId==4){
-            return "/FlowerImages/Flower4.PNG";
-        }else if(flowerId==5){
-            return "/FlowerImages/Flower5.PNG";
-        }else if(flowerId==6){
-            return "/FlowerImages/Flower6.PNG";
-        }else if(flowerId==7){
-            return "/FlowerImages/Flower7.PNG";
-        }else if(flowerId==8){
-            return "/FlowerImages/Flower8.PNG";
-        }else if(flowerId==9){
-            return "/FlowerImages/Flower9.PNG";
-        }else if(flowerId==10){
-            return "/FlowerImages/Flower10.PNG";
-        }else if(flowerId==11){
-            return "/FlowerImages/Flower11.PNG";
-        }else if(flowerId==12){
-            return "/FlowerImages/Flower12.PNG";
-        }else if(flowerId==13){
-            return "/FlowerImages/Flower13.PNG";
-        }else if(flowerId==14){
-            return "/FlowerImages/Flower14.PNG";
-        }else if(flowerId==15){
-            return "/FlowerImages/Flower15.PNG";
-        }else{ return null;}
+       return "/FlowerImages/Flower" + flowerId+".PNG";
     }
 
     @Override
