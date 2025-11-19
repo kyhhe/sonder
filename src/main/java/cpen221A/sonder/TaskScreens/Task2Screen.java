@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -35,7 +36,16 @@ public class Task2Screen extends AbstractScreen implements GeneralTasks {
         Button backButton = createButton("menu");
         Button nextButton = createButton("next");
 
-        warning = createText("please fill in your response.");
+        // Text box for user-inputted response
+        TextArea inputArea = new TextArea();
+        //inputArea.setPromptText("enter below:");
+        inputArea.setBorder(???);
+        inputArea.setWrapText(true);
+        inputArea.setPrefRowCount(10);
+        inputArea.setMaxWidth(800); // max horizontal char count
+
+        // Warning message
+        Label warning = createText("please fill in your response.");
         warning.setVisible(false);
 
         // Button actions
@@ -45,7 +55,7 @@ public class Task2Screen extends AbstractScreen implements GeneralTasks {
         });
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, question, warning, backButton, nextButton);
+        vbox.getChildren().addAll(title, question, inputArea, warning, backButton, nextButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 

@@ -36,6 +36,11 @@ public class StartLogic {
         showTask1Screen();
     }
 
+
+
+    /* add logic to transfer from screen to screen w/ warning messages */
+
+
     /**
      * Updates the JSON file to save the user's entry once all tasks have been completed. Returns
      * true when all tasks have been completed and the entries have been saved to file. Returns false

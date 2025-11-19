@@ -16,7 +16,7 @@ public class MainMenuScreen extends AbstractScreen {
 
     private static final List<String> MESSAGES = List.of("welcome, let's recharge and refocus",
         "cultivate your daily mindfulness", "let's plant something positive today",
-        "welcome back gardener of your own mind", "what will you grow today?");
+        "welcome, gardener of your own mind", "what will you grow today?", "ready to flourish?");
 
     /**
      * Initializes the main menu screen

@@ -37,6 +37,8 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
         Button backButton = createButton("menu");
         Button nextButton = createButton("next");
 
+
+        // warning message
         warning = createText("please select one of the faces.");
         warning.setVisible(false);
 
