@@ -8,6 +8,7 @@ module cpen221A.sonder {
     requires javafx.graphics;
     requires java.desktop;
     requires com.google.gson;
+    requires javafx.base;
 
     opens cpen221A.sonder to javafx.fxml, com.google.gson;
     exports cpen221A.sonder;

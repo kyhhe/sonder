@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 /**
  * Creates the screen which provides the user interface for Task 3: What is one thing you learned today? What is one goal you have for tomorrow?
@@ -19,9 +20,11 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
         super(main);
     }
 
+    private TextArea input;
     private String answer;
     private Label warning;
     private Runnable onComplete;
+    private boolean toNext = false;
 
     @Override
     protected Parent createRoot() {
@@ -34,20 +37,45 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("aspire:");
         Label question = createText("what is one thing you learned today? what is one goal you have for tomorrow?");
-        Button backButton = createButton("menu");
         Button nextButton = createButton("next");
 
-        warning = createText("please fill in your response.");
-        warning.setVisible(false);
+        // Text box for user-inputted response
+        this.input = new TextArea();
+        this.input.setStyle(
+                "-fx-control-inner-background: #F2FFF4;" +
+                        "-fx-control-inner-background-insets: 0;" +
+                        "-fx-border-color: #a7d4a8;" +
+                        "-fx-border-width: 2;" +
+                        "-fx-text-fill: #333333;"
+        );
+        this.input.setFont(Font.font("Verdana", 14));
+        this.input.setWrapText(true);
+        this.input.setPrefRowCount(5);
+        this.input.setMaxWidth(600);
 
-        // Button actions
-        backButton.setOnAction(e -> main.showMainMenu());
-        nextButton.setOnAction(e ->  {if (onComplete != null) {
-            onComplete.run();};
+        // Warning message
+        this.warning = createText("please fill in your response.");
+        this.warning.setStyle("-fx-font-size: 13;");
+        this.warning.setVisible(false);
+
+        // Button action and task transition logic
+        nextButton.setOnAction(e -> {
+            if (this.input.getText().trim().isEmpty()) {
+                this.warning.setVisible(true);
+            }
+            else {
+                this.warning.setVisible(false);
+                this.answer = this.input.getText().trim();
+
+                if (this.onComplete != null) {
+                    this.toNext = true;
+                    this.onComplete.run();
+                }
+            }
         });
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, question, warning, backButton, nextButton);
+        vbox.getChildren().addAll(title, question, this.input, this.warning, nextButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 
@@ -70,14 +98,7 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
      * @return true if user completes task, false otherwise
      */
     public boolean currentComplete() {
-        return false;
-    }
-
-    /**
-     * Displays a custom warning message on the task screen
-     */
-    public void warningMessage() {
-        warning.setVisible(true);
+        return this.toNext;
     }
 
     /**

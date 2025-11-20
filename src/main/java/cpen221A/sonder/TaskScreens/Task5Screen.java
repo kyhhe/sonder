@@ -35,20 +35,18 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("cultivate:");
         Label question = createText("plant your flower into the garden.");
-        Button backButton = createButton("menu");
         Button nextButton = createButton("next");
 
-        warning = createText("please indicate where you'd like to plant your flower.");
-        warning.setVisible(false);
+        this.warning = createText("please indicate where you'd like to plant your flower.");
+        this.warning.setVisible(false);
 
-        // Button actions
-        backButton.setOnAction(e -> main.showMainMenu());
+        // Button action and task transition logic
         nextButton.setOnAction(e ->  {if (onComplete != null) {
             onComplete.run();};
         });
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, question, warning, backButton, nextButton);
+        vbox.getChildren().addAll(title, question, this.warning, nextButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 

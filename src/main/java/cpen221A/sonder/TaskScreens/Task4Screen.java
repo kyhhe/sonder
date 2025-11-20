@@ -31,20 +31,18 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("reward:");
         Label question = createText("choose a flower for your garden.");
-        Button backButton = createButton("menu");
         Button nextButton = createButton("next");
 
-        warning = createText("please select your flower of choice.");
-        warning.setVisible(false);
+        this.warning = createText("please select your flower of choice.");
+        this.warning.setVisible(false);
 
-        // Button actions
-        backButton.setOnAction(e -> main.showMainMenu());
+        // Button action and task transition logic
         nextButton.setOnAction(e ->  {if (onComplete != null) {
             onComplete.run();}
         });
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, question, warning, backButton, nextButton);
+        vbox.getChildren().addAll(title, question, this.warning, nextButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 

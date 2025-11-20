@@ -8,11 +8,6 @@ public interface GeneralTasks {
     boolean currentComplete();
 
     /**
-     * Displays a warning message on the task screen
-     */
-    void warningMessage();
-
-    /**
      * Transitions to next task screen if current task is completed
      */
     void nextTask(Runnable r);

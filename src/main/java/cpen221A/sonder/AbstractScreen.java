@@ -21,8 +21,8 @@ public abstract class AbstractScreen {
      */
     public AbstractScreen(MainApplication app) {
         this.main = app;
-        this.scene = new Scene(createRoot(), 1024, 768);
         this.root = createRoot();
+        this.scene = new Scene(this.root, 1024, 768);
 
         // Sets keyboard inputs
         scene.setOnKeyPressed(this::onKeyPressed);

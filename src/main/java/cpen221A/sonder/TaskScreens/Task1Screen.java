@@ -34,7 +34,6 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("reflect:");
         Label question = createText("how are you feeling today?");
-        Button backButton = createButton("menu");
         Button nextButton = createButton("next");
 
 
@@ -42,14 +41,13 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
         warning = createText("please select one of the faces.");
         warning.setVisible(false);
 
-        // Button actions
-        backButton.setOnAction(e -> main.showMainMenu());
+        // Button action and task transition logic
         nextButton.setOnAction(e ->  {if (onComplete != null) {
             onComplete.run();};
         });
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, question, warning, backButton, nextButton);
+        vbox.getChildren().addAll(title, question, this.warning, nextButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 
