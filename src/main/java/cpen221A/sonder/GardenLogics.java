@@ -81,6 +81,28 @@ public class GardenLogics {
     }
 
     /**
+     * Checks if the garden has exactly 14 flowers planted.
+     *
+     * @return true if all 15 cells have flowers
+     */
+    public boolean isFortnight() {
+        int emptyCount = 0;
+
+        for(List<Flower> r: garden){
+            for(Flower c: r){
+                if(c==null){
+                    emptyCount++;
+                }
+            }
+        }
+
+        if(emptyCount == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Checks if the garden is full (reaches the 15th day)
      *
      * @return true if all 15 cells have flowers

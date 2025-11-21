@@ -53,7 +53,7 @@ public class StartLogic {
         String answer1 = task1Screen.getTask1Input();
         String answer2 = task2Screen.getTask2Input();
         String answer3 = task3Screen.getTask3Input();
-        Flower flower = task4Screen.getTask4Input();
+        Flower flower = task5Screen.getTask5Input();
         UserEntry entry;
 
         entry = new UserEntry(date, answer1, answer2, answer3, flower);

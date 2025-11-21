@@ -1,6 +1,7 @@
 package cpen221A.sonder.TaskScreens;
 
 import cpen221A.sonder.AbstractScreen;
+import cpen221A.sonder.Flower;
 import cpen221A.sonder.GeneralTasks;
 import cpen221A.sonder.MainApplication;
 import javafx.geometry.Insets;
@@ -20,7 +21,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
         super(main);
     }
 
-    private Point answer;
+    private Flower answer;
     private Label warning;
     private Runnable onComplete;
 
@@ -59,7 +60,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
      * (otherwise, returns String input)
      * @return String representing user's short answer response to task 5
      */
-    public Point getTask5Input() {
+    public Flower getTask5Input() {
         return this.answer;
     }
 

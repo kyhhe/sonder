@@ -43,7 +43,7 @@ public class Task2Screen extends AbstractScreen implements GeneralTasks {
         this.input.setStyle(
                 "-fx-control-inner-background: #F2FFF4;" +
                         "-fx-control-inner-background-insets: 0;" +
-                        "-fx-border-color: #a7d4a8;" +
+                        "-fx-border-color: #88bf89;" +
                         "-fx-border-width: 2;" +
                         "-fx-text-fill: #333333;"
         );

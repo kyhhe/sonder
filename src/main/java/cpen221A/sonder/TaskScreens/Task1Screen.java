@@ -8,11 +8,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 /**
  * Creates the screen which provides the user interface for Task 1: How are you feeling today?
@@ -24,6 +26,7 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
     private Label warning;
     private Runnable onComplete;
     private boolean toNext = false;
+    private Button selectedButton = null;
 
     public Task1Screen(MainApplication main){
         super(main);
@@ -65,14 +68,26 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
             faceButton.setGraphic(faceView);
             faceButton.setStyle("-fx-background-color: transparent; -fx-padding: 5;");
 
+            DropShadow selectedShadow = new DropShadow();
+            selectedShadow.setColor(Color.web("#37de61"));
+            selectedShadow.setSpread(0.5);
+            selectedShadow.setRadius(40);
+
             faceButton.setOnAction(e -> {
                 this.input = face;
-                // add code for visible confirmation that button was selected
+
+                if (selectedButton != null) {
+                    selectedButton.setEffect(null);
+                }
+
+                faceButton.setEffect(selectedShadow);
+                selectedButton = faceButton;
             });
+
             rowFaces.getChildren().add(faceButton);
         }
 
-        // warning message
+        // Warning message
         warning = createText("please select one of the faces.");
         warning.setVisible(false);
 
