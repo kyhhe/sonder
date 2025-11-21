@@ -14,6 +14,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Creates the screen which provides the user interface for Task 4: Choose a flower for your garden.
  */
@@ -46,7 +51,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         HBox rowFlowers = new HBox(25);
         rowFlowers.setAlignment(Pos.CENTER);
 
-        String[] faces = {
+        String[] flowers = {
                 "/FlowerImages/Flower1.PNG",
                 "/FlowerImages/Flower2.PNG",
                 "/FlowerImages/Flower3.PNG",
@@ -64,25 +69,35 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
                 "/FlowerImages/Flower14.PNG",
         };
 
-        String specialFace = "/FlowerImages/Flower15.PNG";
+        /* placeholder code */
+        //List<String> lastFlower = new ArrayList<>();
+        //lastFlower.add("/FlowerImages/Flower15.PNG");
 
-        for(String face : faces) {
-            Image img = new Image(getClass().getResource(face).toExternalForm());
-            ImageView faceView = new ImageView(img);
-            faceView.setFitWidth(150);
-            faceView.setPreserveRatio(true);
+        List<String> displayFlowers = getRandomFlowers(flowers);
+        //if(isFornight()) {
+        //    displayFlowers = lastFlower;
+        //}
+        //else {
+        //    displayFlowers = getRandomFlowers(flowers);
+        //}
+
+        for(String flower : displayFlowers) {
+            Image img = new Image(getClass().getResource(flower).toExternalForm());
+            ImageView flowerView = new ImageView(img);
+            flowerView.setFitWidth(150);
+            flowerView.setPreserveRatio(true);
 
             Button faceButton = new Button();
-            faceButton.setGraphic(faceView);
+            faceButton.setGraphic(flowerView);
             faceButton.setStyle("-fx-background-color: transparent; -fx-padding: 5;");
 
             DropShadow selectedShadow = new DropShadow();
-            selectedShadow.setColor(Color.web("#37de61"));
+            selectedShadow.setColor(Color.web("#8de0a1"));
             selectedShadow.setSpread(0.5);
             selectedShadow.setRadius(40);
 
             faceButton.setOnAction(e -> {
-                this.input = face;
+                this.input = flower;
 
                 if (selectedButton != null) {
                     selectedButton.setEffect(null);
@@ -94,6 +109,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
 
             rowFlowers.getChildren().add(faceButton);
         }
+
 
         // Warning message
         this.warning = createText("please select your flower of choice.");
@@ -122,6 +138,19 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         pane.getChildren().add(vbox);
 
         return pane;
+    }
+
+    /**
+     * Randomly selects 3 flowers from a set of 14 flowers.
+     *
+     * @param flowers the 14 flowers to choose from
+     *
+     * @return the list of 3 randomly selected flowers
+     */
+    private List<String> getRandomFlowers(String[] flowers) {
+        List<String> threeFlowers = new ArrayList<>(Arrays.asList(flowers));
+        Collections.shuffle(threeFlowers);
+        return threeFlowers.subList(0, 3);
     }
 
     /**
