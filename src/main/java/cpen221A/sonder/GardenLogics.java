@@ -181,8 +181,16 @@ public class GardenLogics {
     public static void main(String[] args) {
         GardenLogics g = new GardenLogics();
         g.loadGarden();
-        Flower f = new Flower(7);
-        g.addFlower(f, 0, 1);
+        Flower f = new Flower(11);
+        g.addFlower(f, 2, 0);
+        Flower f2 = new Flower(12);
+        g.addFlower(f2, 2, 1);
+        Flower f3 = new Flower(13);
+        g.addFlower(f3, 2, 2);
+        Flower f4 = new Flower(14);
+        g.addFlower(f4, 2, 3);
+        Flower f5 = new Flower(15);
+        g.addFlower(f5, 2, 4);
 //        g.clearGarden();
         g.saveGarden();
     }
