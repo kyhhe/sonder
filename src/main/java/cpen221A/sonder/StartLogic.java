@@ -1,19 +1,32 @@
 package cpen221A.sonder;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import cpen221A.sonder.TaskScreens.*;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StartLogic {
-    Task1Screen task1Screen;
-    Task2Screen task2Screen;
-    Task3Screen task3Screen;
-    Task4Screen task4Screen ;
-    Task5Screen task5Screen;
-    AllCompleteScreen allCompleteScreen;
-    MainApplication main;
+    private static final String JSONFILE = "data/json/entries.json";
 
-    public StartLogic(MainApplication main){
+    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private final Task1Screen task1Screen;
+    private final Task2Screen task2Screen;
+    private final Task3Screen task3Screen;
+    private final Task4Screen task4Screen;
+    private final Task5Screen task5Screen;
+    private final AllCompleteScreen allCompleteScreen;
+    private final MainApplication main;
+
+    public StartLogic(MainApplication main) {
         this.main = main;
         task1Screen = new Task1Screen(main);
         task2Screen = new Task2Screen(main);
@@ -26,20 +39,40 @@ public class StartLogic {
         task2Screen.nextTask(this::showTask3Screen);
         task3Screen.nextTask(this::showTask4Screen);
         task4Screen.nextTask(this::showTask5Screen);
-        task5Screen.nextTask(this::showAllCompleteScreen);
+        task5Screen.nextTask(() -> {
+            saveEntries();
+            showAllCompleteScreen();
+        });
     }
 
     /**
-     * Displays the corresponding task
+     * Starts the tasks sequence. If the task for the day has not yet been completed, then displays
+     * the "All Complete" screen. Otherwise, displays the "Task 1" screen. If the JSON file is empty,
+     * (i.e. it is the player's first entry), then a new JSON file is initialized.
      */
     public void start() {
-        showTask1Screen();
+        List<UserEntry> entries = new ArrayList<>();
+        boolean entryComplete = false;
+        entries = readEntries();
+        if (entries == null) {
+            initializeJSON();
+            entries = readEntries();
+        }
+
+        if (entries != null && !entries.isEmpty()) {
+            for (UserEntry entry : entries) {
+                if (entry.getDate().equals(DateTimeFormatter.ISO_LOCAL_DATE.format(main.getDate()))) {
+                    entryComplete = true;
+                    break;
+                }
+            }
+        }
+        if (entryComplete) {
+            showAllCompleteScreen();
+        } else {
+            showTask1Screen();
+        }
     }
-
-
-
-    /* add logic to transfer from screen to screen w/ warning messages */
-
 
     /**
      * Updates the JSON file to save the user's entry once all tasks have been completed. Returns
@@ -49,16 +82,24 @@ public class StartLogic {
      * @return true if the user's entry has been saved to the file. False otherwise.
      */
     public boolean saveEntries() {
-        LocalDateTime date = LocalDateTime.now();
+        LocalDateTime date = main.getDate();
         String answer1 = task1Screen.getTask1Input();
         String answer2 = task2Screen.getTask2Input();
         String answer3 = task3Screen.getTask3Input();
         Flower flower = task5Screen.getTask5Input();
         UserEntry entry;
-
         entry = new UserEntry(date, answer1, answer2, answer3, flower);
+
         if (entry.checkValidEntry()) {
-            entry.saveEntry();
+            List<UserEntry> entries = readEntries();
+
+            try (FileWriter writer = new FileWriter(JSONFILE)) {
+                entries.add(entry);
+                gson.toJson(entries, writer);
+                System.out.println("Successfully wrote entries to " + JSONFILE);
+            } catch (IOException e) {
+                System.out.println("Data could not be saved." + e.getMessage());
+            }
             return true;
         }
         return false;
@@ -104,6 +145,36 @@ public class StartLogic {
      */
     public void showTask5Screen() {
         main.setStage(task5Screen.getScene());
+    }
+
+    /**
+     * Private method to initialize the JSON file with an empty list of entries.
+     */
+    private void initializeJSON() {
+        List<UserEntry> empty = List.of();
+        try (FileWriter writer = new FileWriter(JSONFILE)) {
+            gson.toJson(empty, writer);
+            System.out.println("Successfully initialized JSON file to " + JSONFILE);
+        } catch (IOException e) {
+            System.out.println("Error initializing JSON file: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Private method that reads the content of the JSON file and returns the list of UserEntries.
+     * Returns an empty list if the file cannot be read.
+     * @return List of the user's previous entries.
+     */
+    private List<UserEntry> readEntries() {
+        Type entriesMapType = new TypeToken<List<UserEntry>>() {
+        }.getType();
+
+        try (FileReader read = new FileReader(JSONFILE)) {
+            return gson.fromJson(read, entriesMapType);
+        } catch (IOException e) {
+            System.out.println("Could not read entries: " + e.getMessage());
+            return List.of();
+        }
     }
 
 }

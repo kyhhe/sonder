@@ -1,17 +1,19 @@
 package cpen221A.sonder;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import org.apache.commons.lang3.ObjectUtils;
+
 
 /**
  * Class representing the user's entry for the day.
  */
 public class UserEntry {
-    private Date date;
-    private String task1;
-    private String task2;
-    private String task3;
-    private Flower flower;
+    private final String date;
+    private final String task1;
+    private final String task2;
+    private final String task3;
+    private final Flower flower;
 
     /**
      * Creates a new entry representing the user's completed tasks for the day
@@ -22,15 +24,21 @@ public class UserEntry {
      * @param task3 response to task 3 (learning/goal)
      * @param flower chosen flower for the day
      */
-    public UserEntry(LocalDateTime date, String task1, String task2, String task3, Flower flower) {}
+    public UserEntry(LocalDateTime date, String task1, String task2, String task3, Flower flower) {
+        this.date = DateTimeFormatter.ISO_LOCAL_DATE.format(date);
+        this.task1 = task1;
+        this.task2 = task2;
+        this.task3 = task3;
+        this.flower = flower;
+    }
 
     /**
      * Gets the date of entry creation
      *
      * @return the date of the entry.
      */
-    public Date getDate() {
-        return null;
+    public String getDate() {
+        return date;
     }
 
     /**
@@ -39,7 +47,7 @@ public class UserEntry {
      * @return the answer to task 1
      */
     public String getTask1Answer() {
-        return null;
+        return task1;
     }
 
     /**
@@ -48,7 +56,7 @@ public class UserEntry {
      * @return the answer to task 2
      */
     public String getTask2Answer() {
-        return null;
+        return task2;
     }
 
     /**
@@ -57,7 +65,7 @@ public class UserEntry {
      * @return the answer to task 3
      */
     public String getTask3Answer() {
-        return null;
+        return task3;
     }
 
     /**
@@ -66,13 +74,7 @@ public class UserEntry {
      * @return the flower selected during this entry
      */
     public Flower getFlower() {
-        return null;
-    }
-
-    /**
-     * Saves the entry to a JSON file
-     */
-    public void saveEntry(){
+        return flower;
     }
 
     /**
@@ -80,7 +82,7 @@ public class UserEntry {
      *
      * @return true if the entry is valid, false if at least one field is empty.
      */
-    public boolean checkValidEntry(){
-        return false;
+    public boolean checkValidEntry() {
+        return !ObjectUtils.allNull(this.date, this.task1, this.task2, this.task3, this.flower);
     }
 }
