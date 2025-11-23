@@ -4,10 +4,18 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EntriesScreen extends AbstractScreen{
+    private List<UserEntry> entries = new ArrayList<>();
+    private VBox entriesContainer;   // The vertical list of entry nodes
+
 
     /**
      * Creates the screen which displays the user's past entries
@@ -18,26 +26,45 @@ public class EntriesScreen extends AbstractScreen{
         super(main);
     }
 
+    @Override
     protected Parent createRoot() {
-        // Initialize Screen elements
-        VBox vbox = new VBox();
-        vbox.setPadding(new Insets(10));
-        vbox.setSpacing(8);
-        StackPane pane = new StackPane();
 
-        // Screen elements
-        Label title = createTitle("entries");
+        VBox root = new VBox(20);
+        root.setPadding(new Insets(10));
+
+        // Menu button
         Button backButton = createButton("menu");
-
-        // Button actions
         backButton.setOnAction(e -> main.showMainMenu());
 
-        // Add elements to screen
-        vbox.getChildren().addAll(title, backButton);
-        vbox.setAlignment(javafx.geometry.Pos.CENTER);
-        pane.getChildren().add(vbox);
+        // Title
+        Label title = createTitle("entries");
 
-        return pane;
+        // Menu button and title in one line
+        BorderPane topBar = new BorderPane();
+        topBar.setLeft(backButton);
+        topBar.setCenter(title);
+
+        // Invisible spacer so title is centered
+        Region spacer = new Region();
+        spacer.setMinWidth(70);  // adjust for button width
+        topBar.setRight(spacer);
+        
+        topBar.setPadding(new Insets(10));
+        topBar.setMaxWidth(Double.MAX_VALUE);
+
+        // Entries list container
+        entriesContainer = new VBox(15);
+        entriesContainer.setPadding(new Insets(10));
+
+        ScrollPane scrollPane = new ScrollPane(entriesContainer);
+        scrollPane.setFitToWidth(true);
+
+        root.getChildren().addAll(topBar, scrollPane);
+
+        loadEntries();
+        displayEntries();
+
+        return root;
     }
 
     /**
