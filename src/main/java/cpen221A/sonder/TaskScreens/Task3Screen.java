@@ -41,17 +41,7 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
 
         // Text box for user-inputted response
         this.input = new TextArea();
-        this.input.setStyle(
-                "-fx-control-inner-background: #f2fff4;" +
-                        "-fx-control-inner-background-insets: 0;" +
-                        "-fx-border-color: #88bf89;" +
-                        "-fx-border-width: 2;" +
-                        "-fx-text-fill: #333333;"
-        );
-        this.input.setFont(Font.font("Verdana", 14));
-        this.input.setWrapText(true);
         this.input.setPrefRowCount(5);
-        this.input.setMaxWidth(600);
 
         // Warning message
         this.warning = createText("please fill in your response.");
@@ -62,8 +52,7 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
         nextButton.setOnAction(e -> {
             if (this.input.getText().trim().isEmpty()) {
                 this.warning.setVisible(true);
-            }
-            else {
+            } else {
                 this.warning.setVisible(false);
                 this.answer = this.input.getText().trim();
 
