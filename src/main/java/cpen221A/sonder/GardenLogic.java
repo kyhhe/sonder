@@ -216,4 +216,13 @@ public class GardenLogic {
         }
         saveGarden();
     }
+
+    /**
+     * Fills the garden with flowers 1-14 to each grid.
+     */
+    public static void set14Flowers() {
+        setAllFlowers();
+        garden.get(ROW - 1).set(COL - 1, null);
+        saveGarden();
+    }
 }

@@ -14,9 +14,13 @@ import java.util.Random;
 
 public class MainMenuScreen extends AbstractScreen {
 
-    private static final List<String> MESSAGES = List.of("welcome, let's recharge and refocus",
-        "cultivate your daily mindfulness", "let's plant something positive today",
-        "welcome, gardener of your own mind", "what will you grow today?", "ready to flourish?");
+    private static final List<String> MESSAGES = List.of(
+        "welcome, let's recharge and refocus",
+        "cultivate your daily mindfulness",
+        "let's plant something positive today",
+        "welcome, gardener of your own mind",
+        "what will you grow today?",
+        "ready to flourish?");
 
     /**
      * Initializes the main menu screen
@@ -35,9 +39,6 @@ public class MainMenuScreen extends AbstractScreen {
         vbox.setSpacing(8);
         StackPane pane = new StackPane();
 
-        // Gets task manager
-        TaskManager taskManager = main.getTaskManager();
-
         // Screen elements
         Button startButton = createButton("start");
         Button gardenButton = createButton("garden");
@@ -45,6 +46,7 @@ public class MainMenuScreen extends AbstractScreen {
         Label title = createTitle("sonder");
         Label welcomeMessage = createText(welcomeMessage());
         Label currentDate = createText(DateTimeFormatter.ISO_LOCAL_DATE.format(main.getDate()));
+        Label debugMessage = createText("");
 
         // Button actions
         startButton.setOnAction(e -> main.startTasks());
@@ -53,7 +55,7 @@ public class MainMenuScreen extends AbstractScreen {
 
         // Add elements to screen
         vbox.getChildren().
-            addAll(title, welcomeMessage, startButton, gardenButton, entriesButton, currentDate);
+            addAll(title, welcomeMessage, startButton, gardenButton, entriesButton, currentDate, debugMessage);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
         return pane;
@@ -72,8 +74,11 @@ public class MainMenuScreen extends AbstractScreen {
     }
 
     /**
-     * Overrides parent class to implement functionality for keyboard presses. When "F1" is pressed,
-     * while on the main menu screen, the system clock advances by one day.
+     * Overrides parent class to implement functionality for keyboard presses while on main menu screen.
+     * <li> F1: advances system clock by one day. </li>
+     * <li> F2: loads flowers 1-14 to the first 14 cells of the garden </li>
+     * <li> F3: loads flowers 1-15 to the 15 cells of the garden </li>
+     * <li> F12: clears all user garden data and entry data </li>
      *
      * @param keyEvent keypress from the user
      */
@@ -86,12 +91,18 @@ public class MainMenuScreen extends AbstractScreen {
         }
 
         if (keyEvent.getCode().equals(KeyCode.F2)) {
+            System.out.println("14 FLOWERS LOADED");
+            GardenLogic.set14Flowers();
+            main.showMainMenu();
+        }
+
+        if (keyEvent.getCode().equals(KeyCode.F3)) {
             System.out.println("ALL FLOWERS LOADED");
             GardenLogic.setAllFlowers();
             main.showMainMenu();
         }
 
-        if (keyEvent.getCode().equals(KeyCode.F3)) {
+        if (keyEvent.getCode().equals(KeyCode.F12)) {
             System.out.println("DATA CLEARED");
             GardenLogic.clearGarden();
             EntryManagement.initializeJSON();
