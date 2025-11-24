@@ -84,5 +84,18 @@ public class MainMenuScreen extends AbstractScreen {
             main.setDate(main.getDate().plusDays(1));
             main.showMainMenu();
         }
+
+        if (keyEvent.getCode().equals(KeyCode.F2)) {
+            System.out.println("ALL FLOWERS LOADED");
+            GardenLogic.setAllFlowers();
+            main.showMainMenu();
+        }
+
+        if (keyEvent.getCode().equals(KeyCode.F3)) {
+            System.out.println("DATA CLEARED");
+            GardenLogic.clearGarden();
+            EntryManagement.initializeJSON();
+            main.showMainMenu();
+        }
     }
 }

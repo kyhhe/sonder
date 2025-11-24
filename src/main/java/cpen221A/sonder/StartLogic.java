@@ -13,11 +13,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class StartLogic {
-    private static final String JSONFILE = "data/json/entries.json";
-
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private final Task1Screen task1Screen;
     private final Task2Screen task2Screen;
     private final Task3Screen task3Screen;
@@ -25,11 +23,9 @@ public class StartLogic {
     private final Task5Screen task5Screen;
     private final AllCompleteScreen allCompleteScreen;
     private final MainApplication main;
-    private GardenLogic gardenManager;
 
     public StartLogic(MainApplication main, GardenLogic gardenManager) {
         this.main = main;
-        this.gardenManager = gardenManager;
         task1Screen = new Task1Screen(main);
         task2Screen = new Task2Screen(main);
         task3Screen = new Task3Screen(main);
@@ -57,12 +53,12 @@ public class StartLogic {
      * (i.e. it is the player's first entry), then a new JSON file is initialized.
      */
     public void start() {
-        List<UserEntry> entries = new ArrayList<>();
-        boolean entryComplete = false;
-        entries = readEntries();
+        List<UserEntry> entries = EntryManagement.readEntries();
+        boolean entryComplete = false;  // True if an entry has already been written for this day.
+
         if (entries == null) {
-            initializeJSON();
-            entries = readEntries();
+            EntryManagement.initializeJSON();
+            entries = EntryManagement.readEntries();
         }
 
         if (entries != null && !entries.isEmpty()) {
@@ -93,22 +89,14 @@ public class StartLogic {
         String answer2 = task2Screen.getTask2Input();
         String answer3 = task3Screen.getTask3Input();
         Flower flower = task5Screen.getTask5Input();
-        UserEntry entry;
-        entry = new UserEntry(date, answer1, answer2, answer3, flower);
+        UserEntry entry = new UserEntry(date, answer1, answer2, answer3, flower);
 
         if (entry.checkValidEntry()) {
-            List<UserEntry> entries = readEntries();
-
-            try (FileWriter writer = new FileWriter(JSONFILE)) {
-                entries.add(entry);
-                gson.toJson(entries, writer);
-                System.out.println("Successfully wrote entries to " + JSONFILE);
-            } catch (IOException e) {
-                System.out.println("Data could not be saved." + e.getMessage());
-            }
+            EntryManagement.saveNewEntry(entry);
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     /**
@@ -152,35 +140,4 @@ public class StartLogic {
     public void showTask5Screen() {
         main.setStage(task5Screen.getScene());
     }
-
-    /**
-     * Private method to initialize the JSON file with an empty list of entries.
-     */
-    private void initializeJSON() {
-        List<UserEntry> empty = List.of();
-        try (FileWriter writer = new FileWriter(JSONFILE)) {
-            gson.toJson(empty, writer);
-            System.out.println("Successfully initialized JSON file to " + JSONFILE);
-        } catch (IOException e) {
-            System.out.println("Error initializing JSON file: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Private method that reads the content of the JSON file and returns the list of UserEntries.
-     * Returns an empty list if the file cannot be read.
-     * @return List of the user's previous entries.
-     */
-    private List<UserEntry> readEntries() {
-        Type entriesMapType = new TypeToken<List<UserEntry>>() {
-        }.getType();
-
-        try (FileReader read = new FileReader(JSONFILE)) {
-            return gson.fromJson(read, entriesMapType);
-        } catch (IOException e) {
-            System.out.println("Could not read entries: " + e.getMessage());
-            return List.of();
-        }
-    }
-
 }
