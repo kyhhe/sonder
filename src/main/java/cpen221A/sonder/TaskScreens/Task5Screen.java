@@ -6,23 +6,33 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.awt.Point;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Creates the screen which provides the user interface for Task 5: Plant your flower in the garden.
  */
 public class Task5Screen extends AbstractScreen implements GeneralTasks {
-    public Task5Screen(MainApplication main){
+    private GardenLogic gardenManager;
+
+    public Task5Screen(MainApplication main, GardenLogic gardenManager){
         super(main);
+        this.gardenManager = gardenManager;
     }
 
     private Flower answer;
     public Flower input;
+    private Flower myFlower;
     private Label warning;
+    private Label invalid;
     private Runnable onComplete;
     private boolean toNext = false;
     private Button selectedButton = null;
@@ -49,33 +59,93 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
 
         // Warning message
         this.warning = createText("please indicate where you'd like to plant your flower.");
+        this.warning.setStyle("-fx-font-size: 13;");
         this.warning.setVisible(false);
+
+        // Invalid message
+        this.invalid = createText("please choose an empty spot in the garden.");
+        this.invalid.setStyle("-fx-font-size: 13;");
+        this.invalid.setVisible(false);
+
+        // Grid of buttons for user selection
+        GridPane gardenButtons = new GridPane();
+        gardenButtons.setHgap(30);
+        gardenButtons.setVgap(12);
+        gardenButtons.setPadding(new Insets(270, 0, 0, 75));
+
+        DropShadow selectedShadow = new DropShadow();
+        selectedShadow.setColor(Color.web("#24f057"));
+        selectedShadow.setSpread(0.8);
+        selectedShadow.setRadius(50);
+
+
+        for(int r = 0; r < 3; r++) {
+            for(int c = 0; c < 5; c++) {
+                Button gardenButton = new Button();
+                gardenButton.setPrefSize(150, 150);
+                gardenButton.setStyle("-fx-background-color: transparent;" +
+                        "-fx-border-color: #95d5b2;" +
+                        "-fx-border-width: 2;");
+
+                int row = r, col = c;
+                gardenButton.setOnAction(e -> {
+                    this.input = this.myFlower;
+                    this.input.setPosition(row, col);
+
+                    if (selectedButton != null) {
+                        selectedButton.setEffect(null);
+                    }
+
+                    gardenButton.setEffect(selectedShadow);
+                    selectedButton = gardenButton;
+                });
+
+                gardenButtons.add(gardenButton, c, r);
+            }
+        }
 
         // Button action and task transition logic
         nextButton.setOnAction(e -> {
-            if (this.input == null) {
+            if (this.input == null) { // no input
                 this.warning.setVisible(true);
             }
             else {
                 this.warning.setVisible(false);
-                this.answer = this.input;
 
-                if (this.onComplete != null) {
-                    this.toNext = true;
-                    //gardenManager.addFlower(selectedFlower, selectedPosition.row, selectedPosition.col);
-                    //gardenManager.saveGarden();
-                    this.onComplete.run();
+                int row = this.input.getRow();
+                int col = this.input.getCol();
+
+                if(!this.gardenManager.isEmpty(row, col)) { // invalid spot
+                    this.invalid.setVisible(true);
+                }
+                else {
+                    this.invalid.setVisible(false);
+                    this.answer = this.input;
+
+                    if (this.onComplete != null) {
+                        this.toNext = true;
+                        this.gardenManager.addFlower(this.answer, row, col);
+                        gardenManager.saveGarden();
+                        this.onComplete.run();
+                    }
                 }
             }
         });
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, question, this.warning, nextButton);
+        vbox.getChildren().addAll(title, question, this.warning, this.invalid, nextButton);
         vbox.setAlignment(Pos.TOP_CENTER);
-        pane.getChildren().addAll(gardenRoot, vbox);
+        pane.getChildren().addAll(gardenRoot, gardenButtons, vbox);
         pane.setAlignment(vbox, Pos.TOP_CENTER);
 
         return pane;
+    }
+
+    /**
+     * Sets flower to the one chosen in task 4.
+     */
+    public void setMyFlower(Flower flower) {
+        this.myFlower = flower;
     }
 
     /**
@@ -94,14 +164,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
      * @return true if user completes task, false otherwise
      */
     public boolean currentComplete() {
-        return false;
-    }
-
-    /**
-     * Displays a custom warning message on the task screen
-     */
-    public void warningMessage() {
-        warning.setVisible(true);
+        return this.toNext;
     }
 
     /**

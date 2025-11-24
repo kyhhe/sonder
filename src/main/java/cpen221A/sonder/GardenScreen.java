@@ -65,8 +65,8 @@ public class GardenScreen extends AbstractScreen{
 
         // load flowers
         List<List<Flower>> garden = gardenLogic.getGarden();
-        for(int r=0;r<garden.size();r++){
-            for(int c=0; c<garden.get(r).size();c++){
+        for(int r = 0; r < garden.size(); r++) {
+            for(int c = 0; c < garden.get(r).size(); c++) {
                 Flower f = garden.get(r).get(c);
                 if(f!=null && f.getImagePath()!= null){
                     URL url=getClass().getResource(f.getImagePath());

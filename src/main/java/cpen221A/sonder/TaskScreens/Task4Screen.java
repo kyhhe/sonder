@@ -70,6 +70,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         flowers.add(new Flower(13));
         flowers.add(new Flower(14));
 
+        //Flower randomization for user input
         List<Flower> displayFlowers;
 
         boolean isFortnight = false;
@@ -91,7 +92,8 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
 
             Button faceButton = new Button();
             faceButton.setGraphic(flowerView);
-            faceButton.setStyle("-fx-background-color: transparent; -fx-padding: 5;");
+            faceButton.setStyle("-fx-background-color: transparent;" +
+                    "-fx-padding: 5;");
 
             DropShadow selectedShadow = new DropShadow();
             selectedShadow.setColor(Color.web("#8de0a1"));
@@ -114,6 +116,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
 
         // Warning message
         this.warning = createText("please select your flower of choice.");
+        this.warning.setStyle("-fx-font-size: 13;");
         this.warning.setVisible(false);
 
         // Button action and task transition logic

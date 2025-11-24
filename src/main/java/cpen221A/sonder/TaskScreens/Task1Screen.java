@@ -66,11 +66,12 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
 
             Button faceButton = new Button();
             faceButton.setGraphic(faceView);
-            faceButton.setStyle("-fx-background-color: transparent; -fx-padding: 5;");
+            faceButton.setStyle("-fx-background-color: transparent;" +
+                    "-fx-padding: 5;");
 
             DropShadow selectedShadow = new DropShadow();
             selectedShadow.setColor(Color.web("#37de61"));
-            selectedShadow.setSpread(0.5);
+            selectedShadow.setSpread(0.6);
             selectedShadow.setRadius(40);
 
             faceButton.setOnAction(e -> {
@@ -88,8 +89,9 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
         }
 
         // Warning message
-        warning = createText("please select one of the faces.");
-        warning.setVisible(false);
+        this.warning = createText("please select one of the faces.");
+        this.warning.setStyle("-fx-font-size: 13;");
+        this.warning.setVisible(false);
 
         // Button action and task transition logic
         nextButton.setOnAction(e -> {

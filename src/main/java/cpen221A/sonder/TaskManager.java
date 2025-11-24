@@ -21,7 +21,7 @@ public class TaskManager {
         this.task2 = new Task2Screen(main);
         this.task3 = new Task3Screen(main);
         this.task4 = new Task4Screen(main, gardenManager);
-        this.task5 = new Task5Screen(main);
+        this.task5 = new Task5Screen(main, gardenManager);
     }
 
     /**

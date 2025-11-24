@@ -42,6 +42,7 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
         // Text box for user-inputted response
         this.input = new TextArea();
         this.input.setPrefRowCount(5);
+        this.input.setStyle("-fx-border-color: #95d5b2;");
 
         // Warning message
         this.warning = createText("please fill in your response.");

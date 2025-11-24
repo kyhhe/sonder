@@ -34,13 +34,17 @@ public class StartLogic {
         task2Screen = new Task2Screen(main);
         task3Screen = new Task3Screen(main);
         task4Screen = new Task4Screen(main, gardenManager);
-        task5Screen = new Task5Screen(main);
+        task5Screen = new Task5Screen(main, gardenManager);
         allCompleteScreen = new AllCompleteScreen(main);
 
         task1Screen.nextTask(this::showTask2Screen);
         task2Screen.nextTask(this::showTask3Screen);
         task3Screen.nextTask(this::showTask4Screen);
-        task4Screen.nextTask(this::showTask5Screen);
+        task4Screen.nextTask(() -> {
+            Flower myFlower = task4Screen.getTask4Input();
+            task5Screen.setMyFlower(myFlower);
+            showTask5Screen();
+        });
         task5Screen.nextTask(() -> {
             saveEntries();
             showAllCompleteScreen();
