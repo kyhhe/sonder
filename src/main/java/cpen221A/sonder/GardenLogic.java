@@ -196,16 +196,28 @@ public class GardenLogic {
     }
 
     /**
-     * Clear the garden in the JSON file
+     * Clears the garden in the JSON file.
      */
-    public void clearGarden() {
+    public static void clearGarden() {
         for (int r = 0; r < ROW; r++) {
             for (int c = 0; c < COL; c++) {
-                this.garden.get(r).set(c, null);
+                garden.get(r).set(c, null);
             }
         }
         saveGarden();
     }
 
-
+    /**
+     * Fills the garden with flowers 1-15 to each grid.
+     */
+    public static void setAllFlowers() {
+        int id = 1;
+        for (int r = 0; r < ROW; r++) {
+            for (int c = 0; c < COL; c++) {
+                garden.get(r).set(c, new Flower(id));
+                id++;
+            }
+        }
+        saveGarden();
+    }
 }
