@@ -25,13 +25,15 @@ public class StartLogic {
     private final Task5Screen task5Screen;
     private final AllCompleteScreen allCompleteScreen;
     private final MainApplication main;
+    private GardenLogic gardenManager;
 
-    public StartLogic(MainApplication main) {
+    public StartLogic(MainApplication main, GardenLogic gardenManager) {
         this.main = main;
+        this.gardenManager = gardenManager;
         task1Screen = new Task1Screen(main);
         task2Screen = new Task2Screen(main);
         task3Screen = new Task3Screen(main);
-        task4Screen = new Task4Screen(main);
+        task4Screen = new Task4Screen(main, gardenManager);
         task5Screen = new Task5Screen(main);
         allCompleteScreen = new AllCompleteScreen(main);
 

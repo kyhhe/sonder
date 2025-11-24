@@ -15,11 +15,13 @@ public class MainApplication extends Application {
     private Stage stage;
     private TaskManager taskManager;
     private LocalDateTime date = LocalDateTime.now();
+    private GardenLogic gardenManager;
 
     @Override
     public void start(Stage newStage) throws IOException {
         this.stage = newStage;
-        this.taskManager = new TaskManager(this);
+        this.gardenManager = new GardenLogic();
+        this.taskManager = new TaskManager(this, this.gardenManager);
 
         AudioClip bgMusic = new AudioClip(
             Objects.requireNonNull(getClass().getResource("/audio/The Mercy of the Wind.mp3")).toString());
@@ -59,7 +61,7 @@ public class MainApplication extends Application {
      * Loads the sequence of tasks and the logic which controls it
      */
     public void startTasks() {
-        StartLogic startLogic = new StartLogic(this);
+        StartLogic startLogic = new StartLogic(this, this.gardenManager);
         startLogic.start();
     }
 

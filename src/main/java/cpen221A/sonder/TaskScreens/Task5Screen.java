@@ -2,9 +2,11 @@ package cpen221A.sonder.TaskScreens;
 
 import cpen221A.sonder.*;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -28,10 +30,17 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
     @Override
     protected Parent createRoot() {
         // Initialize Screen elements
-        VBox vbox = new VBox();
-        vbox.setPadding(new Insets(10));
+        VBox vbox = new VBox(10);
+        vbox.setPadding(new Insets(20, 20, 10, 20));
         vbox.setSpacing(8);
+        vbox.setStyle("-fx-background-color: #d8f3dc;");
+        vbox.setMaxHeight(200);
+        vbox.setFillWidth(true);
         StackPane pane = new StackPane();
+
+        // Load GardenScreen
+        GardenScreen gardenScreen = new GardenScreen(main);
+        Parent gardenRoot = gardenScreen.getRoot();
 
         // Screen elements
         Label title = createTitle("cultivate:");
@@ -53,6 +62,8 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
 
                 if (this.onComplete != null) {
                     this.toNext = true;
+                    //gardenManager.addFlower(selectedFlower, selectedPosition.row, selectedPosition.col);
+                    //gardenManager.saveGarden();
                     this.onComplete.run();
                 }
             }
@@ -60,8 +71,9 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
 
         // Add elements to screen
         vbox.getChildren().addAll(title, question, this.warning, nextButton);
-        vbox.setAlignment(javafx.geometry.Pos.CENTER);
-        pane.getChildren().add(vbox);
+        vbox.setAlignment(Pos.TOP_CENTER);
+        pane.getChildren().addAll(gardenRoot, vbox);
+        pane.setAlignment(vbox, Pos.TOP_CENTER);
 
         return pane;
     }

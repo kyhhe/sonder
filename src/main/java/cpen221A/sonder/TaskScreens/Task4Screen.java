@@ -22,8 +22,11 @@ import java.util.List;
  * Creates the screen which provides the user interface for Task 4: Choose a flower for your garden.
  */
 public class Task4Screen extends AbstractScreen implements GeneralTasks {
-    public Task4Screen(MainApplication main) {
+    private GardenLogic gardenManager;
+
+    public Task4Screen(MainApplication main, GardenLogic gardenManager) {
         super(main);
+        this.gardenManager = gardenManager;
     }
 
     private Flower answer;
@@ -66,15 +69,19 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         flowers.add(new Flower(12));
         flowers.add(new Flower(13));
         flowers.add(new Flower(14));
-        flowers.add(new Flower(15));
 
-        List<Flower> displayFlowers = getRandomFlowers(flowers);
-        //if (gardenLogic.isFortnight()) {
-        //    displayFlowers = Collections.singletonList(this.flower15);
-        //}
-        //else {
-        //    displayFlowers = getRandomFlowers();
-        //}
+        List<Flower> displayFlowers;
+
+        boolean isFortnight = false;
+        if (this.gardenManager != null) {
+            isFortnight = this.gardenManager.isFortnight();
+        }
+
+        if (isFortnight) {
+            displayFlowers = Collections.singletonList(new Flower(15));
+        } else {
+            displayFlowers = getRandomFlowers(flowers);
+        }
 
         for (Flower flower : displayFlowers) {
             Image img = new Image(getClass().getResource(flower.getImagePath()).toExternalForm());
@@ -120,6 +127,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
 
                 if (this.onComplete != null) {
                     this.toNext = true;
+                    //gardenManager.addFlower(selectedFlower);
                     this.onComplete.run();
                 }
             }

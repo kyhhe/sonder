@@ -12,12 +12,15 @@ public class TaskManager {
     private final Task3Screen task3;
     private final Task4Screen task4;
     private final Task5Screen task5;
+    private GardenLogic gardenManager;
 
-    public TaskManager(MainApplication main) {
+    public TaskManager(MainApplication main, GardenLogic gardenManager) {
+        this.gardenManager = gardenManager;
+
         this.task1 = new Task1Screen(main);
         this.task2 = new Task2Screen(main);
         this.task3 = new Task3Screen(main);
-        this.task4 = new Task4Screen(main);
+        this.task4 = new Task4Screen(main, gardenManager);
         this.task5 = new Task5Screen(main);
     }
 
