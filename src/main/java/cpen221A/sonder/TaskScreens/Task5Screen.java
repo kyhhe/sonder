@@ -21,11 +21,13 @@ import java.util.Objects;
  * Creates the screen which provides the user interface for Task 5: Plant your flower in the garden.
  */
 public class Task5Screen extends AbstractScreen implements GeneralTasks {
-    private GardenLogic gardenManager;
+//    private GardenLogic gardenManager;
+    private GardenLogic gardenLogic;  //<--initialize a new gardenLogic object
 
     public Task5Screen(MainApplication main, GardenLogic gardenManager){
         super(main);
-        this.gardenManager = gardenManager;
+//        this.gardenManager = gardenManager;
+        this.gardenLogic = new GardenLogic();   //<--create GardenLogic object
     }
 
     private Flower answer;
@@ -115,7 +117,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
                 int row = this.input.getRow();
                 int col = this.input.getCol();
 
-                if(!this.gardenManager.isEmpty(row, col)) { // invalid spot
+                if(!this.gardenLogic.isEmpty(row, col)) { // invalid spot
                     this.invalid.setVisible(true);
                 }
                 else {
@@ -124,8 +126,9 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
 
                     if (this.onComplete != null) {
                         this.toNext = true;
-                        this.gardenManager.addFlower(this.answer, row, col);
-                        gardenManager.saveGarden();
+                        GardenLogic.loadGarden();   //<--load the garden from .json to the object
+                        this.gardenLogic.addFlower(this.answer, row, col);  //<--do the implement of adding flower
+                        GardenLogic.saveGarden();   //<--save the garden to .json
                         this.onComplete.run();
                     }
                 }

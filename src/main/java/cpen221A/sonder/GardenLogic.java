@@ -17,37 +17,47 @@ import java.util.List;
 public class GardenLogic {
     private static final int ROW = 3;
     private static final int COL = 5;
-    private final List<List<Flower>> garden = new ArrayList<>();
-        // 2D array to represent the flower garden
-    private final String jsonPath = "data/json/gardenData.json";
-    private final Gson gson =
-        new GsonBuilder().excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT).setPrettyPrinting().create();
+    private static final List<List<Flower>> garden = new ArrayList<>();
+    // 2D array to represent the flower garden
+    private static final String jsonPath = "data/json/gardenData.json";
+    private static final Gson gson =
+            new GsonBuilder().excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT).setPrettyPrinting().create();
+
 
     /**
-     * Creates a new empty 3x5 garden to manage and place flowers.
+     * Constructor of GardenLogic
      */
     public GardenLogic() {
-        for (int row = 0; row < ROW; row++) {
-            garden.add(new ArrayList<Flower>(Collections.nCopies(COL, (Flower) null)));
+    }
+
+    /**
+     * Create static garden
+     */
+    static {
+        for (int i = 0; i < ROW; i++) {
+            garden.add(new ArrayList<>(Collections.nCopies(COL, null)));
         }
+        loadGarden();
     }
 
     //debug importing flower into json
     public static void main(String[] args) {
         GardenLogic g = new GardenLogic();
-        g.loadGarden();
-        Flower f = new Flower(11);
-        g.addFlower(f, 2, 0);
+        GardenLogic g2 = new GardenLogic();
+        GardenLogic.loadGarden();
+        Flower f = new Flower(1);
+        g.addFlower(f, 0, 0);
         Flower f2 = new Flower(12);
-        g.addFlower(f2, 2, 1);
+        g2.addFlower(f2, 2, 1);
         Flower f3 = new Flower(13);
-        g.addFlower(f3, 2, 2);
+        g2.addFlower(f3, 2, 2);
         Flower f4 = new Flower(14);
-        g.addFlower(f4, 2, 3);
+        g2.addFlower(f4, 2, 3);
         Flower f5 = new Flower(15);
-        g.addFlower(f5, 2, 4);
+        g2.addFlower(f5, 2, 4);
 //        g.clearGarden();
-        g.saveGarden();
+//        g2.clearGarden();
+        GardenLogic.saveGarden();
     }
 
     /**
@@ -140,9 +150,9 @@ public class GardenLogic {
     /**
      * Saves the current garden state
      */
-    public void saveGarden() {
+    public static void saveGarden() {
         try (FileWriter write = new FileWriter(jsonPath)) {
-            gson.toJson(this.garden, write);
+            gson.toJson(garden, write);
         } catch (IOException e) {
             System.out.println("Incorrect saving garden: " + e.getMessage());
         }
@@ -151,14 +161,14 @@ public class GardenLogic {
     /**
      * Loads the garden state
      */
-    public void loadGarden() {
+    public static void loadGarden() {
         try (FileReader read = new FileReader(jsonPath)) {
             List<List<Flower>> load = gson.fromJson(read, new TypeToken<List<List<Flower>>>() {
             }.getType());
             if (load != null) {
                 for (int r = 0; r < ROW; r++) {
                     for (int c = 0; c < COL; c++) {
-                        this.garden.get(r).set(c, load.get(r).get(c));
+                        garden.get(r).set(c, load.get(r).get(c));
                     }
                 }
             }
