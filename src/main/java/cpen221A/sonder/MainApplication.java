@@ -13,7 +13,6 @@ import java.util.Objects;
  */
 public class MainApplication extends Application {
     private Stage stage;
-    private TaskManager taskManager;
     private LocalDateTime date = LocalDateTime.now();
     private GardenLogic gardenManager;
 
@@ -21,7 +20,6 @@ public class MainApplication extends Application {
     public void start(Stage newStage) throws IOException {
         this.stage = newStage;
         this.gardenManager = new GardenLogic();
-        this.taskManager = new TaskManager(this, this.gardenManager);
 
         AudioClip bgMusic = new AudioClip(
             Objects.requireNonNull(getClass().getResource("/audio/The Mercy of the Wind.mp3")).toString());
@@ -63,15 +61,6 @@ public class MainApplication extends Application {
     public void startTasks() {
         StartLogic startLogic = new StartLogic(this, this.gardenManager);
         startLogic.start();
-    }
-
-    /**
-     * Gets the task manager for managing the completion of tasks
-     *
-     * @return a new task manager object;
-     */
-    public TaskManager getTaskManager() {
-        return taskManager;
     }
 
     /**
