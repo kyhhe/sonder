@@ -1,9 +1,6 @@
 package cpen221A.sonder.TaskScreens;
 
-import cpen221A.sonder.AbstractScreen;
-import cpen221A.sonder.Flower;
-import cpen221A.sonder.GeneralTasks;
-import cpen221A.sonder.MainApplication;
+import cpen221A.sonder.*;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -22,8 +19,11 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
     }
 
     private Flower answer;
+    public Flower input;
     private Label warning;
     private Runnable onComplete;
+    private boolean toNext = false;
+    private Button selectedButton = null;
 
     @Override
     protected Parent createRoot() {
@@ -38,12 +38,24 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
         Label question = createText("plant your flower into the garden.");
         Button nextButton = createButton("next");
 
+        // Warning message
         this.warning = createText("please indicate where you'd like to plant your flower.");
         this.warning.setVisible(false);
 
         // Button action and task transition logic
-        nextButton.setOnAction(e ->  {if (onComplete != null) {
-            onComplete.run();};
+        nextButton.setOnAction(e -> {
+            if (this.input == null) {
+                this.warning.setVisible(true);
+            }
+            else {
+                this.warning.setVisible(false);
+                this.answer = this.input;
+
+                if (this.onComplete != null) {
+                    this.toNext = true;
+                    this.onComplete.run();
+                }
+            }
         });
 
         // Add elements to screen

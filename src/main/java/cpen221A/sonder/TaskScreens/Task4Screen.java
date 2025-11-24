@@ -15,7 +15,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,12 +22,12 @@ import java.util.List;
  * Creates the screen which provides the user interface for Task 4: Choose a flower for your garden.
  */
 public class Task4Screen extends AbstractScreen implements GeneralTasks {
-    public Task4Screen(MainApplication main){
+    public Task4Screen(MainApplication main) {
         super(main);
     }
 
-    private String answer;
-    public String input = "";
+    private Flower answer;
+    public Flower input;
     private Label warning;
     private Runnable onComplete;
     private boolean toNext = false;
@@ -51,38 +50,34 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         HBox rowFlowers = new HBox(25);
         rowFlowers.setAlignment(Pos.CENTER);
 
-        String[] flowers = {
-                "/FlowerImages/Flower1.PNG",
-                "/FlowerImages/Flower2.PNG",
-                "/FlowerImages/Flower3.PNG",
-                "/FlowerImages/Flower4.PNG",
-                "/FlowerImages/Flower5.PNG",
-                "/FlowerImages/Flower5.PNG",
-                "/FlowerImages/Flower6.PNG",
-                "/FlowerImages/Flower7.PNG",
-                "/FlowerImages/Flower8.PNG",
-                "/FlowerImages/Flower9.PNG",
-                "/FlowerImages/Flower10.PNG",
-                "/FlowerImages/Flower11.PNG",
-                "/FlowerImages/Flower12.PNG",
-                "/FlowerImages/Flower13.PNG",
-                "/FlowerImages/Flower14.PNG",
-        };
+        // List of 15 flowers
+        List<Flower> flowers = new ArrayList<>();
+        flowers.add(new Flower(1));
+        flowers.add(new Flower(2));
+        flowers.add(new Flower(3));
+        flowers.add(new Flower(4));
+        flowers.add(new Flower(5));
+        flowers.add(new Flower(6));
+        flowers.add(new Flower(7));
+        flowers.add(new Flower(8));
+        flowers.add(new Flower(9));
+        flowers.add(new Flower(10));
+        flowers.add(new Flower(11));
+        flowers.add(new Flower(12));
+        flowers.add(new Flower(13));
+        flowers.add(new Flower(14));
+        flowers.add(new Flower(15));
 
-        /* placeholder code */
-        //List<String> lastFlower = new ArrayList<>();
-        //lastFlower.add("/FlowerImages/Flower15.PNG");
-
-        List<String> displayFlowers = getRandomFlowers(flowers);
-        //if(isFornight()) {
-        //    displayFlowers = lastFlower;
+        List<Flower> displayFlowers = getRandomFlowers(flowers);
+        //if (gardenLogic.isFortnight()) {
+        //    displayFlowers = Collections.singletonList(this.flower15);
         //}
         //else {
-        //    displayFlowers = getRandomFlowers(flowers);
+        //    displayFlowers = getRandomFlowers();
         //}
 
-        for(String flower : displayFlowers) {
-            Image img = new Image(getClass().getResource(flower).toExternalForm());
+        for (Flower flower : displayFlowers) {
+            Image img = new Image(getClass().getResource(flower.getImagePath()).toExternalForm());
             ImageView flowerView = new ImageView(img);
             flowerView.setFitWidth(150);
             flowerView.setPreserveRatio(true);
@@ -110,14 +105,13 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
             rowFlowers.getChildren().add(faceButton);
         }
 
-
         // Warning message
         this.warning = createText("please select your flower of choice.");
         this.warning.setVisible(false);
 
         // Button action and task transition logic
         nextButton.setOnAction(e -> {
-            if (this.input == null || this.input.isEmpty()) {
+            if (this.input == null) {
                 this.warning.setVisible(true);
             }
             else {
@@ -143,12 +137,10 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
     /**
      * Randomly selects 3 flowers from a set of 14 flowers.
      *
-     * @param flowers the 14 flowers to choose from
-     *
      * @return the list of 3 randomly selected flowers
      */
-    private List<String> getRandomFlowers(String[] flowers) {
-        List<String> threeFlowers = new ArrayList<>(Arrays.asList(flowers));
+    private List<Flower> getRandomFlowers(List<Flower> flowers) {
+        List<Flower> threeFlowers = new ArrayList<>(flowers);
         Collections.shuffle(threeFlowers);
         return threeFlowers.subList(0, 3);
     }
@@ -159,7 +151,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
      * (otherwise, returns user input)
      * @return Flower object selected by the user's response to task 4
      */
-    public String getTask4Input() {
+    public Flower getTask4Input() {
         return this.answer;
     }
 

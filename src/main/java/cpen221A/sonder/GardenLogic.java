@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Class which handles the logic for retrieving and writing garden data.
  */
-public class GardenLogics {
+public class GardenLogic {
     private static final int ROW = 3;
     private static final int COL = 5;
     private final List<List<Flower>> garden = new ArrayList<>();
@@ -26,7 +26,7 @@ public class GardenLogics {
     /**
      * Creates a new empty 3x5 garden to manage and place flowers.
      */
-    public GardenLogics() {
+    public GardenLogic() {
         for (int row = 0; row < ROW; row++) {
             garden.add(new ArrayList<Flower>(Collections.nCopies(COL, (Flower) null)));
         }
@@ -34,7 +34,7 @@ public class GardenLogics {
 
     //debug importing flower into json
     public static void main(String[] args) {
-        GardenLogics g = new GardenLogics();
+        GardenLogic g = new GardenLogic();
         g.loadGarden();
         Flower f = new Flower(11);
         g.addFlower(f, 2, 0);

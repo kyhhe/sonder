@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.*;
 
 public class GardenScreen extends AbstractScreen{
-    private GardenLogics gardenLogic = new GardenLogics();
+    private GardenLogic gardenLogic = new GardenLogic();
     /**
      * Creates the screen for displaying the garden.
      *
@@ -30,7 +30,7 @@ public class GardenScreen extends AbstractScreen{
     protected Parent createRoot() {
         //Preventing null field when AbstractScreen called method
         if (gardenLogic == null) {
-            gardenLogic = new GardenLogics();
+            gardenLogic = new GardenLogic();
             gardenLogic.loadGarden();
         }
         // Initialize Screen elements
