@@ -22,15 +22,12 @@ import java.util.List;
  * Creates the screen which provides the user interface for Task 4: Choose a flower for your garden.
  */
 public class Task4Screen extends AbstractScreen implements GeneralTasks {
-    private GardenLogic gardenManager;
-
     public Task4Screen(MainApplication main, GardenLogic gardenManager) {
         super(main);
-        this.gardenManager = gardenManager;
     }
 
     private Flower answer;
-    public Flower input;
+    private Flower input;
     private Label warning;
     private Runnable onComplete;
     private boolean toNext = false;
@@ -73,10 +70,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         //Flower randomization for user input
         List<Flower> displayFlowers;
 
-        boolean isFortnight = false;
-        if (this.gardenManager != null) {
-            isFortnight = this.gardenManager.isFortnight();
-        }
+        boolean isFortnight = GardenLogic.isFortnight();
 
         if (isFortnight) {
             displayFlowers = Collections.singletonList(new Flower(15));
@@ -90,9 +84,9 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
             flowerView.setFitWidth(150);
             flowerView.setPreserveRatio(true);
 
-            Button faceButton = new Button();
-            faceButton.setGraphic(flowerView);
-            faceButton.setStyle("-fx-background-color: transparent;" +
+            Button flowerButton = new Button();
+            flowerButton.setGraphic(flowerView);
+            flowerButton.setStyle("-fx-background-color: transparent;" +
                     "-fx-padding: 5;");
 
             DropShadow selectedShadow = new DropShadow();
@@ -100,18 +94,18 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
             selectedShadow.setSpread(0.5);
             selectedShadow.setRadius(40);
 
-            faceButton.setOnAction(e -> {
+            flowerButton.setOnAction(e -> {
                 this.input = flower;
 
                 if (selectedButton != null) {
                     selectedButton.setEffect(null);
                 }
 
-                faceButton.setEffect(selectedShadow);
-                selectedButton = faceButton;
+                flowerButton.setEffect(selectedShadow);
+                selectedButton = flowerButton;
             });
 
-            rowFlowers.getChildren().add(faceButton);
+            rowFlowers.getChildren().add(flowerButton);
         }
 
         // Warning message
@@ -123,8 +117,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         nextButton.setOnAction(e -> {
             if (this.input == null) {
                 this.warning.setVisible(true);
-            }
-            else {
+            } else {
                 this.warning.setVisible(false);
                 this.answer = this.input;
 
