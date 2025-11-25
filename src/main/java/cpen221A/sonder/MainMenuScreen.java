@@ -44,10 +44,6 @@ public class MainMenuScreen extends AbstractScreen {
         StackPane pane = new StackPane();
 
         // Screen elements
-        Button startButton = createButton("start");
-        Button gardenButton = createButton("garden");
-        Button entriesButton = createButton("entries");
-
         Label title = createTitle("sonder");
         title.setStyle("-fx-font-size: 70;");
 
@@ -59,6 +55,10 @@ public class MainMenuScreen extends AbstractScreen {
         currentDate.setStyle("-fx-font-size: 17;" +
                 "-fx-font-style: italic;");
         currentDate.setPadding(new Insets(5));
+
+        Button startButton = createButton("start");
+        Button gardenButton = createButton("garden");
+        Button entriesButton = createButton("entries");
 
         Image flower = new Image(getClass().getResource(new Flower(flowerDisplay()).getImagePath()).toExternalForm());
         ImageView flowerView = new ImageView(flower);
@@ -75,6 +75,7 @@ public class MainMenuScreen extends AbstractScreen {
                 startButton, gardenButton, entriesButton, currentDate);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
+
         return pane;
     }
 

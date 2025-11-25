@@ -14,16 +14,16 @@ import javafx.scene.text.Font;
 /**
  * Creates the screen which provides the user interface for Task 2: What is one thing you’re grateful for?.
  */
-public class Task2Screen extends AbstractScreen implements GeneralTasks {
-    public Task2Screen(MainApplication main){
-        super(main);
-    }
-
+public class Task2Screen extends AbstractScreen {
     private TextArea input;
     private String answer;
     private Label warning;
     private Runnable onComplete;
     private boolean toNext = false;
+
+    public Task2Screen(MainApplication main){
+        super(main);
+    }
 
     @Override
     protected Parent createRoot() {
@@ -36,6 +36,7 @@ public class Task2Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("introspect:");
         Label question = createText("what is one thing you’re grateful for?");
+
         Button nextButton = createButton("next");
 
         // Text box for user-inputted response
@@ -79,10 +80,6 @@ public class Task2Screen extends AbstractScreen implements GeneralTasks {
      */
     public String getTask2Input() {
         return this.answer;
-    }
-
-    public boolean currentComplete() {
-        return this.toNext;
     }
 
     /**

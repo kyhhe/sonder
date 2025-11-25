@@ -13,7 +13,7 @@ import javafx.scene.layout.*;
 import java.net.URL;
 import java.util.*;
 
-public class GardenScreen extends AbstractScreen{
+public class GardenScreen extends AbstractScreen {
     private GardenLogic gardenLogic = new GardenLogic();
     /**
      * Creates the screen for displaying the garden.
@@ -33,6 +33,7 @@ public class GardenScreen extends AbstractScreen{
             gardenLogic = new GardenLogic();
             gardenLogic.loadGarden();
         }
+
         // Initialize Screen elements
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
@@ -40,8 +41,6 @@ public class GardenScreen extends AbstractScreen{
         StackPane pane = new StackPane();
 
         Button backButton = createButton("menu");
-
-        // Button Layout
         BorderPane pos = new BorderPane();
         pos.setLeft(backButton);
         pos.setPadding(new Insets(10));
@@ -57,33 +56,35 @@ public class GardenScreen extends AbstractScreen{
         bgView.setFitHeight(768);
         bgView.setPreserveRatio(false);
 
-        // garden spacing
+        // Garden spacing
         GridPane grid = new GridPane();
         grid.setHgap(30);
         grid.setVgap(12);
         grid.setPadding(new Insets(270,0,0,75));
 
-        // load flowers
+        // Load flowers
         List<List<Flower>> garden = gardenLogic.getGarden();
-        for(int r = 0; r < garden.size(); r++) {
-            for(int c = 0; c < garden.get(r).size(); c++) {
+        for (int r = 0; r < garden.size(); r++) {
+            for (int c = 0; c < garden.get(r).size(); c++) {
                 Flower f = garden.get(r).get(c);
-                if(f!=null && f.getImagePath()!= null){
-                    URL url=getClass().getResource(f.getImagePath());
-                    System.out.printf("url:"+url);//debug
 
-                    ImageView fImage = new ImageView(new Image(
+                if (f != null && f.getImagePath() != null) {
+                    URL url = getClass().getResource(f.getImagePath());
+                    System.out.printf("url:" + url);//debug
+
+                    ImageView flowerView = new ImageView(new Image(
                             Objects.requireNonNull(getClass().getResource(f.getImagePath())).toExternalForm()));
-                    fImage.setFitHeight(150);
-                    fImage.setFitWidth(150);
-                    grid.add(fImage, c, r);
-                }else{
+                    flowerView.setFitHeight(150);
+                    flowerView.setFitWidth(150);
+                    grid.add(flowerView, c, r);
+                } else {
                     Pane emptyFlower = new Pane();
                     emptyFlower.setPrefSize(150,150);
-                    grid.add(emptyFlower,c,r);
+                    grid.add(emptyFlower, c, r);
                 }
             }
         }
+
         VBox g = new VBox(grid);
 
         // Add elements to screen
@@ -93,5 +94,4 @@ public class GardenScreen extends AbstractScreen{
 
         return pane;
     }
-
 }

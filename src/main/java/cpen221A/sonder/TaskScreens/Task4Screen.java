@@ -21,17 +21,17 @@ import java.util.List;
 /**
  * Creates the screen which provides the user interface for Task 4: Choose a flower for your garden.
  */
-public class Task4Screen extends AbstractScreen implements GeneralTasks {
-    public Task4Screen(MainApplication main) {
-        super(main);
-    }
-
+public class Task4Screen extends AbstractScreen {
     private Flower answer;
     private Flower input;
     private Label warning;
     private Runnable onComplete;
     private boolean toNext = false;
     private Button selectedButton = null;
+
+    public Task4Screen(MainApplication main) {
+        super(main);
+    }
 
     @Override
     protected Parent createRoot() {
@@ -44,6 +44,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("reward:");
         Label question = createText("choose a flower for your garden.");
+
         Button nextButton = createButton("next");
 
         // Image selection elements
@@ -69,7 +70,6 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
 
         //Flower randomization for user input
         List<Flower> displayFlowers;
-
         if (GardenLogic.isFortnight()) {
             displayFlowers = Collections.singletonList(new Flower(15));
         } else {
@@ -154,15 +154,6 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
      */
     public Flower getTask4Input() {
         return this.answer;
-    }
-
-    /**
-     * Checks and returns task completion status
-     *
-     * @return true if user completes task, false otherwise
-     */
-    public boolean currentComplete() {
-        return this.toNext;
     }
 
     /**

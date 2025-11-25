@@ -33,25 +33,7 @@ public class GardenLogic {
         loadGarden();
     }
 
-    //debug importing flower into json
-    public static void main(String[] args) {
-        GardenLogic g = new GardenLogic();
-        GardenLogic g2 = new GardenLogic();
-        GardenLogic.loadGarden();
-        Flower f = new Flower(1);
-        g.addFlower(f, 0, 0);
-        Flower f2 = new Flower(12);
-        g2.addFlower(f2, 2, 1);
-        Flower f3 = new Flower(13);
-        g2.addFlower(f3, 2, 2);
-        Flower f4 = new Flower(14);
-        g2.addFlower(f4, 2, 3);
-        Flower f5 = new Flower(15);
-        g2.addFlower(f5, 2, 4);
-//        g.clearGarden();
-//        g2.clearGarden();
-        GardenLogic.saveGarden();
-    }
+
 
     /**
      * Getter method of garden
@@ -84,6 +66,7 @@ public class GardenLogic {
         if (garden.get(row).get(col) != null) {
             return false;
         }
+
         garden.get(row).set(col, flower);
         flower.setPosition(row, col);
         return true;

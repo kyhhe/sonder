@@ -10,9 +10,6 @@ public class Flower {
     private int flowerId;
     private int row = -1;
     private int col = -1;
-    private transient Image flowerImage;
-
-    public Flower(){}
 
     /**
      * Creates a new flower object without position in garden
@@ -26,41 +23,15 @@ public class Flower {
         this.flowerId =id;
     }
 
-    /**
-     * Create a new flower object with position in garden
-     * @param id unique ID for the flower type (1-15)
-     * @param row garden row (0-2)
-     * @param col garden colume (0-4)
-     * @throws IllegalArgumentException invalid input of flower input
-     */
-    public Flower(int id, int row, int col) throws IllegalArgumentException{
-        if(id < 1 || id > 15 || row < 0 || row > 2 || col < 0 || col > 4){
-            throw new IllegalArgumentException("Invalid flower object input");
-        }
-        this.flowerId =id;
-        this.row = row;
-        this.col= col;
-    }
-
     // Getters methods
     public int getId() { return flowerId; }
     public int getRow() { return row; }
     public int getCol() { return col; }
 
     // Setters methods for changing/setting location of flower
-    public void setRow(int row){ this.row = row;}
-    public void setCol(int col){ this.col = col;}
-    public void setPosition(int row, int col){
+    public void setPosition(int row, int col) {
         this.row=row;
         this.col=col;
-    }
-
-    /**
-     * Return if the flower is planted in the garden
-     * @return true if it has a position in the garden, false otherwise
-     */
-    public boolean hasPlanted() {
-        return row >= 0 && col >= 0;
     }
 
     /**
@@ -85,7 +56,7 @@ public class Flower {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Flower{" + "id="+ flowerId + ", row="
                 + row+", col="+col+", imagePath="+getImagePath()+"}";
     }

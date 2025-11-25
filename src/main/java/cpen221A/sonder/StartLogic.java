@@ -54,7 +54,7 @@ public class StartLogic {
      */
     public void start() {
         List<UserEntry> entries = EntryManagement.readEntries();
-        boolean entryComplete = false;  // True if an entry has already been written for this day.
+        boolean entryComplete = false;
 
         if (entries == null) {
             EntryManagement.initializeJSON();

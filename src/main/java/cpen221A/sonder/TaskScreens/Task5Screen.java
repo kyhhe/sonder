@@ -13,14 +13,7 @@ import javafx.scene.paint.Color;
 /**
  * Creates the screen which provides the user interface for Task 5: Plant your flower in the garden.
  */
-public class Task5Screen extends AbstractScreen implements GeneralTasks {
-    //private GardenLogic gardenLogic;  //<--initialize a new gardenLogic object
-
-    public Task5Screen(MainApplication main){
-        super(main);
-        //this.gardenLogic = new GardenLogic();   //<--create GardenLogic object
-    }
-
+public class Task5Screen extends AbstractScreen {
     private Flower answer;
     public Flower input;
     private Flower myFlower;
@@ -29,6 +22,10 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
     private Runnable onComplete;
     private boolean toNext = false;
     private Button selectedButton = null;
+
+    public Task5Screen(MainApplication main) {
+        super(main);
+    }
 
     @Override
     protected Parent createRoot() {
@@ -48,6 +45,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("cultivate:");
         Label question = createText("plant your flower into the garden.");
+
         Button nextButton = createButton("next");
 
         // Warning message
@@ -71,8 +69,8 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
         selectedShadow.setSpread(0.8);
         selectedShadow.setRadius(50);
 
-        for(int r = 0; r < 3; r++) {
-            for(int c = 0; c < 5; c++) {
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 5; c++) {
                 Button gardenButton = new Button();
                 gardenButton.setPrefSize(150, 150);
                 gardenButton.setStyle("-fx-background-color: transparent;" +
@@ -100,8 +98,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
         nextButton.setOnAction(e -> {
             if (this.input == null) { // no input
                 this.warning.setVisible(true);
-            }
-            else {
+            } else {
                 this.warning.setVisible(false);
 
                 int row = this.input.getRow();
@@ -109,8 +106,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
 
                 if(!GardenLogic.isEmpty(row, col)) { // invalid spot
                     this.invalid.setVisible(true);
-                }
-                else {
+                } else {
                     this.invalid.setVisible(false);
                     this.answer = this.input;
 
@@ -149,15 +145,6 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
      */
     public Flower getTask5Input() {
         return this.answer;
-    }
-
-    /**
-     * Checks and returns task completion status
-     *
-     * @return true if user completes task, false otherwise
-     */
-    public boolean currentComplete() {
-        return this.toNext;
     }
 
     /**

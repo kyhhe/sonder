@@ -1,7 +1,6 @@
 package cpen221A.sonder.TaskScreens;
 
 import cpen221A.sonder.AbstractScreen;
-import cpen221A.sonder.GeneralTasks;
 import cpen221A.sonder.MainApplication;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,8 +18,7 @@ import javafx.scene.paint.Color;
 /**
  * Creates the screen which provides the user interface for Task 1: How are you feeling today?
  */
-public class Task1Screen extends AbstractScreen implements GeneralTasks {
-
+public class Task1Screen extends AbstractScreen {
     private String answer;
     public String input = "";
     private Label warning;
@@ -31,7 +29,6 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
     public Task1Screen(MainApplication main){
         super(main);
     }
-
 
     @Override
     protected Parent createRoot() {
@@ -44,6 +41,7 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("reflect:");
         Label question = createText("how are you feeling today?");
+
         Button nextButton = createButton("next");
 
         // Image selection elements
@@ -98,6 +96,7 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
             if (this.input == null || this.input.isEmpty()) {
                 this.warning.setVisible(true);
             }
+
             else {
                 this.warning.setVisible(false);
                 this.answer = this.input;
@@ -126,15 +125,6 @@ public class Task1Screen extends AbstractScreen implements GeneralTasks {
      */
     public String getTask1Input() {
         return this.answer;
-    }
-
-    /**
-     * Checks and returns task completion status
-     *
-     * @return true if user completes task, false otherwise
-     */
-    public boolean currentComplete() {
-        return this.toNext;
     }
 
     /**

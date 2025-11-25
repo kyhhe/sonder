@@ -16,12 +16,10 @@ import java.util.Objects;
 public class MainApplication extends Application {
     private Stage stage;
     private LocalDateTime date = LocalDateTime.now();
-    //private GardenLogic gardenManager;
 
     @Override
     public void start(Stage newStage) throws IOException {
         this.stage = newStage;
-        //this.gardenManager = new GardenLogic();
 
         // Checks if data files exist. 
         File entriesFile = new File("data/json/entries.json");
@@ -101,7 +99,6 @@ public class MainApplication extends Application {
      * @param newDate the game's new date .
      */
     public void setDate(LocalDateTime newDate) {
-
         this.date = newDate;
     }
 

@@ -1,7 +1,6 @@
 package cpen221A.sonder.TaskScreens;
 
 import cpen221A.sonder.AbstractScreen;
-import cpen221A.sonder.GeneralTasks;
 import cpen221A.sonder.MainApplication;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -10,21 +9,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 /**
  * Creates the screen which provides the user interface for Task 3: What is one thing you learned today? What is one goal you have for tomorrow?
  */
-public class Task3Screen extends AbstractScreen implements GeneralTasks {
-    public Task3Screen(MainApplication main){
-        super(main);
-    }
-
+public class Task3Screen extends AbstractScreen {
     private TextArea input;
     private String answer;
     private Label warning;
     private Runnable onComplete;
     private boolean toNext = false;
+
+    public Task3Screen(MainApplication main){
+        super(main);
+    }
 
     @Override
     protected Parent createRoot() {
@@ -37,6 +35,7 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
         // Screen elements
         Label title = createTitle("aspire:");
         Label question = createText("what is one thing you learned today? what is one goal you have for tomorrow?");
+
         Button nextButton = createButton("next");
 
         // Text box for user-inputted response
@@ -80,15 +79,6 @@ public class Task3Screen extends AbstractScreen implements GeneralTasks {
      */
     public String getTask3Input() {
         return this.answer;
-    }
-
-    /**
-     * Checks and returns task completion status
-     *
-     * @return true if user completes task, false otherwise
-     */
-    public boolean currentComplete() {
-        return this.toNext;
     }
 
     /**
