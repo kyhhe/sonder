@@ -47,3 +47,57 @@
     -fx-wrap-text: true;
     -fx-max-width: 600px;
 }
+
+.entry-box {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-padding: 15;
+    -fx-background-insets: 0;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 8, 0.15, 0, 1);
+
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+.entry-box:hover {
+    -fx-background-color: #e9fce9;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 15, 0.2, 0, 3);
+    -fx-cursor: hand;
+}
+
+.entry-box:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+
+.task-title {
+    -fx-font-family: "Caveat Brush";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b4332;
+}
+
+.empty-text {
+    -fx-font-size: 22px;
+    -fx-text-fill: #1b4332;
+    -fx-opacity: 0.7;
+    -fx-font-family: "Caveat Brush";
+}
+
+.arrow {
+    -fx-font-size: 22px;
+    -fx-text-fill: #1b4332;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-hbar-policy: never;
+}
+
+
+
