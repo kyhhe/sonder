@@ -16,12 +16,12 @@ import java.util.Objects;
 public class MainApplication extends Application {
     private Stage stage;
     private LocalDateTime date = LocalDateTime.now();
-    private GardenLogic gardenManager;
+    //private GardenLogic gardenManager;
 
     @Override
     public void start(Stage newStage) throws IOException {
         this.stage = newStage;
-        this.gardenManager = new GardenLogic();
+        //this.gardenManager = new GardenLogic();
 
         // Checks if data files exist. 
         File entriesFile = new File("data/json/entries.json");
@@ -72,7 +72,7 @@ public class MainApplication extends Application {
      * Loads the sequence of tasks and the logic which controls it
      */
     public void startTasks() {
-        StartLogic startLogic = new StartLogic(this, this.gardenManager);
+        StartLogic startLogic = new StartLogic(this);
         startLogic.start();
     }
 

@@ -7,27 +7,18 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-
-import java.awt.Point;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Creates the screen which provides the user interface for Task 5: Plant your flower in the garden.
  */
 public class Task5Screen extends AbstractScreen implements GeneralTasks {
-//    private GardenLogic gardenManager;
-    private GardenLogic gardenLogic;  //<--initialize a new gardenLogic object
+    //private GardenLogic gardenLogic;  //<--initialize a new gardenLogic object
 
-    public Task5Screen(MainApplication main, GardenLogic gardenManager){
+    public Task5Screen(MainApplication main){
         super(main);
-//        this.gardenManager = gardenManager;
-        this.gardenLogic = new GardenLogic();   //<--create GardenLogic object
+        //this.gardenLogic = new GardenLogic();   //<--create GardenLogic object
     }
 
     private Flower answer;
@@ -80,7 +71,6 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
         selectedShadow.setSpread(0.8);
         selectedShadow.setRadius(50);
 
-
         for(int r = 0; r < 3; r++) {
             for(int c = 0; c < 5; c++) {
                 Button gardenButton = new Button();
@@ -117,7 +107,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
                 int row = this.input.getRow();
                 int col = this.input.getCol();
 
-                if(!this.gardenLogic.isEmpty(row, col)) { // invalid spot
+                if(!GardenLogic.isEmpty(row, col)) { // invalid spot
                     this.invalid.setVisible(true);
                 }
                 else {
@@ -127,7 +117,7 @@ public class Task5Screen extends AbstractScreen implements GeneralTasks {
                     if (this.onComplete != null) {
                         this.toNext = true;
                         GardenLogic.loadGarden();   //<--load the garden from .json to the object
-                        this.gardenLogic.addFlower(this.answer, row, col);  //<--do the implement of adding flower
+                        GardenLogic.addFlower(this.answer, row, col);  //<--do the implement of adding flower
                         GardenLogic.saveGarden();   //<--save the garden to .json
                         this.onComplete.run();
                     }

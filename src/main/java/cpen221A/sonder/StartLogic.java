@@ -24,13 +24,13 @@ public class StartLogic {
     private final AllCompleteScreen allCompleteScreen;
     private final MainApplication main;
 
-    public StartLogic(MainApplication main, GardenLogic gardenManager) {
+    public StartLogic(MainApplication main) {
         this.main = main;
         task1Screen = new Task1Screen(main);
         task2Screen = new Task2Screen(main);
         task3Screen = new Task3Screen(main);
-        task4Screen = new Task4Screen(main, gardenManager);
-        task5Screen = new Task5Screen(main, gardenManager);
+        task4Screen = new Task4Screen(main);
+        task5Screen = new Task5Screen(main);
         allCompleteScreen = new AllCompleteScreen(main);
 
         task1Screen.nextTask(this::showTask2Screen);
@@ -69,7 +69,8 @@ public class StartLogic {
                 }
             }
         }
-        if (entryComplete) {
+
+        if (entryComplete || GardenLogic.isFull()) {
             showAllCompleteScreen();
         } else {
             showTask1Screen();

@@ -1,11 +1,15 @@
 package cpen221A.sonder.TaskScreens;
 
 import cpen221A.sonder.AbstractScreen;
+import cpen221A.sonder.Flower;
+import cpen221A.sonder.GardenLogic;
 import cpen221A.sonder.MainApplication;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -27,15 +31,29 @@ public class AllCompleteScreen extends AbstractScreen {
         StackPane pane = new StackPane();
 
         // Screen elements
-        Label title = createTitle("thank you for logging today's entry.");
-        Label subtitle = createText("check back in tomorrow :)");
+        Label title1 = createTitle("thank you for logging today's entry.");
+        Label subtitle1 = createText("check back in tomorrow :)");
+        Label title2 = createTitle("your garden is in full bloom!");
+        Label subtitle2 = createText("thanks for planting with us.");
         Button backButton = createButton("menu");
+
+        Image flower = new Image(getClass().getResource(new Flower(15).getImagePath()).toExternalForm());
+        ImageView flowerView = new ImageView(flower);
+        flowerView.setFitWidth(180);
+        flowerView.setPreserveRatio(true);
+
+        // Screen elements display logic
+        if(GardenLogic.isFull() || GardenLogic.isFortnight()) {
+            vbox.getChildren().addAll(flowerView, title2, subtitle2, backButton);
+        }
+        else {
+            vbox.getChildren().addAll(title1, subtitle1, backButton);
+        }
 
         // Button actions
         backButton.setOnAction(e -> main.showMainMenu());
 
         // Add elements to screen
-        vbox.getChildren().addAll(title, subtitle, backButton);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
 

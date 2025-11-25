@@ -156,9 +156,9 @@ public class EntriesScreen extends AbstractScreen {
         }
 
         // Task Headers
-        Label moodLabel = new Label("how you felt:");
+        Label moodLabel = new Label("mood:");
         Label gratitudeLabel = new Label("gratitude:");
-        Label learningLabel = new Label("learned / goal:");
+        Label learningLabel = new Label("lesson / goal:");
         moodLabel.getStyleClass().add("task-title");
         gratitudeLabel.getStyleClass().add("task-title");
         learningLabel.getStyleClass().add("task-title");

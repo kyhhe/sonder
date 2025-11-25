@@ -22,7 +22,7 @@ import java.util.List;
  * Creates the screen which provides the user interface for Task 4: Choose a flower for your garden.
  */
 public class Task4Screen extends AbstractScreen implements GeneralTasks {
-    public Task4Screen(MainApplication main, GardenLogic gardenManager) {
+    public Task4Screen(MainApplication main) {
         super(main);
     }
 
@@ -70,9 +70,7 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
         //Flower randomization for user input
         List<Flower> displayFlowers;
 
-        boolean isFortnight = GardenLogic.isFortnight();
-
-        if (isFortnight) {
+        if (GardenLogic.isFortnight()) {
             displayFlowers = Collections.singletonList(new Flower(15));
         } else {
             displayFlowers = getRandomFlowers(flowers);
@@ -123,7 +121,6 @@ public class Task4Screen extends AbstractScreen implements GeneralTasks {
 
                 if (this.onComplete != null) {
                     this.toNext = true;
-                    //gardenManager.addFlower(selectedFlower);
                     this.onComplete.run();
                 }
             }

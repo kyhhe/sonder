@@ -23,13 +23,6 @@ public class GardenLogic {
     private static final Gson gson =
             new GsonBuilder().excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT).setPrettyPrinting().create();
 
-
-    /**
-     * Constructor of GardenLogic
-     */
-    public GardenLogic() {
-    }
-
     /**
      * Create static garden
      */
@@ -63,7 +56,7 @@ public class GardenLogic {
     /**
      * Getter method of garden
      */
-    public List<List<Flower>> getGarden() {
+    public static List<List<Flower>> getGarden() {
         List<List<Flower>> g = new ArrayList<>();
         for (int r = 0; r < ROW; r++) {
             List<Flower> row = new ArrayList<>();
@@ -84,7 +77,7 @@ public class GardenLogic {
      * @return true if added flower to the garden, false otherwise
      * @throws IllegalArgumentException if position is invalid
      */
-    public boolean addFlower(Flower flower, int row, int col) {
+    public static boolean addFlower(Flower flower, int row, int col) {
         if (row < 0 || row >= ROW || col < 0 || col >= COL) {
             throw new IllegalArgumentException("Invalid input positions");
         }
@@ -103,7 +96,7 @@ public class GardenLogic {
      * @param col column index
      * @return true if the position is empty, false otherwise
      */
-    public boolean isEmpty(int row, int col) {
+    public static boolean isEmpty(int row, int col) {
         if (row < 0 || row >= ROW || col < 0 || col >= COL) {
             throw new IllegalArgumentException("Invalid input position");
         }
@@ -132,7 +125,7 @@ public class GardenLogic {
      *
      * @return true if all 15 cells have flowers
      */
-    public boolean isFull() {
+    public static boolean isFull() {
         for (List<Flower> r : garden) {
             for (Flower c : r) {
                 if (c == null) {
@@ -180,7 +173,7 @@ public class GardenLogic {
      * @param flower the flower to check
      * @return true if the flower has already been planted, false otherwise.
      */
-    public boolean flowerInGarden(Flower flower) {
+    public static boolean flowerInGarden(Flower flower) {
         for (List<Flower> r : garden) {
             for (Flower f : r) {
                 if (f != null && f.equals(flower)) {
