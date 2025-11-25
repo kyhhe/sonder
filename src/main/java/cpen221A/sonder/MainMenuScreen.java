@@ -4,6 +4,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -21,6 +23,8 @@ public class MainMenuScreen extends AbstractScreen {
         "welcome, gardener of your own mind",
         "what will you grow today?",
         "ready to flourish?");
+    private static final List<Integer> FLOWERS = List.of(
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
 
     /**
      * Initializes the main menu screen
@@ -43,10 +47,23 @@ public class MainMenuScreen extends AbstractScreen {
         Button startButton = createButton("start");
         Button gardenButton = createButton("garden");
         Button entriesButton = createButton("entries");
+
         Label title = createTitle("sonder");
+        title.setStyle("-fx-font-size: 70;");
+
         Label welcomeMessage = createText(welcomeMessage());
+        welcomeMessage.setStyle("-fx-font-size: 20;");
+        welcomeMessage.setPadding(new Insets(0, 0, 5, 0));
+
         Label currentDate = createText(DateTimeFormatter.ISO_LOCAL_DATE.format(main.getDate()));
-        Label debugMessage = createText("");
+        currentDate.setStyle("-fx-font-size: 17;" +
+                "-fx-font-style: italic;");
+        currentDate.setPadding(new Insets(5));
+
+        Image flower = new Image(getClass().getResource(new Flower(flowerDisplay()).getImagePath()).toExternalForm());
+        ImageView flowerView = new ImageView(flower);
+        flowerView.setFitWidth(180);
+        flowerView.setPreserveRatio(true);
 
         // Button actions
         startButton.setOnAction(e -> main.startTasks());
@@ -54,8 +71,8 @@ public class MainMenuScreen extends AbstractScreen {
         entriesButton.setOnAction(e -> main.showEntriesScreen());
 
         // Add elements to screen
-        vbox.getChildren().
-            addAll(title, welcomeMessage, startButton, gardenButton, entriesButton, currentDate, debugMessage);
+        vbox.getChildren().addAll(flowerView, title, welcomeMessage,
+                startButton, gardenButton, entriesButton, currentDate);
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
         pane.getChildren().add(vbox);
         return pane;
@@ -71,6 +88,12 @@ public class MainMenuScreen extends AbstractScreen {
         Random rand = new Random();
         int randomNum = rand.nextInt(MESSAGES.size());
         return MESSAGES.get(randomNum);
+    }
+
+    private int flowerDisplay() {
+        Random rand = new Random();
+        int randomFlower = rand.nextInt(FLOWERS.size());
+        return FLOWERS.get(randomFlower);
     }
 
     /**
