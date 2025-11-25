@@ -48,7 +48,7 @@ public class EntriesScreen extends AbstractScreen{
         Region spacer = new Region();
         spacer.setMinWidth(70);  // adjust for button width
         topBar.setRight(spacer);
-        
+
         topBar.setPadding(new Insets(10));
         topBar.setMaxWidth(Double.MAX_VALUE);
 
