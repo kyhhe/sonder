@@ -1,9 +1,6 @@
 
 package cpen221A.sonder;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -13,7 +10,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -82,11 +78,14 @@ public class EntriesScreen extends AbstractScreen {
         entriesContainer.getChildren().clear();
 
         if (entries.isEmpty()) {
-            Label empty = createText("No entries yet.");
+            Label empty = createText("no entries yet");
             empty.getStyleClass().add("empty-text");
             empty.setPadding(new Insets(40, 0, 0, 0));
             empty.setAlignment(Pos.CENTER);
+            empty.setMaxWidth(Double.MAX_VALUE);
+            entriesContainer.setAlignment(Pos.CENTER);
             entriesContainer.getChildren().add(empty);
+
             return;
         }
 
@@ -157,9 +156,9 @@ public class EntriesScreen extends AbstractScreen {
         }
 
         // Task Headers
-        Label moodLabel = new Label("How you felt:");
-        Label gratitudeLabel = new Label("Gratitude:");
-        Label learningLabel = new Label("Learned / Goal:");
+        Label moodLabel = new Label("how you felt:");
+        Label gratitudeLabel = new Label("gratitude:");
+        Label learningLabel = new Label("learned / goal:");
         moodLabel.getStyleClass().add("task-title");
         gratitudeLabel.getStyleClass().add("task-title");
         learningLabel.getStyleClass().add("task-title");
