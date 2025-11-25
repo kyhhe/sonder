@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -21,6 +23,17 @@ public class MainApplication extends Application {
         this.stage = newStage;
         this.gardenManager = new GardenLogic();
 
+        // Checks if data files exist. 
+        File entriesFile = new File("data/json/entries.json");
+        File gardenFile = new File("data/json/gardenData.json");
+        if (!entriesFile.exists()) {
+            EntryManagement.initializeJSON();
+        }
+        if (!gardenFile.exists()) {
+            GardenLogic.clearGarden();
+        }
+
+        // Plays music
         AudioClip bgMusic = new AudioClip(
             Objects.requireNonNull(getClass().getResource("/audio/The Mercy of the Wind.mp3")).toString());
         bgMusic.setCycleCount(AudioClip.INDEFINITE);
