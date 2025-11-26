@@ -23,9 +23,7 @@ public class GardenLogic {
     private static final Gson gson =
             new GsonBuilder().excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT).setPrettyPrinting().create();
 
-    /**
-     * Create static garden
-     */
+    // Create static garden
     static {
         for (int i = 0; i < ROW; i++) {
             garden.add(new ArrayList<>(Collections.nCopies(COL, null)));

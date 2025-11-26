@@ -83,6 +83,6 @@ public class UserEntry {
      * @return true if the entry is valid, false if at least one field is empty.
      */
     public boolean checkValidEntry() {
-        return !ObjectUtils.allNull(this.date, this.task1, this.task2, this.task3, this.flower);
+        return !ObjectUtils.anyNull(this.date, this.task1, this.task2, this.task3, this.flower);
     }
 }

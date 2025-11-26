@@ -1,13 +1,11 @@
 package cpen221A.sonder;
 
-import javafx.scene.image.Image;
-
 /**
  * Class containing methods for creating, modifying and representing flowers. Each flower has a unique
  * ID, with each ID corresponding to a respective image.
  */
 public class Flower {
-    private int flowerId;
+    private final int flowerId;
     private int row = -1;
     private int col = -1;
 
@@ -42,22 +40,4 @@ public class Flower {
        return "/FlowerImages/Flower" + flowerId+".PNG";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o){return true;}
-        if(!(o instanceof Flower)){ return false;}
-        Flower f= (Flower) o;
-        return this.flowerId == f.flowerId;
-    }
-
-    @Override
-    public int hashCode() {
-        return flowerId + row * 10 + col * 100;
-    }
-
-    @Override
-    public String toString() {
-        return "Flower{" + "id="+ flowerId + ", row="
-                + row+", col="+col+", imagePath="+getImagePath()+"}";
-    }
 }
