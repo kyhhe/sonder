@@ -12,18 +12,26 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Class which handles the logic for retrieving and writing garden data.
+ * Handles loading, saving, and modifying the flower garden.
+ * The garden is represented as a 3x5 grid, where each cell may contain a Flower object or be empty.
+ * The class provides operations for:
+ * <li>Adding flowers</li>
+ * <li>Checking garden status (full, 14 flowers, empty cells)</li>
+ * <li>Loading and storing garden layout from/to JSON</li>
+ * <li>Utility operations used by UI logic</li>
  */
 public class GardenLogic {
     private static final int ROW = 3;
     private static final int COL = 5;
-    private static final List<List<Flower>> garden = new ArrayList<>();
-    // 2D array to represent the flower garden
-    private static final String jsonPath = "data/json/gardenData.json";
-    private static final Gson gson =
-            new GsonBuilder().excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT).setPrettyPrinting().create();
 
-    // Create static garden
+    private static final List<List<Flower>> garden = new ArrayList<>();
+    private static final String jsonPath = "data/json/gardenData.json";
+
+    private static final Gson gson =
+            new GsonBuilder().excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT)
+                    .setPrettyPrinting().create();
+
+    // Initializes the 3x5 garden and loads saved state
     static {
         for (int i = 0; i < ROW; i++) {
             garden.add(new ArrayList<>(Collections.nCopies(COL, null)));
@@ -31,10 +39,10 @@ public class GardenLogic {
         loadGarden();
     }
 
-
-
     /**
-     * Getter method of garden
+     * Return a deep copy of the garden structure
+     *
+     * @return a copy of the 3x5 garden grid
      */
     public static List<List<Flower>> getGarden() {
         List<List<Flower>> g = new ArrayList<>();
@@ -49,13 +57,14 @@ public class GardenLogic {
     }
 
     /**
-     * Add a flower to the garden.
+     * Attempt to place a flower into the garden at the position
+     * A position may only be filled if it was previously empty.
      *
-     * @param flower the flower to add
-     * @param row    the row of the position selected(0-2), position should not have flower previously
-     * @param col    the column of the position selected(0-4), position should not have flower previously
-     * @return true if added flower to the garden, false otherwise
-     * @throws IllegalArgumentException if position is invalid
+     * @param flower the flower to place
+     * @param row    row index (0-2)
+     * @param col    column index (0-4)
+     * @return true if the flower is successfully added, false if the position is already placed by another flower
+     * @throws IllegalArgumentException if position is out of the range
      */
     public static boolean addFlower(Flower flower, int row, int col) {
         if (row < 0 || row >= ROW || col < 0 || col >= COL) {
@@ -71,11 +80,12 @@ public class GardenLogic {
     }
 
     /**
-     * Checks if the position is empty (no flower)
+     * Checks if the position in the garden contains no flower.
      *
-     * @param row row index
-     * @param col column index
+     * @param row row index (0-2)
+     * @param col column index (0-4)
      * @return true if the position is empty, false otherwise
+     * @throws IllegalArgumentException if the position is out of range
      */
     public static boolean isEmpty(int row, int col) {
         if (row < 0 || row >= ROW || col < 0 || col >= COL) {
@@ -85,9 +95,9 @@ public class GardenLogic {
     }
 
     /**
-     * Checks if the garden has exactly 14 flowers planted.
+     * Checks if the garden has exactly 14 flowers and 1 empty cell.
      *
-     * @return true if 14 cells have flowers and 1 cell is empty.
+     * @return true if exactly one cell is empty
      */
     public static boolean isFortnight() {
         int emptyCount = 0;
@@ -102,9 +112,9 @@ public class GardenLogic {
     }
 
     /**
-     * Checks if the garden is full (reaches the 15th day)
+     * Checks if the garden has all 15 cells are filled
      *
-     * @return true if all 15 cells have flowers
+     * @return true if the garden contains 15 flowers
      */
     public static boolean isFull() {
         for (List<Flower> r : garden) {
@@ -118,7 +128,7 @@ public class GardenLogic {
     }
 
     /**
-     * Saves the current garden state
+     * Saves the current garden state to JSON file.
      */
     public static void saveGarden() {
         try (FileWriter write = new FileWriter(jsonPath)) {
@@ -129,7 +139,7 @@ public class GardenLogic {
     }
 
     /**
-     * Loads the garden state
+     * Loads the garden state from the JSON file, if it exists.
      */
     public static void loadGarden() {
         try (FileReader read = new FileReader(jsonPath)) {
@@ -148,11 +158,10 @@ public class GardenLogic {
     }
 
     /**
-     * Determines if the given flower if already planted in the garden. Returns true if the flower
-     * is already present, falser otherwise.
+     * Checks if a flower already exists in somewhere in the garden.
      *
      * @param flower the flower to check
-     * @return true if the flower has already been planted, false otherwise.
+     * @return true if the flower is found in the garden
      */
     public static boolean flowerInGarden(Flower flower) {
         for (List<Flower> r : garden) {
@@ -166,7 +175,7 @@ public class GardenLogic {
     }
 
     /**
-     * Clears the garden in the JSON file.
+     * Clears the garden by removing all flowers and saving the empty grid.
      */
     public static void clearGarden() {
         for (int r = 0; r < ROW; r++) {
@@ -178,7 +187,7 @@ public class GardenLogic {
     }
 
     /**
-     * Fills the garden with flowers 1-15 to each grid.
+     * Fills the garden with flowers of ID 1-15.
      */
     public static void setAllFlowers() {
         int id = 1;
@@ -192,7 +201,7 @@ public class GardenLogic {
     }
 
     /**
-     * Fills the garden with flowers 1-14 to each grid.
+     * Fills the garden with flowers of ID 1-14, and the last cell (right bottom) empty.
      */
     public static void set14Flowers() {
         setAllFlowers();

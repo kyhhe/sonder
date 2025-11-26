@@ -1,43 +1,84 @@
 package cpen221A.sonder;
 
 /**
- * Class containing methods for creating, modifying and representing flowers. Each flower has a unique
- * ID, with each ID corresponding to a respective image.
+ * Class representing a flower object used in the garden. Supports the following operations:
+ * <li>Creates a flower with a unique ID (1-15)</li>
+ * <li>Stores and updates the flower's position in the garden</li>
+ * <li>Retrieves the corresponding image path for the flower</li>
  */
 public class Flower {
     private final int flowerId;
+
     private int row = -1;
     private int col = -1;
 
     /**
-     * Creates a new flower object without position in garden
-     * @param id Unique ID to represent the flower object and its corresponding image (1-15)
-     * @throws IllegalArgumentException invalid input of flower input
+     * Creates a new flower object with the given ID. The ID corresponds to its flower image.
+     * Valid flower IDs are interger between 1-15.
+     *
+     * @param id Unique ID to represent the flower and its corresponding image (1-15)
+     * @throws IllegalArgumentException if the ID is out of range
      */
     public Flower(int id) throws IllegalArgumentException {
-        if(id < 1 || id > 15){
+        if (id < 1 || id > 15) {
             throw new IllegalArgumentException("Invalid flower object input");
         }
-        this.flowerId =id;
-    }
-
-    // Getters methods
-    public int getId() { return flowerId; }
-    public int getRow() { return row; }
-    public int getCol() { return col; }
-
-    // Setters methods for changing/setting location of flower
-    public void setPosition(int row, int col) {
-        this.row=row;
-        this.col=col;
+        this.flowerId = id;
     }
 
     /**
-     * Determine the path to each flower image
-     * @return the path of each flower in string
+     * Returns this flower's unique ID.
+     *
+     * @return the flower ID
+     */
+    public int getId() {
+        return flowerId;
+    }
+
+    /**
+     * Return the row that this flower is placed in within the garden grid.
+     * Return -1 if the flower has not yet been placed.
+     *
+     * @return the flower's row in the garden
+     */
+    public int getRow() {
+        return row;
+    }
+
+    /**
+     * Return the column that this flower is placed in within the garden grid.
+     * Return -1 if the flower has not yet been placed.
+     *
+     * @return the flower's column in the garden
+     */
+    public int getCol() {
+        return col;
+    }
+
+    /**
+     * Updates the flower's position in the garden grid.
+     *
+     * @param row the row index where is the flower is placed
+     * @param col the column index where is the flower is placed
+     */
+    public void setPosition(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+
+    /**
+     * Return the resouce path for the image corresponding to this flower's ID.
+     * Image of flowers follows the naming format:
+     * <li>"Flower1.PNG</li>
+     * <li>"Flower2.PNG</li>
+     * ...
+     * <li>"Flower14.PNG</li>
+     * <li>"Flower15.PNG</li>
+     *
+     * @return the image file path for this flower
      */
     public String getImagePath() {
-       return "/FlowerImages/Flower" + flowerId+".PNG";
+        return "/FlowerImages/Flower" + flowerId + ".PNG";
     }
 
 }
