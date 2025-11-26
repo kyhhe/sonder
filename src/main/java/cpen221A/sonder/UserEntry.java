@@ -6,7 +6,11 @@ import org.apache.commons.lang3.ObjectUtils;
 
 
 /**
- * Class representing the user's entry for the day.
+ * Class representing the user's entry for the day. Supports the following operations:
+ * <li> getDate: obtains the date of the entry</li>
+ * <li> getTask1Answer - getTask3Answer: obtains the answer from the specified task/li>
+ * <li> getFlower: obtains the flower selected by the user</li>
+ * <li> checkValidEntry: checks if all fields of the entry are non-null</li>
  */
 public class UserEntry {
     private final String date;

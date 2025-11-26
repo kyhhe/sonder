@@ -10,12 +10,20 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
+/**
+ * Utility class which manages reading and writing to the entries JSON file. Supports the following
+ * operations:
+ * <li>initializeJSON: creates an empty JSON file in the data folder</li>
+ * <li>readEntries: reads and returns a list of the entries in the entries JSON file</li>
+ * <li>saveNewEntry: saves a new UserEntry to the JSON file</li>
+ */
 public class EntryManagement {
     private static final String JSONFILE = "data/json/entries.json";
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     /**
-     * Initialize the JSON file with an empty list of entries.
+     * Initializes the JSON file with an empty list of entries. Will erase existing data in the
+     * entries JSON file if it is not empty .
      */
     public static void initializeJSON() {
         List<UserEntry> empty = List.of();
@@ -30,6 +38,7 @@ public class EntryManagement {
     /**
      * Reads the content of the user entry JSON file and returns the list of UserEntries.
      * Returns an empty list if the file cannot be read.
+     *
      * @return List of the user's previous entries.
      */
     public static List<UserEntry> readEntries() {
@@ -45,7 +54,7 @@ public class EntryManagement {
     }
 
     /**
-     * Updates the JSON file to save a new user entry.
+     * Updates the JSON file to save a new user entry, below the preexisting entries.
      */
     public static void saveNewEntry(UserEntry newEntry) {
         List<UserEntry> entries = EntryManagement.readEntries();

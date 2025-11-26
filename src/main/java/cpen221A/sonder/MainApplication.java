@@ -6,19 +6,36 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * Main application for sonder
+ * <p> Main application class for sonder, a mental-health focused gardening game, where users log-in daily to
+ * complete wellness tasks during a 15-day period </p>
+ * <p> This project was created for CPEN 221 A, Term 1 2025 </p>
+ *
+ * <p>This class is the entry point of the JavaFX application. It handles the following operations
+ * <li>Initialization of data files</li>
+ * <li>Initialization of UI and sound</li>
+ * <li>Date tracking</li>
+ * <li>Screen navigation</li>
+ *
+ * @author Bella Chen, Kelly He, Anna Jian, Candice Lei
+ * @version 1.0
+ * @since 2025-11-28
  */
 public class MainApplication extends Application {
     private Stage stage;
     private LocalDateTime date = LocalDateTime.now();
 
+    /**
+     * Starts the application. Initializes the data files if they do not exist. Plays the background
+     * music present in all screens and displays the Main Menu screen to begin.
+     *
+     * @param newStage initial stage for the application
+     */
     @Override
-    public void start(Stage newStage) throws IOException {
+    public void start(Stage newStage) {
         this.stage = newStage;
 
         // Checks if data files exist. 
@@ -43,7 +60,7 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Shows the main menu screen
+     * Shows the main menu screen.
      */
     public void showMainMenu() {
         MainMenuScreen menu = new MainMenuScreen(this);
@@ -51,7 +68,7 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Shows the garden screen
+     * Shows the garden screen.
      */
     public void showGardenScreen() {
         GardenScreen gardenScreen = new GardenScreen(this);
@@ -59,7 +76,7 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Shows the entries screen
+     * Shows the entries screen.
      */
     public void showEntriesScreen() {
         EntriesScreen entriesScreen = new EntriesScreen(this);
@@ -67,7 +84,7 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Loads the sequence of tasks and the logic which controls it
+     * Begins the sequence of tasks. Loads the sequence of tasks and the logic which controls it.
      */
     public void startTasks() {
         StartLogic startLogic = new StartLogic(this);
@@ -85,7 +102,7 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Obtains the current date and time in the game's clock.
+     * Obtains the current date and time being used in the game's clock.
      *
      * @return the game's current date and time
      */
@@ -94,7 +111,7 @@ public class MainApplication extends Application {
     }
 
     /**
-     * Updates the game's clock to a new date.
+     * Updates the game's clock to a new date, used for testing purposes
      *
      * @param newDate the game's new date .
      */

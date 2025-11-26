@@ -1,20 +1,17 @@
 package cpen221A.sonder;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import cpen221A.sonder.TaskScreens.*;
-
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * Class which manages the tasks when the user selects the "Start" button. Supports the following operations:
+ * <li> Shows the current task screen</li>
+ * <li> Shows the next task screen </li>
+ * <li> Writes the completed entry to the entries JSON file </li>
+ * <li> Shows the task complete screen when the daily tasks have been completed </li>
+ */
 public class StartLogic {
     private final Task1Screen task1Screen;
     private final Task2Screen task2Screen;
@@ -24,6 +21,13 @@ public class StartLogic {
     private final AllCompleteScreen allCompleteScreen;
     private final MainApplication main;
 
+    /**
+     * Creates a new StartLogic instance to manage the tasks and collect the entries from by the user.
+     * Shows the next task once the current task has been completed, and the user initiates the next
+     * task.
+     *
+     * @param main the main application.
+     */
     public StartLogic(MainApplication main) {
         this.main = main;
         task1Screen = new Task1Screen(main);

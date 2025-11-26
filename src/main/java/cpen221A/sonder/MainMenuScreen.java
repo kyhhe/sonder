@@ -11,9 +11,19 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
-
+/**
+ * The main menu screen. Supports the following operations:
+ * <li>Button to navigate to the daily tasks</li>
+ * <li>Button to navigate to the garden/li>
+ * <li>Button to navigate to the user entries</li>
+ * <li>Shortcut keys with commands for testing purposes</li>
+ * <li>Displays the game's title and a randomly selected message</li>
+ *
+ * @see AbstractScreen
+ */
 public class MainMenuScreen extends AbstractScreen {
 
     private static final List<String> MESSAGES = List.of(
@@ -35,6 +45,11 @@ public class MainMenuScreen extends AbstractScreen {
         super(main);
     }
 
+    /**
+     * Overrides the parent class. Creates the root containing the screen size, layout and elements.
+     *
+     * @return the root of the main menu screen.
+     */
     @Override
     protected Parent createRoot() {
         // Initialize screen containers
@@ -52,15 +67,15 @@ public class MainMenuScreen extends AbstractScreen {
         welcomeMessage.setPadding(new Insets(0, 0, 5, 0));
 
         Label currentDate = createText(DateTimeFormatter.ISO_LOCAL_DATE.format(main.getDate()));
-        currentDate.setStyle("-fx-font-size: 17;" +
-                "-fx-font-style: italic;");
+        currentDate.setStyle("-fx-font-size: 17;" + "-fx-font-style: italic;");
         currentDate.setPadding(new Insets(5));
 
         Button startButton = createButton("start");
         Button gardenButton = createButton("garden");
         Button entriesButton = createButton("entries");
 
-        Image flower = new Image(getClass().getResource(new Flower(flowerDisplay()).getImagePath()).toExternalForm());
+        Image flower = new Image(Objects.requireNonNull(
+            getClass().getResource(new Flower(flowerDisplay()).getImagePath())).toExternalForm());
         ImageView flowerView = new ImageView(flower);
         flowerView.setFitWidth(180);
         flowerView.setPreserveRatio(true);
@@ -80,10 +95,10 @@ public class MainMenuScreen extends AbstractScreen {
     }
 
     /**
-     * Randomly selects a welcome message out of the pool of welcome messages
-     * to display on the main menu screen.
+     * Randomly selects a welcome message out of the pool of welcome messages to display on
+     * the main menu screen.
      *
-     * @return a random message selected from the pool of messages
+     * @return a random message selected from the pool of 6 messages.
      */
     public String welcomeMessage() {
         Random rand = new Random();
@@ -104,7 +119,7 @@ public class MainMenuScreen extends AbstractScreen {
      * <li> F3: loads flowers 1-15 to the 15 cells of the garden </li>
      * <li> F12: clears all user garden data and entry data </li>
      *
-     * @param keyEvent keypress from the user
+     * @param keyEvent keypress from the user.
      */
     @Override
     protected void onKeyPressed(javafx.scene.input.KeyEvent keyEvent) {
