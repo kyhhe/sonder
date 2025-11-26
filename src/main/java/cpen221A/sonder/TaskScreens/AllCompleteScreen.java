@@ -38,6 +38,7 @@ public class AllCompleteScreen extends AbstractScreen {
         Label subtitle2 = createText("thanks for planting with us.");
 
         Button menuButton = createButton("menu");
+        Button gardenButton = createButton("garden");
 
         Image flower = new Image(getClass().getResource(new Flower(15).getImagePath()).toExternalForm());
         ImageView flowerView = new ImageView(flower);
@@ -46,13 +47,14 @@ public class AllCompleteScreen extends AbstractScreen {
 
         // Screen elements display logic
         if(GardenLogic.isFull() || GardenLogic.isFortnight()) {
-            vbox.getChildren().addAll(flowerView, title2, subtitle2, menuButton);
+            vbox.getChildren().addAll(flowerView, title2, subtitle2, menuButton, gardenButton);
         } else {
-            vbox.getChildren().addAll(title1, subtitle1, menuButton);
+            vbox.getChildren().addAll(title1, subtitle1, menuButton, gardenButton);
         }
 
         // Button actions
         menuButton.setOnAction(e -> main.showMainMenu());
+        gardenButton.setOnAction(e -> main.showGardenScreen());
 
         // Add elements to screen
         vbox.setAlignment(javafx.geometry.Pos.CENTER);
