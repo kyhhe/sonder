@@ -1,8 +1,16 @@
 # Project Description
+
 ## Team Sonder
 <img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/0efa74cf-35c7-4acc-a0f1-1f3276fd1736" />
 
 *Mission Statement: Cultivating daily mindfulness.*
+
+### Quick Links
+
+[INSTALLATION GUIDE](https://github.com/CPEN-221-2025/project-poplar/blob/main/installation.md) |
+[Project Requirements](https://github.com/CPEN-221-2025/project-poplar/blob/main/requirements.md) |
+[Project Architecture](https://github.com/CPEN-221-2025/project-poplar/blob/main/architecture.md) |
+[Project Plan](https://github.com/CPEN-221-2025/project-poplar/blob/main/plan.md)
 
 ## Problem
 
