@@ -40,10 +40,11 @@ public class AllCompleteScreen extends AbstractScreen {
         Button menuButton = createButton("menu");
         Button gardenButton = createButton("garden");
 
-        Image flower = new Image(getClass().getResource(new Flower(15).getImagePath()).toExternalForm());
+        /*Image flower = new Image(getClass().getResource(new Flower(15).getImagePath()).toExternalForm());
         ImageView flowerView = new ImageView(flower);
         flowerView.setFitWidth(180);
-        flowerView.setPreserveRatio(true);
+        flowerView.setPreserveRatio(true);*/
+        StackPane flowerView = new Flower(15).getDisplayNode(180);
 
         // Screen elements display logic
         if(GardenLogic.isFull() || GardenLogic.isFortnight()) {

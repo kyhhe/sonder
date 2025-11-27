@@ -3,6 +3,7 @@ package cpen221A.sonder;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +17,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The entries history screen. Supports the following operations:
+ * <li>Viewing a scrolling, chronological list of pas entries</li>
+ * <li>A collapsible entries box with detailed task responses</li>
+ * <li>Displaying the flower selected each day alongside the three task responses</li>
+ * <li>A message indicating an empty state if the user has no past entries</li>
+ * <li>A navigation button to return to the main menu
+ *
+ * @see AbstractScreen
+ * @see EntryManagement
+ * @see UserEntry
+ */
 public class EntriesScreen extends AbstractScreen {
 
     private VBox entriesContainer;
@@ -119,25 +132,14 @@ public class EntriesScreen extends AbstractScreen {
         Label arrow = new Label("►");
         arrow.setStyle("-fx-font-size: 20; -fx-padding: 0 5 0 0;");
 
-        // Flower icon
-        ImageView flowerIcon = null;
-        try {
-            flowerIcon = new ImageView(new Image(
-                    Objects.requireNonNull(
-                            getClass().getResource(entry.getFlower().getImagePath())
-                    ).toExternalForm()
-            ));
-            flowerIcon.setFitWidth(50);
-            flowerIcon.setFitHeight(50);
-        } catch (Exception e) {
-            System.out.println("Could not load flower image: " + e.getMessage());
-        }
+        // Flower icon (with optional sparkle overlay)
+        Node flowerNode = entry.getFlower().getDisplayNode(50);
 
         // Date label
         Label date = createText(entry.getDate());
         date.setStyle("-fx-font-style: italic; -fx-font-size: 22;");
 
-        header.getChildren().addAll(arrow, flowerIcon, date);
+        header.getChildren().addAll(arrow, flowerNode, date);
 
         // Details
         VBox details = new VBox(12);

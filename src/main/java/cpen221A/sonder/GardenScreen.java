@@ -85,11 +85,10 @@ public class GardenScreen extends AbstractScreen {
                     URL url = getClass().getResource(f.getImagePath());
                     System.out.printf("url:" + url);//debug
 
-                    ImageView flowerView = new ImageView(new Image(
-                            Objects.requireNonNull(getClass().getResource(f.getImagePath())).toExternalForm()));
-                    flowerView.setFitHeight(150);
-                    flowerView.setFitWidth(150);
-                    grid.add(flowerView, c, r);
+                    StackPane flowerPane = f.getDisplayNode(150);
+                    grid.add(flowerPane, c, r);
+
+
                 } else {
                     Pane emptyFlower = new Pane();
                     emptyFlower.setPrefSize(150,150);

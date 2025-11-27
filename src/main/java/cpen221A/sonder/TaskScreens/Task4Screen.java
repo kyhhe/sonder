@@ -77,13 +77,10 @@ public class Task4Screen extends AbstractScreen {
         }
 
         for (Flower flower : displayFlowers) {
-            Image img = new Image(getClass().getResource(flower.getImagePath()).toExternalForm());
-            ImageView flowerView = new ImageView(img);
-            flowerView.setFitWidth(150);
-            flowerView.setPreserveRatio(true);
+            StackPane flowerGraphic = flower.getDisplayNode(150);
 
             Button flowerButton = new Button();
-            flowerButton.setGraphic(flowerView);
+            flowerButton.setGraphic(flowerGraphic);
             flowerButton.setStyle("-fx-background-color: transparent;" +
                     "-fx-padding: 5;");
 
