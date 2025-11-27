@@ -15,6 +15,9 @@
 [Project Testing](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/testing.md) |
 [Contributions Statement](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/contributions.md)
 
+## DEMO
+[![thumbnail](https://github.com/user-attachments/assets/67b09311-85d3-40fb-b930-c4d490e9c1b4)](https://drive.google.com/file/d/1xLuhuplwuCrdhEpe7pyAkBXhjzhTy5JG/view?usp=sharing)
+
 ## Problem
 
 Student mental health is often overlooked. According to the ACHC 2016 student health survey, 41.5% of students reported "[feeling] that things were hopeless", 55.3% feeling "overwhelming anxiety", 33.5% feeling "so depressed that it was difficult to function", and 5.9% who seriously considered suicide in the last 12 months (American College Health Association, 2017, p.13). These feelings can be linked to high academic pressure, financial stressors and future uncertainties during an age range with the highest risk of mental disorders. 
