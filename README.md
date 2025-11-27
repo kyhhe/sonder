@@ -13,7 +13,7 @@
 [Project Architecture](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/architecture.md) |
 [Project Plan](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/plan.md) |
 [Project Testing](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/testing.md) |
-[Contributions Statment](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/contributions.md)
+[Contributions Statement](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/contributions.md)
 
 ## Problem
 
