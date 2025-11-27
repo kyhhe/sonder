@@ -16,51 +16,50 @@ On the contrary, students who learn to manage their stress and develop strategie
 American College Health Association. National College Health Assessment II: Graduate/Professional Student Reference Group Executive Summary, Fall 2016. American College Health Association, 2017. https://www.acha.org/wp-content/uploads/2024/07/NCHA-II_FALL_2016_GRADUATE_REFERENCE_GROUP_EXECUTIVE_SUMMARY.pdf
 
 ## Solution
-Our objective is to create an app/program that allows users to complete three daily wellness tasks to earn opportunities to plant flowers and plant their own, customizable garden. The user interacts with the program using their mouse and keyboard. This would encourage the user to practice mental wellness and reflect on themselves every day.
+Our objective is to create an interactive application/program that allows users to complete five daily wellness tasks, earning opportunities to plant flowers and grow their own, customizable garden. Through our chosen methodology, we hope to encourage and inspire users to practice daily mindfulness and introspection.
 
-Upon launching the application, the user will see a “Menu” interface with three buttons: “Start,” “Garden,” and “Entries.” Pressing the ESC button at any point will bring you back to the menu page. The three buttons operate as follows:
+The user is able to interact with our program using their mouse and keyboard. Upon launching the application, the user will see a “menu” interface with three buttons: “start,” “garden,” and “entries,” respectively. The three buttons operate as follows:
 <img width="1024" height="700" alt="image" src="https://github.com/user-attachments/assets/94c19134-09ec-4c27-8c1a-cc49b290b3e0" />
 <img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/bb20b25c-ae63-4439-bac3-9a0ede1f4721" />
 
 1. Start:
-   - Leads the user into completing the daily wellness tasks:
-      - Task 1: “How are you feeling today?” → choose between 5 hand-drawn faces of different emotions
-     <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/0d972606-d2b5-44b7-9c3b-3f786848833a" />
+   - Leads the user into completing the five daily wellness tasks:
+      - Task 1: “how are you feeling today?” -> choose between five distinct faces of varying emotions.
+        <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/0d972606-d2b5-44b7-9c3b-3f786848833a" />
      
-      - Task 2: “What is one thing you’re grateful for?” → written response
-      - Task 3: “What is one thing you learned today? What is one goal you have for tomorrow?” → written response
+      - Task 2: “what is one thing you’re grateful for?” -> written response
+    
+      - Task 3: “wat is one thing you learned today? what is one goal you have for tomorrow?” -> written response
         <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/aa156e3c-4469-4c9d-83e9-c81c046f0f56" />
-      - Task 4: “Choose a flower for your garden:” → user chooses one flower out of three options (randomly generated from a set of 9 total flowers)
+     
+      - Task 4: “choose a flower for your garden.” -> choose between three distinct flowers displayed, randomly generated from a list of 14 flowers.
         <img width="470" height="700" alt="image" src="https://github.com/user-attachments/assets/012934c7-72d7-41cd-ac90-a00b61449934" />
         
-      - Task 5: "Plant your flower in the garden." User must place their chosen flower somewhere within the 3x4 flower grid; click and press enter
+      - Task 5: "plant your flower into the garden." -> plant the chosen flower somewhere within the 3x5 garden grid.
         <img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/e0f1d3ed-2ecc-4588-8c84-2a4e1241ba17" />
 
-   - Upon finishing a task, the user must press ENTER to move to the next task
-   - If no answer is inputted and the user presses ENTER, then an error message will pop up underneath the task title notifying that no input was given and the question must be answered before the next task is given
-   - If all given tasks are not completed and the user presses ESCAPE, all progress is lost; pressing “Start” from the menu will navigate the user back to the first task (ie, user’s daily progress is logged into entries if and only if all five tasks are completed)
-   - User’s responses to daily tasks are logged and saved into “Entries” 
-   - If tasks are completed for the day and the user clicks “Start,” a different screen will pop up, stating “Thanks for checking in today, see you tomorrow!”
-No other buttons are present on this page; the user may navigate back to the menu with ESC
-
+   - Upon completing a given task, the user must click the "next" button to proceed to the next task.
+   - If no answer is inputted and the user clicks "next", an error message will pop up underneath the task prompt, notifying the user that no input was given and the question must be answered before the next task is given.
+   - The user’s responses to daily tasks are logged in a JSON file and saved into “Entries.”
+   - If tasks are completed for the day and the user clicks “Start” from the "menu" screen, a different screen will pop up, notifying the user with a message stating that their daily tasks have already been completed; this screen contains a "menu" button.
+   - If the garden is full (ie. contains 15 planted flowers) and the user clicks "Start" from the "Menu" screen, then a different screen will pop up, notifying the user with a message stating that their garden is full and they have completed the two week mental health challenge; this screen contains a "menu" button.
 
 2. Garden:
-   - Loads the user’s garden (view-only page when navigated from the menu) from the JSON file
-   - Able to view all the flowers you’ve planted in previous entries
-   - The user will not be given a feature to reposition the flowers after setting them in the garden
-   - Once the garden is filled (ie, all 12 grids have a flower), the user’s new flower will replace an existing flower within their garden
-   - This is a continuous process for all succeeding entries
+   - Loads the user’s garden (view-only page when navigated from the "menu" screen), including all previously planted flowers in their respective grid locations.
+   - The user will not be given a feature to reposition the flowers after setting them in the garden.
+   - Each cell within the garden grid is only able to support one flower at any given time. Subsequent flowers can only be planted in empty cells.
+   - Once the garden is full, the user is unable to plant any new flowers, or replace any existing ones.
 
 3. Entries:
-   - Directs the user to a page to check all of their past task entries
-   - Progress is logged and saved into “Entries” if all questions are answered and their chosen flower is planted
+   - Directs the user to a page containing all past task entries, organized vertically and in  chronological order such that the most recent entry appears at the top.
+   - Progress is logged and saved into the “entries” screen if and only if all five wellness tasks are completed.
    - For every entry that is logged, 5 things are stored in a JSON file:
-       1. Date
-       2. User’s Response to Task 1
-       3. User’s Response to Task 2
-       4. User’s Response to Task 3
-       5. Flower of their choosing for the day
+       1. Entry date
+       2. User’s response (ie. an image of the selected face) to Task 1
+       3. User’s written response to Task 2
+       4. User’s written response to Task 3
+       5. User's response (ie. an image of the selected flower) to Task 4
 
-The “Garden” and “Entries” data are saved and will carry over into the following days. The date is automatically inputted and displayed on the first task based on the system clock. The daily tasks are meant to reset every 24 hours, but for simulation purposes, pressing F12 advances the clock to the next day and subsequently resets the daily tasks.
+The “garden” and “entries” data are saved and will carry over into the following days. This data does not clear upon closing the application. The date is displayed on the "menu" screen. The daily tasks are meant to reset every 24 hours, but for simulation purposes, pressing F1 advances the clock to the next day and subsequently resets the daily tasks.
 
-In terms of the visual interfaces of the app, we will be using different shades of green for all user interface pages. Flower colours will be varied. The app will have a 4:3 aspect ratio with 1024 × 768 px. All prompts will be center-aligned. User inputted responses will be left-aligned. The writing font should be consistent across all interfaces.
+In terms of the visual interfaces of the app, we will be using different shades of green for all user interface pages. Flower colours will be varied. All flowers, however, are set to 150 x 150 px. The app will have a 4:3 aspect ratio with 1024 × 768 px. All prompts will be center-aligned. User inputted responses will be left-aligned. The writing fonts should be consistent across all interfaces.
