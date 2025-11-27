@@ -26,27 +26,24 @@
    - Task 4: “choose a flower for your garden.” -> The user chooses between three distinct flowers displayed on-screen which are randomly generated from a list of 14 plantable flowers, excluding the flower assigned for the 15th entry. If the user clicks on the "Next" button without first selecting a flower, a warning message will pop up; otherwise, the button should direct the user to the Task 5 screen.
       -  For the 15th entry, a unique flower is the only flower displayed on-screen for the user to select.
    - Task 5: "plant your flower into the garden." -> The user chooses a set location within the 3x5 garden grid to plant their chosen flower. If the user clicks on the "Next" button without first selecting a grid location, or selecting a grid location that already has a flower planted, a warning message will pop up; otherwise, the button should direct the user to the Tasks All Complete screen.
-- If the daily tasks have been completed, the Tasks All Complete screen displays the corresponding message to notify the user.
-- If the garden is full, the Tasks All Complete screen displays the corresponding message to notify the user.
+- If the daily tasks have been completed, the Tasks All Complete screen displays the corresponding message to notify the user that they have successfulled completed their tasks for the day.
+- If the garden is full, the Tasks All Complete screen displays the corresponding message to notify the user that they have successfully completed the two-week mental health challenge.
+- If the garden is full, the Tasks All Complete screen displays an image of the unique flower assigned for the 15th entry.
+- The user’s task input data is saved to a JSON file upon completing the last task (previous entries can all viewed in the Entries screen).
 - The tasks reset daily based on the internal clock.
-- The user’s task data is saved to a JSON file upon completing the last task
-- A special message is displayed upon completing the 15th day, indicating the user has completed the two-week challenge
 
 ## 4. Garden Requirements
-- The garden displays the background of a garden image
-- The garden loads the previously saved garden data, even after exiting the program
-- The flowers displayed in the garden match the type and location selected by the user.
-- There are a total of 15 unique flowers that can be planted in the garden.
-- The garden displays a 3*5 grid for planting flowers
-- Each cell of the grid holds one and only one flower
-- A new flower can be planted in any empty cell
-- New flowers can only be added to an empty cell
-- After all cells are filled, the user can select a flower to replace
-- Flower type and position must be saved after the user plants the flower in a JSON file.
+- The Garden displays a full image of the garden, including the user's flowers, planted in their corresponding grid locations.
+- The flowers displayed in the garden match the type and location selected by the user in Tasks 4 and 5, respectively.
+- The flower type and position must be saved after the user plants the flower in a JSON file.
+- The Garden loads previously saved garden data, which should not clear upon exiting the program.
+- There are a total of 15 distinct flowers that can be planted in the garden.
+- The garden is organized into a 3x5 grid for planting flowers.
+- Each cell in the grid holds only one flower at any given time; in other words, a new flower can only ever be planted in empty cells (refer to Task 5).
 
 ## 5. Entries Requirements
-- Entries must be organized in a vertical list
-- Entries must be organized chronologically with the most recent at the top
-- Must contain a scroll bar to scroll up and down the list
-- Entries must contain the date, response to all three tasks, and the flower of their choosing for the day
-- Progress must be saved after the chosen flower is planted for the day
+- Entries must be organized in a vertical list and organized chronologically, with the most recent entry appearing at the top.
+- Entries loads previously saved task entries, which should not clear upon exiting the program.
+- Entries contains a scroll bar, allowing the user to navigate up and down their list of entries.
+- Entries must display the date of completion, an image of the flower selected in Task 4, an image of the face selected in Task 1, as well as their written responses to Tasks 2 and 3.
+- User input for tasks is saved for the day after their chosen flower is planted in Task 5.
