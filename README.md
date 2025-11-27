@@ -7,10 +7,13 @@
 
 ### Quick Links
 
-[INSTALLATION GUIDE](https://github.com/CPEN-221-2025/project-poplar/blob/main/installation.md) |
-[Project Requirements](https://github.com/CPEN-221-2025/project-poplar/blob/main/requirements.md) |
-[Project Architecture](https://github.com/CPEN-221-2025/project-poplar/blob/main/architecture.md) |
-[Project Plan](https://github.com/CPEN-221-2025/project-poplar/blob/main/plan.md)
+[INSTALLATION GUIDE](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/installation.md) |
+[Known Bugs](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/knownBugs.md) |
+[Project Requirements](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/requirements.md) |
+[Project Architecture](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/architecture.md) |
+[Project Plan](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/plan.md) |
+[Project Testing](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/testing.md) |
+[Contributions Statment](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/contributions.md)
 
 ## Problem
 
