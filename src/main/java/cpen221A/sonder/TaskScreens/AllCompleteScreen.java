@@ -8,8 +8,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -20,7 +18,9 @@ public class AllCompleteScreen extends AbstractScreen {
      *
      * @param main the main application where the screen is displayed
      */
-    public AllCompleteScreen(MainApplication main){ super(main); }
+    public AllCompleteScreen(MainApplication main) {
+        super(main);
+    }
 
     @Override
     protected Parent createRoot() {
@@ -40,14 +40,10 @@ public class AllCompleteScreen extends AbstractScreen {
         Button menuButton = createButton("menu");
         Button gardenButton = createButton("garden");
 
-        /*Image flower = new Image(getClass().getResource(new Flower(15).getImagePath()).toExternalForm());
-        ImageView flowerView = new ImageView(flower);
-        flowerView.setFitWidth(180);
-        flowerView.setPreserveRatio(true);*/
         StackPane flowerView = new Flower(15).getDisplayNode(180);
 
         // Screen elements display logic
-        if(GardenLogic.isFull() || GardenLogic.isFortnight()) {
+        if (GardenLogic.isFull()) {
             vbox.getChildren().addAll(flowerView, title2, subtitle2, menuButton, gardenButton);
         } else {
             vbox.getChildren().addAll(title1, subtitle1, menuButton, gardenButton);
