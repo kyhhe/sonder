@@ -78,7 +78,7 @@ public class Task4Screen extends AbstractScreen {
 
             Button flowerButton = new Button();
             flowerButton.setGraphic(flowerGraphic);
-            flowerButton.setStyle("-fx-background-color: transparent, -fx-padding: 5;");
+            flowerButton.setStyle("-fx-background-color: transparent; -fx-padding: 5;");
 
             DropShadow selectedShadow = new DropShadow();
             selectedShadow.setColor(Color.web("#8de0a1"));

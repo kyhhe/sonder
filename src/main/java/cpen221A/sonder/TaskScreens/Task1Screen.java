@@ -65,7 +65,8 @@ public class Task1Screen extends AbstractScreen {
 
             Button faceButton = new Button();
             faceButton.setGraphic(faceView);
-            faceButton.setStyle("-fx-background-color: transparent, -fx-padding: 5;");
+            faceButton.setStyle("-fx-background-color: transparent;"
+                + "-fx-padding: 5;");
 
             DropShadow selectedShadow = new DropShadow();
             selectedShadow.setColor(Color.web("#37de61"));
