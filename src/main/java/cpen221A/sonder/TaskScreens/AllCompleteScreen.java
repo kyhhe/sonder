@@ -11,6 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Screen shown when all daily tasks have been complete. Supports the following operations:
+ * <li>Navigating to garden</li>
+ * <li>Navigating to main menu</li>
+ * <li>Displaying the final message after the 15th entry has been completed</li>
+ */
 public class AllCompleteScreen extends AbstractScreen {
 
     /**

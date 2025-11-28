@@ -23,6 +23,8 @@ import java.util.Random;
  * <li>Displays the game's title and a randomly selected message</li>
  *
  * @see AbstractScreen
+ * @see GardenScreen
+ * @see EntriesScreen
  */
 public class MainMenuScreen extends AbstractScreen {
 

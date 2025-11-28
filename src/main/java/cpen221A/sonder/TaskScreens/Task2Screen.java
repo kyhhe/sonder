@@ -8,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-
 
 /**
  * Creates the screen which provides the user interface for Task 2: What is one thing you’re grateful for?.
@@ -19,9 +17,8 @@ public class Task2Screen extends AbstractScreen {
     private String answer;
     private Label warning;
     private Runnable onComplete;
-    private boolean toNext = false;
 
-    public Task2Screen(MainApplication main){
+    public Task2Screen(MainApplication main) {
         super(main);
     }
 
@@ -58,7 +55,6 @@ public class Task2Screen extends AbstractScreen {
                 this.answer = this.input.getText().trim();
 
                 if (this.onComplete != null) {
-                    this.toNext = true;
                     this.onComplete.run();
                 }
             }
@@ -73,9 +69,8 @@ public class Task2Screen extends AbstractScreen {
     }
 
     /**
-     * Gets input from user
-     * (if user does not input a valid answer and presses enter, calls on warningMessage)
-     * (otherwise, returns String input)
+     * Gets input from user.
+     *
      * @return String representing user's short answer response to task 2
      */
     public String getTask2Input() {
@@ -83,7 +78,10 @@ public class Task2Screen extends AbstractScreen {
     }
 
     /**
-     * Transitions to next task screen if current task is completed
+     * Sets the action to run when the current task is completed. Used for transitioning to the next
+     * screen.
+     *
+     * @param r the action to execute once the current task is completed
      */
     public void nextTask(Runnable r) {
         this.onComplete = r;

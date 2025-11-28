@@ -16,6 +16,9 @@ import java.util.List;
  * <li>initializeJSON: creates an empty JSON file in the data folder</li>
  * <li>readEntries: reads and returns a list of the entries in the entries JSON file</li>
  * <li>saveNewEntry: saves a new UserEntry to the JSON file</li>
+ *
+ * @see EntriesScreen
+ * @see StartLogic
  */
 public class EntryManagement {
     private static final String JSONFILE = "data/json/entries.json";

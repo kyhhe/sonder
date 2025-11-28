@@ -7,10 +7,14 @@ import javafx.scene.layout.StackPane;
 import java.util.Objects;
 
 /**
- * Class representing a flower object used in the garden. Supports the following operations:
+ * Class representing a flower object used in the garden. Each flower is represented by a unique ID
+ * from 1-15. Flower 15 is a special flower and has a sparkle overlay.
+ * This class supports the following operations:
  * <li>Creates a flower with a unique ID (1-15)</li>
  * <li>Stores and updates the flower's position in the garden</li>
  * <li>Retrieves the corresponding image path for the flower</li>
+ *
+ * @see GardenLogic
  */
 public class Flower {
     private final int flowerId;

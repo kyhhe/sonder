@@ -15,18 +15,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
+import java.util.Objects;
+
 /**
  * Creates the screen which provides the user interface for Task 1: How are you feeling today?
  */
 public class Task1Screen extends AbstractScreen {
     private String answer;
-    public String input = "";
+    private String input;
     private Label warning;
     private Runnable onComplete;
-    private boolean toNext = false;
     private Button selectedButton = null;
 
-    public Task1Screen(MainApplication main){
+    public Task1Screen(MainApplication main) {
         super(main);
     }
 
@@ -49,23 +50,22 @@ public class Task1Screen extends AbstractScreen {
         rowFaces.setAlignment(Pos.CENTER);
 
         String[] faces = {
-                "/FaceImages/Face1.PNG",
-                "/FaceImages/Face2.PNG",
-                "/FaceImages/Face3.PNG",
-                "/FaceImages/Face4.PNG",
-                "/FaceImages/Face5.PNG"
+            "/FaceImages/Face1.PNG",
+            "/FaceImages/Face2.PNG",
+            "/FaceImages/Face3.PNG",
+            "/FaceImages/Face4.PNG",
+            "/FaceImages/Face5.PNG"
         };
 
-        for(String face : faces) {
-            Image img = new Image(getClass().getResource(face).toExternalForm());
+        for (String face : faces) {
+            Image img = new Image(Objects.requireNonNull(getClass().getResource(face)).toExternalForm());
             ImageView faceView = new ImageView(img);
             faceView.setFitWidth(150);
             faceView.setPreserveRatio(true);
 
             Button faceButton = new Button();
             faceButton.setGraphic(faceView);
-            faceButton.setStyle("-fx-background-color: transparent;" +
-                    "-fx-padding: 5;");
+            faceButton.setStyle("-fx-background-color: transparent, -fx-padding: 5;");
 
             DropShadow selectedShadow = new DropShadow();
             selectedShadow.setColor(Color.web("#37de61"));
@@ -95,14 +95,11 @@ public class Task1Screen extends AbstractScreen {
         nextButton.setOnAction(e -> {
             if (this.input == null || this.input.isEmpty()) {
                 this.warning.setVisible(true);
-            }
-
-            else {
+            } else {
                 this.warning.setVisible(false);
                 this.answer = this.input;
 
                 if (this.onComplete != null) {
-                    this.toNext = true;
                     this.onComplete.run();
                 }
             }
@@ -118,9 +115,8 @@ public class Task1Screen extends AbstractScreen {
     }
 
     /**
-     * Gets input from user
-     * (if user does not input a valid answer and presses enter, calls on warningMessage)
-     * (otherwise, returns String input)
+     * Gets input from user.
+     *
      * @return String representing user's short answer response to task 1
      */
     public String getTask1Input() {
@@ -128,7 +124,10 @@ public class Task1Screen extends AbstractScreen {
     }
 
     /**
-     * Transitions to next task screen if current task is completed
+     * Sets the action to run when the current task is completed. Used for transitioning to the next
+     * screen.
+     *
+     * @param r the action to execute once the current task is completed
      */
     public void nextTask(Runnable r) {
         this.onComplete = r;

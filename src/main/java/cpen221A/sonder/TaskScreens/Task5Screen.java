@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
  */
 public class Task5Screen extends AbstractScreen {
     private Flower answer;
-    public Flower input;
+    private Flower input;
     private Flower myFlower;
     private Label warning;
     private Label invalid;
@@ -73,9 +73,9 @@ public class Task5Screen extends AbstractScreen {
             for (int c = 0; c < 5; c++) {
                 Button gardenButton = new Button();
                 gardenButton.setPrefSize(150, 150);
-                gardenButton.setStyle("-fx-background-color: transparent;" +
-                        "-fx-border-color: #95d5b2;" +
-                        "-fx-border-width: 2;");
+                gardenButton.setStyle("-fx-background-color: transparent;"
+                    + "-fx-border-color: #95d5b2;"
+                    + "-fx-border-width: 2;");
 
                 int row = r, col = c;
                 gardenButton.setOnAction(e -> {
@@ -104,7 +104,7 @@ public class Task5Screen extends AbstractScreen {
                 int row = this.input.getRow();
                 int col = this.input.getCol();
 
-                if(!GardenLogic.isEmpty(row, col)) { // invalid spot
+                if (!GardenLogic.isEmpty(row, col)) { // invalid spot
                     this.invalid.setVisible(true);
                 } else {
                     this.invalid.setVisible(false);
@@ -125,22 +125,22 @@ public class Task5Screen extends AbstractScreen {
         vbox.getChildren().addAll(title, question, this.warning, this.invalid, nextButton);
         vbox.setAlignment(Pos.TOP_CENTER);
         pane.getChildren().addAll(gardenRoot, gardenButtons, vbox);
-        pane.setAlignment(vbox, Pos.TOP_CENTER);
+        StackPane.setAlignment(vbox, Pos.TOP_CENTER);
 
         return pane;
     }
 
     /**
      * Sets flower to the one chosen in task 4.
+     * @param flower flower selected by the user.
      */
     public void setMyFlower(Flower flower) {
         this.myFlower = flower;
     }
 
     /**
-     * Gets input from user
-     * (if user does not input a valid answer and presses enter, calls on warningMessage)
-     * (otherwise, returns String input)
+     * Gets input from user.
+     *
      * @return String representing user's short answer response to task 5
      */
     public Flower getTask5Input() {
@@ -148,7 +148,10 @@ public class Task5Screen extends AbstractScreen {
     }
 
     /**
-     * Transitions to next task screen if current task is completed
+     * Sets the action to run when the current task is completed. Used for transitioning to the next
+     * screen.
+     *
+     * @param r the action to execute once the current task is completed
      */
     public void nextTask(Runnable r) {
         this.onComplete = r;

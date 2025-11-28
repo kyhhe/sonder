@@ -7,13 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -81,8 +78,7 @@ public class Task4Screen extends AbstractScreen {
 
             Button flowerButton = new Button();
             flowerButton.setGraphic(flowerGraphic);
-            flowerButton.setStyle("-fx-background-color: transparent;" +
-                    "-fx-padding: 5;");
+            flowerButton.setStyle("-fx-background-color: transparent, -fx-padding: 5;");
 
             DropShadow selectedShadow = new DropShadow();
             selectedShadow.setColor(Color.web("#8de0a1"));
@@ -145,8 +141,7 @@ public class Task4Screen extends AbstractScreen {
 
     /**
      * Gets input from user
-     * (if user does not input a valid answer and presses enter, calls on warningMessage)
-     * (otherwise, returns user input)
+     *
      * @return Flower object selected by the user's response to task 4
      */
     public Flower getTask4Input() {
@@ -154,7 +149,10 @@ public class Task4Screen extends AbstractScreen {
     }
 
     /**
-     * Transitions to next task screen if current task is completed
+     * Sets the action to run when the current task is completed. Used for transitioning to the next
+     * screen.
+     *
+     * @param r the action to execute once the current task is completed
      */
     public void nextTask(Runnable r) {
         this.onComplete = r;

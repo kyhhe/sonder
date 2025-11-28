@@ -11,16 +11,16 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 /**
- * Creates the screen which provides the user interface for Task 3: What is one thing you learned today? What is one goal you have for tomorrow?
+ * Creates the screen which provides the user interface for Task 3: What is one thing you learned
+ * today? What is one goal you have for tomorrow?
  */
 public class Task3Screen extends AbstractScreen {
     private TextArea input;
     private String answer;
     private Label warning;
     private Runnable onComplete;
-    private boolean toNext = false;
 
-    public Task3Screen(MainApplication main){
+    public Task3Screen(MainApplication main) {
         super(main);
     }
 
@@ -34,7 +34,8 @@ public class Task3Screen extends AbstractScreen {
 
         // Screen elements
         Label title = createTitle("aspire:");
-        Label question = createText("what is one thing you learned today? what is one goal you have for tomorrow?");
+        Label question = createText("what is one thing you learned today? what is one goal you have "
+            + "for tomorrow?");
 
         Button nextButton = createButton("next");
 
@@ -57,7 +58,6 @@ public class Task3Screen extends AbstractScreen {
                 this.answer = this.input.getText().trim();
 
                 if (this.onComplete != null) {
-                    this.toNext = true;
                     this.onComplete.run();
                 }
             }
@@ -73,8 +73,7 @@ public class Task3Screen extends AbstractScreen {
 
     /**
      * Gets input from user
-     * (if user does not input a valid answer and presses enter, calls on warningMessage)
-     * (otherwise, returns String input)
+     *
      * @return String representing user's short answer response to task 3
      */
     public String getTask3Input() {
@@ -82,7 +81,10 @@ public class Task3Screen extends AbstractScreen {
     }
 
     /**
-     * Transitions to next task screen if current task is completed
+     * Sets the action to run when the current task is completed. Used for transitioning to the next
+     * screen.
+     *
+     * @param r the action to execute once the current task is completed
      */
     public void nextTask(Runnable r) {
         this.onComplete = r;

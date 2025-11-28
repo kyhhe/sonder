@@ -8,7 +8,7 @@ import javafx.scene.text.Font;
 import java.util.Objects;
 
 /**
- * Abstract class for creating new screens. Inheritors of this class must override createRoot(). with
+ * Abstract class for creating new screens. Inheritors of this class must override createRoot() with
  * the required screen elements. Inheritors that use user keypresses as inputs should override onKeyPressed().
  *
  * <p>This class supports the following operations:</p>

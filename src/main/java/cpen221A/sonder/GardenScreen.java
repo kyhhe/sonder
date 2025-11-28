@@ -14,16 +14,19 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * The garden screen. Supports the following operations:
+ * The garden screen displays the user's current garden and the flowers obtained.
+ * This class supports the following operations:
  * <li>Display the garden background image</li>
  * <li>Displays a 3x5 grid representing the user's flower garden</li>
  * <li>Loads flowers using stored garden data</li>
  * <li>Shows empty placeholder for empty cell</li>
  * <li>Include a button to navigate to menu</li>
+ *
+ * @see AbstractScreen
+ * @see MainMenuScreen
+ * @see GardenLogic
  */
 public class GardenScreen extends AbstractScreen {
-    private final GardenLogic gardenLogic = new GardenLogic();
-
     /**
      * Construct a GardenScreen and loads the garden.
      *
@@ -41,10 +44,7 @@ public class GardenScreen extends AbstractScreen {
      */
     @Override
     protected Parent createRoot() {
-        //Preventing null field when AbstractScreen called method
-        if (gardenLogic == null) {
-            GardenLogic.loadGarden();
-        }
+        GardenLogic.loadGarden();
 
         // Initialize Screen elements
         VBox vbox = new VBox();
@@ -82,9 +82,6 @@ public class GardenScreen extends AbstractScreen {
                 Flower f = garden.get(r).get(c);
 
                 if (f != null && f.getImagePath() != null) {
-                    URL url = getClass().getResource(f.getImagePath());
-                    System.out.printf("url:" + url);//debug
-
                     StackPane flowerPane = f.getDisplayNode(150);
                     grid.add(flowerPane, c, r);
 

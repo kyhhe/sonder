@@ -7,10 +7,18 @@ import java.util.List;
 
 /**
  * Class which manages the tasks when the user selects the "Start" button. Supports the following operations:
- * <li> Shows the current task screen</li>
- * <li> Shows the next task screen </li>
- * <li> Writes the completed entry to the entries JSON file </li>
- * <li> Shows the task complete screen when the daily tasks have been completed </li>
+ * <li> start: Begins the task sequence </li>
+ * <li> showTask[1-5]Screen: Shows the current task screen and proceeds the next task screen </li>
+ * <li> showAllCompleteScreen: Shows the task complete screen when the daily tasks have been completed </li>
+ * <li> saveEntries: Writes the completed entry to the entries JSON file </li>
+ *
+ * @see Task1Screen
+ * @see Task2Screen
+ * @see Task3Screen
+ * @see Task4Screen
+ * @see Task5Screen
+ * @see AllCompleteScreen
+ * @see EntryManagement
  */
 public class StartLogic {
     private final Task1Screen task1Screen;

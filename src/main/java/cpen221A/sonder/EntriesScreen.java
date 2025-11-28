@@ -32,7 +32,6 @@ import java.util.Objects;
 public class EntriesScreen extends AbstractScreen {
 
     private VBox entriesContainer;
-
     public EntriesScreen(MainApplication main) {
         super(main);
     }
@@ -77,9 +76,7 @@ public class EntriesScreen extends AbstractScreen {
         scrollPane.setPannable(true);
 
         root.getChildren().addAll(topBar, scrollPane);
-
         loadEntries();
-
         return root;
     }
 
@@ -98,8 +95,6 @@ public class EntriesScreen extends AbstractScreen {
             empty.setMaxWidth(Double.MAX_VALUE);
             entriesContainer.setAlignment(Pos.CENTER);
             entriesContainer.getChildren().add(empty);
-
-            return;
         }
 
         // Sort newest -> oldest
@@ -113,6 +108,7 @@ public class EntriesScreen extends AbstractScreen {
 
     /**
      * Builds a single collapsible UI past user entry box
+     *
      * @param entry saved user entry to display
      * @return an entry box with all three tasks and flower image and date
      */
@@ -146,16 +142,11 @@ public class EntriesScreen extends AbstractScreen {
         details.setPadding(new Insets(10, 0, 0, 50));
 
         // Task1 Image
-        ImageView faceImage = null;
-        try {
-            faceImage = new ImageView(new Image(
-                    Objects.requireNonNull(getClass().getResource(entry.getTask1Answer())).toExternalForm()
-            ));
-            faceImage.setFitWidth(40);
-            faceImage.setFitHeight(40);
-        } catch (Exception e) {
-            System.out.println("Could not load face image: " + e.getMessage());
-        }
+        ImageView faceImage = new ImageView(new Image(
+                Objects.requireNonNull(getClass().getResource(entry.getTask1Answer())).toExternalForm()
+        ));
+        faceImage.setFitWidth(40);
+        faceImage.setFitHeight(40);
 
         // Task Headers
         Label moodLabel = new Label("mood:");
@@ -205,22 +196,5 @@ public class EntriesScreen extends AbstractScreen {
         box.getChildren().addAll(header, details);
 
         return box;
-    }
-
-
-    /**
-     * Clears entries in JSON file
-     */
-    public void clearEntries() {
-        EntryManagement.initializeJSON();
-        entriesContainer.getChildren().clear();
-    }
-
-    /**
-     * Checks if there are entries in the JSON file
-     * @return true if there are entries, false otherwise
-     */
-    public boolean hasEntries() {
-        return !EntryManagement.readEntries().isEmpty();
     }
 }

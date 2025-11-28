@@ -12,44 +12,43 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Handles loading, saving, and modifying the flower garden.
- * The garden is represented as a 3x5 grid, where each cell may contain a Flower object or be empty.
+ * Handles loading, saving, and modifying the flower GARDEN.
+ * The GARDEN is represented as a 3x5 grid, where each cell may contain a Flower object or be empty.
  * The class provides operations for:
  * <li>Adding flowers</li>
- * <li>Checking garden status (full, 14 flowers, empty cells)</li>
- * <li>Loading and storing garden layout from/to JSON</li>
+ * <li>Checking GARDEN status (full, 14 flowers, empty cells)</li>
+ * <li>Loading and storing GARDEN layout from/to JSON</li>
  * <li>Utility operations used by UI logic</li>
  */
 public class GardenLogic {
     private static final int ROW = 3;
     private static final int COL = 5;
 
-    private static final List<List<Flower>> garden = new ArrayList<>();
-    private static final String jsonPath = "data/json/gardenData.json";
+    private static final List<List<Flower>> GARDEN = new ArrayList<>();
+    private static final String JSONFILE = "data/json/gardenData.json";
+    private static final Gson GSON =
+            new GsonBuilder().excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT).
+                setPrettyPrinting().create();
 
-    private static final Gson gson =
-            new GsonBuilder().excludeFieldsWithModifiers(java.lang.reflect.Modifier.TRANSIENT)
-                    .setPrettyPrinting().create();
-
-    // Initializes the 3x5 garden and loads saved state
+    // Initializes the 3x5 GARDEN and loads saved state
     static {
         for (int i = 0; i < ROW; i++) {
-            garden.add(new ArrayList<>(Collections.nCopies(COL, null)));
+            GARDEN.add(new ArrayList<>(Collections.nCopies(COL, null)));
         }
         loadGarden();
     }
 
     /**
-     * Return a deep copy of the garden structure
+     * Return a deep copy of the GARDEN structure
      *
-     * @return a copy of the 3x5 garden grid
+     * @return a copy of the 3x5 GARDEN grid
      */
     public static List<List<Flower>> getGarden() {
         List<List<Flower>> g = new ArrayList<>();
         for (int r = 0; r < ROW; r++) {
             List<Flower> row = new ArrayList<>();
             for (int c = 0; c < COL; c++) {
-                row.add(garden.get(r).get(c));
+                row.add(GARDEN.get(r).get(c));
             }
             g.add(row);
         }
@@ -57,7 +56,7 @@ public class GardenLogic {
     }
 
     /**
-     * Attempt to place a flower into the garden at the position
+     * Attempt to place a flower into the GARDEN at the position
      * A position may only be filled if it was previously empty.
      *
      * @param flower the flower to place
@@ -70,17 +69,17 @@ public class GardenLogic {
         if (row < 0 || row >= ROW || col < 0 || col >= COL) {
             throw new IllegalArgumentException("Invalid input positions");
         }
-        if (garden.get(row).get(col) != null) {
+        if (GARDEN.get(row).get(col) != null) {
             return false;
         }
 
-        garden.get(row).set(col, flower);
+        GARDEN.get(row).set(col, flower);
         flower.setPosition(row, col);
         return true;
     }
 
     /**
-     * Checks if the position in the garden contains no flower.
+     * Checks if the position in the GARDEN contains no flower.
      *
      * @param row row index (0-2)
      * @param col column index (0-4)
@@ -91,17 +90,17 @@ public class GardenLogic {
         if (row < 0 || row >= ROW || col < 0 || col >= COL) {
             throw new IllegalArgumentException("Invalid input position");
         }
-        return garden.get(row).get(col) == null;
+        return GARDEN.get(row).get(col) == null;
     }
 
     /**
-     * Checks if the garden has exactly 14 flowers and 1 empty cell.
+     * Checks if the GARDEN has exactly 14 flowers and 1 empty cell.
      *
      * @return true if exactly one cell is empty
      */
     public static boolean isFortnight() {
         int emptyCount = 0;
-        for (List<Flower> r : garden) {
+        for (List<Flower> r : GARDEN) {
             for (Flower c : r) {
                 if (c == null) {
                     emptyCount++;
@@ -112,12 +111,12 @@ public class GardenLogic {
     }
 
     /**
-     * Checks if the garden has all 15 cells are filled
+     * Checks if the GARDEN has all 15 cells are filled
      *
-     * @return true if the garden contains 15 flowers
+     * @return true if the GARDEN contains 15 flowers
      */
     public static boolean isFull() {
-        for (List<Flower> r : garden) {
+        for (List<Flower> r : GARDEN) {
             for (Flower c : r) {
                 if (c == null) {
                     return false;
@@ -128,43 +127,43 @@ public class GardenLogic {
     }
 
     /**
-     * Saves the current garden state to JSON file.
+     * Saves the current GARDEN state to JSON file.
      */
     public static void saveGarden() {
-        try (FileWriter write = new FileWriter(jsonPath)) {
-            gson.toJson(garden, write);
+        try (FileWriter write = new FileWriter(JSONFILE)) {
+            GSON.toJson(GARDEN, write);
         } catch (IOException e) {
-            System.out.println("Incorrect saving garden: " + e.getMessage());
+            System.out.println("Incorrect saving GARDEN: " + e.getMessage());
         }
     }
 
     /**
-     * Loads the garden state from the JSON file, if it exists.
+     * Loads the GARDEN state from the JSON file, if it exists.
      */
     public static void loadGarden() {
-        try (FileReader read = new FileReader(jsonPath)) {
-            List<List<Flower>> load = gson.fromJson(read, new TypeToken<List<List<Flower>>>() {
+        try (FileReader read = new FileReader(JSONFILE)) {
+            List<List<Flower>> load = GSON.fromJson(read, new TypeToken<List<List<Flower>>>() {
             }.getType());
             if (load != null) {
                 for (int r = 0; r < ROW; r++) {
                     for (int c = 0; c < COL; c++) {
-                        garden.get(r).set(c, load.get(r).get(c));
+                        GARDEN.get(r).set(c, load.get(r).get(c));
                     }
                 }
             }
         } catch (IOException e) {
-            System.out.println("Incorrect loading garden: " + e.getMessage());
+            System.out.println("Incorrect loading GARDEN: " + e.getMessage());
         }
     }
 
     /**
-     * Checks if a flower already exists in somewhere in the garden.
+     * Checks if a flower already exists in somewhere in the GARDEN.
      *
      * @param flower the flower to check
-     * @return true if the flower is found in the garden
+     * @return true if the flower is found in the GARDEN
      */
     public static boolean flowerInGarden(Flower flower) {
-        for (List<Flower> r : garden) {
+        for (List<Flower> r : GARDEN) {
             for (Flower f : r) {
                 if (f != null && f.equals(flower)) {
                     return true;
@@ -175,25 +174,25 @@ public class GardenLogic {
     }
 
     /**
-     * Clears the garden by removing all flowers and saving the empty grid.
+     * Clears the GARDEN by removing all flowers and saving the empty grid.
      */
     public static void clearGarden() {
         for (int r = 0; r < ROW; r++) {
             for (int c = 0; c < COL; c++) {
-                garden.get(r).set(c, null);
+                GARDEN.get(r).set(c, null);
             }
         }
         saveGarden();
     }
 
     /**
-     * Fills the garden with flowers of ID 1-15.
+     * Fills the GARDEN with flowers of ID 1-15.
      */
     public static void setAllFlowers() {
         int id = 1;
         for (int r = 0; r < ROW; r++) {
             for (int c = 0; c < COL; c++) {
-                garden.get(r).set(c, new Flower(id));
+                GARDEN.get(r).set(c, new Flower(id));
                 id++;
             }
         }
@@ -201,11 +200,11 @@ public class GardenLogic {
     }
 
     /**
-     * Fills the garden with flowers of ID 1-14, and the last cell (right bottom) empty.
+     * Fills the GARDEN with flowers of ID 1-14, and the last cell (right bottom) empty.
      */
     public static void set14Flowers() {
         setAllFlowers();
-        garden.get(ROW - 1).set(COL - 1, null);
+        GARDEN.get(ROW - 1).set(COL - 1, null);
         saveGarden();
     }
 }

@@ -11,6 +11,8 @@ import org.apache.commons.lang3.ObjectUtils;
  * <li> getTask1Answer - getTask3Answer: obtains the answer from the specified task/li>
  * <li> getFlower: obtains the flower selected by the user</li>
  * <li> checkValidEntry: checks if all fields of the entry are non-null</li>
+ *
+ * @see EntryManagement
  */
 public class UserEntry {
     private final String date;

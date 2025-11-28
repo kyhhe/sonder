@@ -2,6 +2,7 @@ package cpen221A.sonder;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
@@ -54,7 +55,10 @@ public class MainApplication extends Application {
         bgMusic.setCycleCount(AudioClip.INDEFINITE);
         bgMusic.play();
 
+        Image appIcon = new Image(
+            Objects.requireNonNull(getClass().getResourceAsStream("/FlowerImages/Flower1.png")));
         stage.setTitle("sonder");
+        stage.getIcons().add(appIcon);
         showMainMenu();
         stage.show();
     }
