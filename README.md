@@ -15,8 +15,8 @@
 [Project Testing](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/testing.md) |
 [Contributions Statement](https://github.com/CPEN-221-2025/project-poplar/blob/main/documentation/contributions.md)
 
-## DEMO
-(Click on the image below to open the demo video)
+## DEMO VIDEO
+(Please click on the image below to open the demo video.)
 [![thumbnail](https://github.com/user-attachments/assets/67b09311-85d3-40fb-b930-c4d490e9c1b4)](https://drive.google.com/file/d/1xLuhuplwuCrdhEpe7pyAkBXhjzhTy5JG/view?usp=sharing)
 
 ## Problem
