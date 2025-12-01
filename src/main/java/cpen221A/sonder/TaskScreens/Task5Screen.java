@@ -20,7 +20,6 @@ public class Task5Screen extends AbstractScreen {
     private Label warning;
     private Label invalid;
     private Runnable onComplete;
-    private boolean toNext = false;
     private Button selectedButton = null;
 
     public Task5Screen(MainApplication main) {
@@ -96,6 +95,7 @@ public class Task5Screen extends AbstractScreen {
 
         // Button action and task transition logic
         nextButton.setOnAction(e -> {
+            main.buttonSound();
             if (this.input == null) { // no input
                 this.warning.setVisible(true);
             } else {
@@ -111,7 +111,6 @@ public class Task5Screen extends AbstractScreen {
                     this.answer = this.input;
 
                     if (this.onComplete != null) {
-                        this.toNext = true;
                         GardenLogic.loadGarden();   //<--load the garden from .json to the object
                         GardenLogic.addFlower(this.answer, row, col);  //<--do the implement of adding flower
                         GardenLogic.saveGarden();   //<--save the garden to .json

@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
-import java.net.URL;
 import java.util.*;
 
 /**
@@ -59,7 +58,10 @@ public class GardenScreen extends AbstractScreen {
         pos.setPadding(new Insets(10));
 
         // Menu button actions
-        backButton.setOnAction(e -> main.showMainMenu());
+        backButton.setOnAction(e -> {
+            main.showMainMenu();
+            main.buttonSound();
+        });
 
         // Background image
         ImageView bgView = new ImageView(new Image(

@@ -133,7 +133,7 @@ public class GardenLogic {
         try (FileWriter write = new FileWriter(JSONFILE)) {
             GSON.toJson(GARDEN, write);
         } catch (IOException e) {
-            System.out.println("Incorrect saving GARDEN: " + e.getMessage());
+            System.out.println("Could not save garden: " + e.getMessage());
         }
     }
 

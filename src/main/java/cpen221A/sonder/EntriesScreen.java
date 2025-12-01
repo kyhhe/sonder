@@ -48,7 +48,10 @@ public class EntriesScreen extends AbstractScreen {
 
         // Top bar
         Button backButton = createButton("menu");
-        backButton.setOnAction(e -> main.showMainMenu());
+        backButton.setOnAction(e -> {
+            main.showMainMenu();
+            main.buttonSound();
+        });
 
         Label title = createTitle("entries");
 

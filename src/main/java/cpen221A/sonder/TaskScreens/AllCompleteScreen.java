@@ -56,8 +56,14 @@ public class AllCompleteScreen extends AbstractScreen {
         }
 
         // Button actions
-        menuButton.setOnAction(e -> main.showMainMenu());
-        gardenButton.setOnAction(e -> main.showGardenScreen());
+        menuButton.setOnAction(e -> {
+            main.showMainMenu();
+            main.buttonSound();
+        });
+        gardenButton.setOnAction(e -> {
+            main.showGardenScreen();
+            main.buttonSound();
+        });
 
         // Add elements to screen
         vbox.setAlignment(javafx.geometry.Pos.CENTER);

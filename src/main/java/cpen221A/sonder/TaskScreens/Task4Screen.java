@@ -116,6 +116,7 @@ public class Task4Screen extends AbstractScreen {
                     this.toNext = true;
                     this.onComplete.run();
                 }
+                main.buttonSound();
             }
         });
 

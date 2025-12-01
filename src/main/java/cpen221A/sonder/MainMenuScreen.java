@@ -83,9 +83,19 @@ public class MainMenuScreen extends AbstractScreen {
         flowerView.setPreserveRatio(true);
 
         // Button actions
-        startButton.setOnAction(e -> main.startTasks());
-        gardenButton.setOnAction(e -> main.showGardenScreen());
-        entriesButton.setOnAction(e -> main.showEntriesScreen());
+        startButton.setOnAction(e -> {
+            main.startTasks();
+            main.buttonSound();
+        });
+        gardenButton.setOnAction(e -> {
+            main.showGardenScreen();
+            main.buttonSound();
+        });
+        entriesButton.setOnAction(e -> {
+            main.showEntriesScreen();
+            main.buttonSound();
+        });
+
 
         // Add elements to screen
         vbox.getChildren().addAll(flowerView, title, welcomeMessage,

@@ -104,6 +104,7 @@ public class Task1Screen extends AbstractScreen {
                     this.onComplete.run();
                 }
             }
+            main.buttonSound();
         });
 
         // Add elements to screen
