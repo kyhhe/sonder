@@ -123,6 +123,9 @@ public class MainApplication extends Application {
         this.date = newDate;
     }
 
+    /**
+     * Plays a button click sound effect.
+     */
     public void buttonSound() {
         AudioClip buttonClick = new AudioClip(
             Objects.requireNonNull(getClass().getResource("/audio/button.mp3")).toString());

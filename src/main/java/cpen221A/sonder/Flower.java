@@ -24,7 +24,7 @@ public class Flower {
 
     /**
      * Creates a new flower object with the given ID. The ID corresponds to its flower image.
-     * Valid flower IDs are interger between 1-15.
+     * Valid flower IDs are integer between 1-15.
      *
      * @param id Unique ID to represent the flower and its corresponding image (1-15)
      * @throws IllegalArgumentException if the ID is out of range
@@ -68,16 +68,16 @@ public class Flower {
     /**
      * Updates the flower's position in the garden grid.
      *
-     * @param row the row index where is the flower is placed
-     * @param col the column index where is the flower is placed
+     * @param gardenRow the row index where is the flower is placed
+     * @param gardenCol the column index where is the flower is placed
      */
-    public void setPosition(int row, int col) {
-        this.row = row;
-        this.col = col;
+    public void setPosition(int gardenRow, int gardenCol) {
+        this.row = gardenRow;
+        this.col = gardenCol;
     }
 
     /**
-     * Return the resouce path for the image corresponding to this flower's ID.
+     * Return the resource path for the image corresponding to this flower's ID.
      * Image of flowers follows the naming format:
      * <li>"Flower1.PNG</li>
      * <li>"Flower2.PNG</li>
