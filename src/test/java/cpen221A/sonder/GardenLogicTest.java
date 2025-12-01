@@ -5,7 +5,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class gardenLogicTest {
+public class GardenLogicTest {
 
     @BeforeEach
     public void setUp() {
