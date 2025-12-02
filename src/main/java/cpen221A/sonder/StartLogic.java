@@ -116,7 +116,8 @@ public class StartLogic {
      * Shows the completed tasks screen
      */
     public void showAllCompleteScreen() {
-        main.setStage(allCompleteScreen.getScene());
+        AllCompleteScreen fresh = new AllCompleteScreen(main);
+        main.setStage(fresh.getScene());
     }
 
     /**

@@ -104,16 +104,16 @@ public class Task5Screen extends AbstractScreen {
                 int row = this.input.getRow();
                 int col = this.input.getCol();
 
-                if (!GardenLogic.isEmpty(row, col)) { // invalid spot
+                if (!GardenLogic.isEmpty(row, col)) {
                     this.invalid.setVisible(true);
                 } else {
                     this.invalid.setVisible(false);
                     this.answer = this.input;
 
                     if (this.onComplete != null) {
-                        GardenLogic.loadGarden();   //<--load the garden from .json to the object
-                        GardenLogic.addFlower(this.answer, row, col);  //<--do the implement of adding flower
-                        GardenLogic.saveGarden();   //<--save the garden to .json
+                        GardenLogic.loadGarden();
+                        GardenLogic.addFlower(this.answer, row, col);
+                        GardenLogic.saveGarden();
                         this.onComplete.run();
                     }
                 }
