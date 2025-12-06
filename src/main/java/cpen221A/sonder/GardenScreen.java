@@ -4,11 +4,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.util.*;
 
@@ -85,6 +87,12 @@ public class GardenScreen extends AbstractScreen {
 
                 if (f != null && f.getImagePath() != null) {
                     StackPane flowerPane = f.getDisplayNode(150);
+                    DropShadow shadow = new DropShadow();
+                    shadow.setRadius(20);
+                    shadow.setOffsetX(0);
+                    shadow.setOffsetY(8);
+                    shadow.setColor(Color.web("#0b3d0b"));
+                    flowerPane.setEffect(shadow);
                     grid.add(flowerPane, c, r);
 
 
