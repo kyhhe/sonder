@@ -91,6 +91,19 @@ public class Flower {
         return "/FlowerImages/Flower" + flowerId + ".PNG";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){return true;}
+        if(!(o instanceof Flower)){ return false;}
+        Flower f= (Flower) o;
+        return this.flowerId == f.flowerId;
+    }
+
+    @Override
+    public int hashCode() {
+        return flowerId + row * 11 + col * 31;
+    }
+
     /**
      * Creates a JavaFX node representing this flower at the given size.
      * If the flower is the special flower (ID = 15), a sparkle animation will be automatically

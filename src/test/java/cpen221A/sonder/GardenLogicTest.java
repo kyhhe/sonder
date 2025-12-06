@@ -81,4 +81,14 @@ public class GardenLogicTest {
         }
         assertEquals(15,count);
     }
+
+    @Test
+    public void test_flowerInGarden() {
+        Flower f1 = new Flower(3);
+        GardenLogic.addFlower(f1,0,0);
+
+        Flower f2 = new Flower(3);
+
+        assertTrue(GardenLogic.flowerInGarden(f2));
+    }
 }
